@@ -2,6 +2,8 @@ package rustique;
 
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import rustique.panes.ClientesPain;
+import rustique.panes.MainPain;
 
 public class Controller {
 
@@ -48,6 +50,12 @@ public class Controller {
      */
     public void actionPerformed(String event) {
         switch (event) {
+            case "principal":
+                thisView.changePane(MainPain.getInstance());
+                break;
+            case "clientes":
+                thisView.changePane(ClientesPain.getInstance());
+                break;
             case "salir":
                 getWindow().close();
                 break;
@@ -55,5 +63,4 @@ public class Controller {
                 break;
         }
     }
-
 }

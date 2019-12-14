@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
-public class Grid implements RParameters {
+public class Grid implements RustiqueParameters {
 
     private Controller thisController;
     private Button principal;
