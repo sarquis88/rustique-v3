@@ -5,25 +5,25 @@ import javafx.scene.layout.Pane;
 import rustique.ImagesManager;
 import rustique.RustiqueParameters;
 
-public class MainPain implements RustiquePane, RustiqueParameters {
+public class MainPane implements RustiquePane, RustiqueParameters {
 
-    private static MainPain thisMainPain = null;
+    private static MainPane thisMainPane = null;
     private Pane thisPane;
 
     /**
      * Patron Singleton
      * @return instancia unica de clase
      */
-    public static MainPain getInstance() {
-        if (thisMainPain == null)
-            thisMainPain = new MainPain();
-        return thisMainPain;
+    public static MainPane getInstance() {
+        if (thisMainPane == null)
+            thisMainPane = new MainPane();
+        return thisMainPane;
     }
 
     /**
      * Constructor de clase
      */
-    private MainPain() {
+    private MainPane() {
         thisPane = new Pane();
         thisPane.setPrefSize(screenWidth - sepLayoutX, screenHeight);
         String imagesPath = "./src/images/";

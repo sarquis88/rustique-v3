@@ -4,7 +4,7 @@ import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.Pane;
-import rustique.panes.MainPain;
+import rustique.panes.MainPane;
 import rustique.panes.RustiquePane;
 
 public class View implements RustiqueParameters {
@@ -50,7 +50,7 @@ public class View implements RustiqueParameters {
         layout.setStyle("-fx-background-color: gray;");
         layout.getChildren().addAll(grid.getGridPane(), sep0);
 
-        changePane(MainPain.getInstance());
+        changePane(MainPane.getInstance());
 
         this.thisScene = new Scene(layout);
     }

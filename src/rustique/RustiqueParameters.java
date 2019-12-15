@@ -16,4 +16,6 @@ public interface RustiqueParameters {
     double sepLayoutX = screenWidth * 0.15;
     double sepWidth = 5.0;
 
+    String tituloStyle = "-fx-font-weight: bold; -fx-text-fill: black; -fx-font-size: 35px;";
+
 }
