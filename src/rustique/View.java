@@ -16,6 +16,9 @@ public class View implements RustiqueParameters {
     private Pane layout;
     private Pane actualPane = null;
 
+    private Separator sep0;
+    private Separator sep1;
+
     /**
      * Patron singleton
      * @return instancia unica de clase
@@ -31,7 +34,7 @@ public class View implements RustiqueParameters {
      */
     private View() {
 
-        Separator sep0 = new Separator();
+        sep0 = new Separator();
         sep0.setOrientation(Orientation.VERTICAL);
         sep0.setLayoutX(sepLayoutX);
         sep0.setLayoutY(0);
@@ -39,7 +42,7 @@ public class View implements RustiqueParameters {
         sep0.setPrefHeight(2000);
         sep0.setStyle(separatorStyle);
 
-        Separator sep1 = new Separator();
+        sep1 = new Separator();
         sep1.setOrientation(Orientation.VERTICAL);
         sep1.setLayoutX(sepLayoutX * 2 + hPadding);
         sep1.setLayoutY(0);
@@ -77,5 +80,18 @@ public class View implements RustiqueParameters {
      */
     public Scene getScene() {
         return this.thisScene;
+    }
+
+    /**
+     * Retorno de posicion X de separadores
+     * @param sep 0 para sep0, 1 para sep1
+     * @return layoutX de separador
+     */
+    public double getSepLayoutX(int sep) {
+        if(sep == 0)
+            return sep0.getLayoutX();
+        if(sep == 1)
+            return sep1.getLayoutX();
+        return 0;
     }
 }

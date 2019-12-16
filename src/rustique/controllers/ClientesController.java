@@ -15,7 +15,6 @@ import rustique.panes.ClientesPane;
 public class ClientesController {
 
     private static ClientesController thisController = null;
-    private static ClientesPane thisPane = null;
     private static ObservableList<Cliente> data = FXCollections.observableArrayList();
 
     /**
@@ -135,6 +134,8 @@ public class ClientesController {
                     }
                 }
             }
+            else
+                return;
         }
         else
             cliente = getClienteByNombre(ClientesPane.getInstance().getClienteClickeado());

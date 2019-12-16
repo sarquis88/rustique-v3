@@ -5,6 +5,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import rustique.RustiqueParameters;
+import rustique.View;
 import rustique.controllers.ClientesController;
 import rustique.grids.ClientesGrid;
 import rustique.models.Cliente;
@@ -45,10 +46,10 @@ public class ClientesPane implements RustiquePane, RustiqueParameters {
         ClientesGrid.getInstance().setLayout(0, vPadding);
 
         ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setPrefWidth(thisPane.getPrefWidth() * 0.75);
-        scrollPane.setPrefHeight(thisPane.getPrefHeight() - 17 * vPadding);
-        scrollPane.setLayoutX(thisPane.getPrefWidth() - scrollPane.getPrefWidth() - 2 * hPadding);
+        scrollPane.setLayoutX(View.getInstance().getSepLayoutX(0) + 3 * hPadding);
         scrollPane.setLayoutY(vPadding * 16);
+        scrollPane.setPrefWidth(thisPane.getPrefWidth() - scrollPane.getLayoutX() - 3 * hPadding);
+        scrollPane.setPrefHeight(thisPane.getPrefHeight() - 17 * vPadding);
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
@@ -60,12 +61,15 @@ public class ClientesPane implements RustiquePane, RustiqueParameters {
         TableColumn<Cliente, String> c0 = new TableColumn<>("Nombre");
         c0.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         c0.setPrefWidth( tableView.getPrefWidth()  * 0.6);
+        c0.setStyle(tableColumnsStyle + "-fx-font-weight: bold;");
         TableColumn<Cliente, Integer> c1 = new TableColumn<>("Saldo");
         c1.setCellValueFactory(new PropertyValueFactory<>("saldo"));
         c1.setPrefWidth( tableView.getPrefWidth() * 0.3);
+        c1.setStyle(tableColumnsStyle);
         TableColumn<Cliente, Integer> c2 = new TableColumn<>("ID");
         c2.setCellValueFactory(new PropertyValueFactory<>("id"));
         c2.setPrefWidth( tableView.getPrefWidth() * 0.1);
+        c2.setStyle(tableColumnsStyle);
 
         tableView.setItems(thisController.getData());
 

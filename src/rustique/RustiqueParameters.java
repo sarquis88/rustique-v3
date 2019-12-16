@@ -22,6 +22,7 @@ public interface RustiqueParameters {
     String tituloStyle = "-fx-font-weight: bold; -fx-text-fill: black; -fx-font-size: 35px;";
     String buttonsStyle = "-fx-font-size: 15;";
     String separatorStyle = "-fx-background-color: red;";
+    String tableColumnsStyle = "-fx-alignment: CENTER;";
 
     int comentMaxSize = 40;
 }

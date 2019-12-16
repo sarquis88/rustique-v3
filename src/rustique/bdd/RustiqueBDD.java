@@ -118,17 +118,13 @@ public class RustiqueBDD {
     /**
      * Eliminacion de cliente en base de datos
      * @param id identificador del cliente
-     * @return true si se encontro al cliente, de lo contrario false
      */
-    public boolean deleteCliente(int id) {
-        boolean exito = false;
+    public void deleteCliente(int id) {
         try {
             c = DriverManager.getConnection("jdbc:sqlite:" + bddPath);
             stmt = c.createStatement();
             String sql = "DELETE from CLIENTES where ID=" + id + ";";
-
-            if(stmt.executeUpdate(sql) != 0)
-                exito = true;
+            stmt.executeUpdate(sql);
 
             stmt.close();
             c.close();
@@ -136,7 +132,6 @@ public class RustiqueBDD {
         catch (SQLException e) {
             e.printStackTrace();
         }
-        return exito;
     }
 
     /**
