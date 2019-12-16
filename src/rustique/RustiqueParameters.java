@@ -23,4 +23,5 @@ public interface RustiqueParameters {
     String buttonsStyle = "-fx-font-size: 15;";
     String separatorStyle = "-fx-background-color: red;";
 
+    int comentMaxSize = 40;
 }

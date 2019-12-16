@@ -1,11 +1,6 @@
 package rustique.panes;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -18,7 +13,9 @@ public class ClientesPane implements RustiquePane, RustiqueParameters {
 
     private static ClientesPane thisClientesPane = null;
     private static ClientesController thisController = null;
+
     private Pane thisPane;
+    private String clienteClickeado;
 
     /**
      * Patron Singleton
@@ -75,10 +72,40 @@ public class ClientesPane implements RustiquePane, RustiqueParameters {
         tableView.getColumns().add(c0);
         tableView.getColumns().add(c1);
         tableView.getColumns().add(c2);
+        tableView.setOnMouseClicked(mouseEvent -> {
+            // handler de clicks en tableView
+            try {
+                // localizacion de fila clickeada
+                TablePosition pos = tableView.getSelectionModel().getSelectedCells().get(0);
+                this.clienteClickeado = c0.getCellData(pos.getRow()); // nombre de fila clickeada
+                if (mouseEvent.getClickCount() == 2) {
+                    if (this.clienteClickeado != null)
+                        thisController.actionPerformed("show-cliente-clickeado");
+                }
+            }
+            catch (IndexOutOfBoundsException e) {
+                e.getMessage();
+            }
+        });
 
         scrollPane.setContent(tableView);
 
         thisPane.getChildren().addAll(titulo, gridPane, scrollPane);
+    }
+
+    /**
+     * Getter del nombre del cliente que se clickeo en la tabla por ultima vez
+     * @return nombre del cliente clickeado
+     */
+    public String getClienteClickeado() {
+        return this.clienteClickeado;
+    }
+
+    /**
+     * Restart de clienteClickeado, vuelve a 'null'
+     */
+    public void resetClienteClickeado() {
+        this.clienteClickeado = null;
     }
 
     @Override

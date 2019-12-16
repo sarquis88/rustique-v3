@@ -149,7 +149,7 @@ public class RustiqueBDD {
     public void cambiarCliente(String nombreActual, String nombreNuevo, int saldoNuevo,
                                String comentNuevo) {
         try {
-            c = DriverManager.getConnection("jdbc:sqlite:./src/bdd/rustique.db");
+            c = DriverManager.getConnection("jdbc:sqlite:" + bddPath);
             stmt = c.createStatement();
             String sql = "UPDATE CLIENTES SET SALDO=" + saldoNuevo +
                     " WHERE NOMBRE='" + nombreActual + "'";

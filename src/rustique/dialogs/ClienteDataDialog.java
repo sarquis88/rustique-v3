@@ -4,12 +4,14 @@ import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 
 public class ClienteDataDialog {
 
     private Dialog<ButtonType> dialog;
     private TextField nombre;
     private TextField id;
+    private ButtonType cancelar;
     private ButtonType nombreButton;
     private ButtonType idButton;
 
@@ -23,11 +25,12 @@ public class ClienteDataDialog {
         dialog.setHeaderText("");
 
         nombreButton = new ButtonType("Por nombre");
-        idButton = new ButtonType("Por id" +
-                "");
+        idButton = new ButtonType("Por id");
+        cancelar = new ButtonType("Cancelar");
+
         dialog.getDialogPane().getButtonTypes().addAll(nombreButton);
         dialog.getDialogPane().getButtonTypes().addAll(idButton);
-        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.CANCEL);
+        dialog.getDialogPane().getButtonTypes().addAll(cancelar);
 
         GridPane grid = new GridPane();
         grid.setHgap(10);
