@@ -7,13 +7,17 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import rustique.RustiqueParameters;
+import rustique.controllers.ClientesController;
+import rustique.grids.ClientesGrid;
 import rustique.models.Cliente;
 
 public class ClientesPane implements RustiquePane, RustiqueParameters {
 
     private static ClientesPane thisClientesPane = null;
+    private static ClientesController thisController = null;
     private Pane thisPane;
 
     /**
@@ -30,6 +34,8 @@ public class ClientesPane implements RustiquePane, RustiqueParameters {
      * Constructor de clase
      */
     private ClientesPane() {
+        thisController = ClientesController.getInstance();
+
         thisPane = new Pane();
         thisPane.setPrefSize(screenWidth - sepLayoutX, screenHeight);
 
@@ -37,6 +43,9 @@ public class ClientesPane implements RustiquePane, RustiqueParameters {
         titulo.setLayoutX(thisPane.getPrefWidth() / 2);
         titulo.setLayoutY(vPadding * 2);
         titulo.setStyle(tituloStyle);
+
+        GridPane gridPane = ClientesGrid.getInstance().getGridPane();
+        ClientesGrid.getInstance().setLayout(0, vPadding);
 
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setPrefWidth(thisPane.getPrefWidth() * 0.75);
@@ -61,9 +70,7 @@ public class ClientesPane implements RustiquePane, RustiqueParameters {
         c2.setCellValueFactory(new PropertyValueFactory<>("id"));
         c2.setPrefWidth( tableView.getPrefWidth() * 0.1);
 
-        ObservableList<Cliente> data = FXCollections.observableArrayList();
-        data.add(new Cliente("Leandro Malano", 500, 1));
-        tableView.setItems(data);
+        tableView.setItems(thisController.getData());
 
         tableView.getColumns().add(c0);
         tableView.getColumns().add(c1);
@@ -71,7 +78,7 @@ public class ClientesPane implements RustiquePane, RustiqueParameters {
 
         scrollPane.setContent(tableView);
 
-        thisPane.getChildren().addAll(titulo, scrollPane);
+        thisPane.getChildren().addAll(titulo, gridPane, scrollPane);
     }
 
     @Override

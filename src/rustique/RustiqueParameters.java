@@ -10,6 +10,9 @@ public interface RustiqueParameters {
     double screenHeight = screenBounds.getHeight() - 65;  // (- 65) : barras superiores horizontales
     double screenWidth = screenBounds.getWidth();
 
+    double buttonsHeight = 30.00;
+    double buttonsWidth = 190.00;
+
     double hPadding = 10;
     double vPadding = 5;
 
@@ -17,5 +20,7 @@ public interface RustiqueParameters {
     double sepWidth = 5.0;
 
     String tituloStyle = "-fx-font-weight: bold; -fx-text-fill: black; -fx-font-size: 35px;";
+    String buttonsStyle = "-fx-font-size: 15;";
+    String separatorStyle = "-fx-background-color: red;";
 
 }

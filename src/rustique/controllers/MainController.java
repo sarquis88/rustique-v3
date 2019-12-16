@@ -1,41 +1,32 @@
-package rustique;
+package rustique.controllers;
 
-import javafx.scene.Scene;
 import javafx.stage.Stage;
+import rustique.Main;
+import rustique.View;
 import rustique.panes.ClientesPane;
 import rustique.panes.MainPane;
 import rustique.panes.ObrasPane;
 import rustique.panes.OpcionesPane;
 
-public class Controller {
+public class MainController {
 
-    private static Controller thisController = null;
-    private static View thisView = null;
+    private static MainController thisMainController = null;
 
     /**
      * Patron singleton
      * @return instancia unica de clase
      */
-    public static Controller getInstance() {
-        if(thisController == null)
-            thisController = new Controller();
-        return thisController;
+    public static MainController getInstance() {
+        if(thisMainController == null)
+            thisMainController = new MainController();
+        return thisMainController;
     }
 
     /**
      * Constructor de clase
      */
-    private Controller() {
-        thisController = this;
-        thisView = View.getInstance(thisController);
-    }
-
-    /**
-     * Devuelve ventana de vista
-     * @return objeto Scene
-     */
-    public Scene getScene() {
-        return thisView.getScene();
+    private MainController() {
+        thisMainController = this;
     }
 
     /**
@@ -53,16 +44,16 @@ public class Controller {
     public void actionPerformed(String event) {
         switch (event) {
             case "principal":
-                thisView.changePane(MainPane.getInstance());
+                View.getInstance().changePane(MainPane.getInstance());
                 break;
             case "clientes":
-                thisView.changePane(ClientesPane.getInstance());
+                View.getInstance().changePane(ClientesPane.getInstance());
                 break;
             case "obras":
-                thisView.changePane(ObrasPane.getInstance());
+                View.getInstance().changePane(ObrasPane.getInstance());
                 break;
             case "opciones":
-                thisView.changePane(OpcionesPane.getInstance());
+                View.getInstance().changePane(OpcionesPane.getInstance());
                 break;
             case "salir":
                 getWindow().close();

@@ -1,13 +1,17 @@
-package rustique;
+package rustique.grids;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import rustique.controllers.MainController;
+import rustique.ImagesManager;
+import rustique.RustiqueParameters;
 
-public class Grid implements RustiqueParameters {
+public class MainGrid implements RustiqueParameters {
 
-    private Controller thisController;
+    private static MainController thisMainController;
+
     private Button principal;
     private Button clientes;
     private Button obras;
@@ -17,15 +21,9 @@ public class Grid implements RustiqueParameters {
 
     /**
      * Constructor de clase
-     * @param controller controlador de eventos
      */
-    public Grid(Controller controller) {
-        this.thisController = controller;
-
-        double buttonsHeight = 30.00;
-        double buttonsWidth = 190.00;
-        String buttonsStyle = "-fx-font-size: 15;";
-
+    public MainGrid() {
+        thisMainController = MainController.getInstance();
         String logoPath = "./src/images/logo.png";
 
         grid = new GridPane();
@@ -44,7 +42,7 @@ public class Grid implements RustiqueParameters {
         this.principal.setStyle(buttonsStyle);
         this.principal.setOnAction(e -> {
             enableAll("principal");
-            thisController.actionPerformed("principal");
+            thisMainController.actionPerformed("principal");
         });
 
         this.clientes = new Button("Clientes");
@@ -52,7 +50,7 @@ public class Grid implements RustiqueParameters {
         this.clientes.setStyle(buttonsStyle);
         this.clientes.setOnAction(e -> {
             enableAll("clientes");
-            thisController.actionPerformed("clientes");
+            thisMainController.actionPerformed("clientes");
         });
 
         this.obras = new Button("Obras");
@@ -60,7 +58,7 @@ public class Grid implements RustiqueParameters {
         this.obras.setStyle(buttonsStyle);
         this.obras.setOnAction(e -> {
             enableAll("obras");
-            thisController.actionPerformed("obras");
+            thisMainController.actionPerformed("obras");
         });
 
         this.opciones = new Button("Opciones");
@@ -68,7 +66,7 @@ public class Grid implements RustiqueParameters {
         this.opciones.setStyle(buttonsStyle);
         this.opciones.setOnAction(e -> {
             enableAll("opciones");
-            thisController.actionPerformed("opciones");
+            thisMainController.actionPerformed("opciones");
         });
 
         this.salir = new Button("Salir");
@@ -76,7 +74,7 @@ public class Grid implements RustiqueParameters {
         this.salir.setStyle(buttonsStyle);
         this.salir.setOnAction(e -> {
             enableAll("salir");
-            thisController.actionPerformed("salir");
+            thisMainController.actionPerformed("salir");
         });
 
         grid.add(logo, 0, 0);
@@ -86,7 +84,8 @@ public class Grid implements RustiqueParameters {
         grid.add(opciones, 0, 29);
         grid.add(salir, 0, 30);
 
-        grid.setPrefWidth(logo.getFitWidth() + hPadding * 2);
+        if(logo != null)
+            grid.setPrefWidth(logo.getFitWidth() + hPadding * 2);
     }
 
     /**

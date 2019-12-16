@@ -2,15 +2,21 @@ package rustique.models;
 
 public class Cliente {
 
+    private static int globalId = 0;
+
     private String nombre;
     private int saldo;
     private int id;
+    private String comentarios;
 
-    public Cliente(String nombre, int saldo, int id) {
+    public Cliente(String nombre, int saldo, int id, String comentarios) {
         this.nombre = nombre;
         this.saldo = saldo;
-        this.id = id;
+        this.id = globalId;
+        this.comentarios = comentarios;
     }
+
+    public Cliente() {}
 
     public String getNombre() {
         return nombre;
@@ -34,5 +40,25 @@ public class Cliente {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(String comentarios) {
+        this.comentarios = comentarios;
+    }
+
+    public static int getGlobalId() {
+        return globalId;
+    }
+
+    public static void setGlobalId(int globalId) {
+        Cliente.globalId = globalId;
+    }
+
+    public static void sumGlobalId() {
+        globalId++;
     }
 }

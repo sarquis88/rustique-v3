@@ -2,17 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/rustique/panes/ClientesPane.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/Grid.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/RustiqueParameters.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/RustiqueParameters.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/View.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/panes/ClientesPain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/panes/MainPain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/models/Cliente.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/models/Cliente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/panes/ClientesPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/panes/ClientesPane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rustique-v3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rustique-v3.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rustique/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rustique/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/grids/MainGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rustique/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rustique/RustiqueParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/RustiqueParameters.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rustique/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/panes/ClientesPain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/panes/MainPain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/panes/MainPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rustique/models/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/models/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rustique/panes/ClientesPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/panes/ClientesPane.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,10 +108,10 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sqlite-jdbc-3.27.2.1.jar!/" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
   </component>
   <component name="RecentsManager">
@@ -225,60 +230,61 @@
       <screen x="0" y="0" width="1360" height="738" />
     </state>
     <state x="276" y="31" key="#Project_Structure/0.0.1360.738@0.0.1360.738" timestamp="1576347945104" />
-    <state x="489" y="80" key="#com.intellij.ide.util.MemberChooser" timestamp="1576365967007">
+    <state x="489" y="80" key="#com.intellij.ide.util.MemberChooser" timestamp="1576450516736">
       <screen x="0" y="0" width="1360" height="738" />
     </state>
-    <state x="489" y="80" key="#com.intellij.ide.util.MemberChooser/0.0.1360.738@0.0.1360.738" timestamp="1576365967007" />
-    <state x="349" y="0" width="658" height="742" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1576426332025">
+    <state x="489" y="80" key="#com.intellij.ide.util.MemberChooser/0.0.1360.738@0.0.1360.738" timestamp="1576450516736" />
+    <state x="349" y="0" width="658" height="742" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1576445727032">
       <screen x="0" y="0" width="1360" height="738" />
     </state>
-    <state x="349" y="0" width="658" height="742" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1360.738@0.0.1360.738" timestamp="1576426332025" />
+    <state x="349" y="0" width="658" height="742" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1360.738@0.0.1360.738" timestamp="1576445727032" />
     <state x="414" y="116" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1576359434600">
       <screen x="0" y="0" width="1360" height="738" />
     </state>
     <state x="414" y="116" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1360.738@0.0.1360.738" timestamp="1576359434600" />
-    <state width="1314" height="216" key="GridCell.Tab.0.bottom" timestamp="1576428409034">
+    <state x="264" y="0" width="830" height="738" key="CommitChangelistDialog2" timestamp="1576460089688">
       <screen x="0" y="0" width="1360" height="738" />
     </state>
-    <state width="1314" height="216" key="GridCell.Tab.0.bottom/0.0.1360.738@0.0.1360.738" timestamp="1576428409034" />
-    <state width="1314" height="216" key="GridCell.Tab.0.center" timestamp="1576428409034">
+    <state x="264" y="0" width="830" height="738" key="CommitChangelistDialog2/0.0.1360.738@0.0.1360.738" timestamp="1576460089688" />
+    <state x="356" y="115" width="648" height="516" key="FileChooserDialogImpl" timestamp="1576461553081">
       <screen x="0" y="0" width="1360" height="738" />
     </state>
-    <state width="1314" height="216" key="GridCell.Tab.0.center/0.0.1360.738@0.0.1360.738" timestamp="1576428409034" />
-    <state width="1314" height="216" key="GridCell.Tab.0.left" timestamp="1576428409033">
+    <state x="356" y="115" width="648" height="516" key="FileChooserDialogImpl/0.0.1360.738@0.0.1360.738" timestamp="1576461553081" />
+    <state width="1314" height="174" key="GridCell.Tab.0.bottom" timestamp="1576462003496">
       <screen x="0" y="0" width="1360" height="738" />
     </state>
-    <state width="1314" height="216" key="GridCell.Tab.0.left/0.0.1360.738@0.0.1360.738" timestamp="1576428409033" />
-    <state width="1314" height="216" key="GridCell.Tab.0.right" timestamp="1576428409034">
+    <state width="1314" height="174" key="GridCell.Tab.0.bottom/0.0.1360.738@0.0.1360.738" timestamp="1576462003496" />
+    <state width="1314" height="174" key="GridCell.Tab.0.center" timestamp="1576462003496">
       <screen x="0" y="0" width="1360" height="738" />
     </state>
-    <state width="1314" height="216" key="GridCell.Tab.0.right/0.0.1360.738@0.0.1360.738" timestamp="1576428409034" />
-    <state width="1314" height="216" key="GridCell.Tab.1.bottom" timestamp="1576428409035">
+    <state width="1314" height="174" key="GridCell.Tab.0.center/0.0.1360.738@0.0.1360.738" timestamp="1576462003496" />
+    <state width="1314" height="174" key="GridCell.Tab.0.left" timestamp="1576462003495">
       <screen x="0" y="0" width="1360" height="738" />
     </state>
-    <state width="1314" height="216" key="GridCell.Tab.1.bottom/0.0.1360.738@0.0.1360.738" timestamp="1576428409035" />
-    <state width="1314" height="216" key="GridCell.Tab.1.center" timestamp="1576428409034">
+    <state width="1314" height="174" key="GridCell.Tab.0.left/0.0.1360.738@0.0.1360.738" timestamp="1576462003495" />
+    <state width="1314" height="174" key="GridCell.Tab.0.right" timestamp="1576462003496">
       <screen x="0" y="0" width="1360" height="738" />
     </state>
-    <state width="1314" height="216" key="GridCell.Tab.1.center/0.0.1360.738@0.0.1360.738" timestamp="1576428409034" />
-    <state width="1314" height="216" key="GridCell.Tab.1.left" timestamp="1576428409034">
+    <state width="1314" height="174" key="GridCell.Tab.0.right/0.0.1360.738@0.0.1360.738" timestamp="1576462003496" />
+    <state width="1314" height="122" key="GridCell.Tab.1.bottom" timestamp="1576461001246">
       <screen x="0" y="0" width="1360" height="738" />
     </state>
-    <state width="1314" height="216" key="GridCell.Tab.1.left/0.0.1360.738@0.0.1360.738" timestamp="1576428409034" />
-    <state width="1314" height="216" key="GridCell.Tab.1.right" timestamp="1576428409035">
+    <state width="1314" height="122" key="GridCell.Tab.1.bottom/0.0.1360.738@0.0.1360.738" timestamp="1576461001246" />
+    <state width="1314" height="122" key="GridCell.Tab.1.center" timestamp="1576461001245">
       <screen x="0" y="0" width="1360" height="738" />
     </state>
-    <state width="1314" height="216" key="GridCell.Tab.1.right/0.0.1360.738@0.0.1360.738" timestamp="1576428409035" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/rustique/panes/OpcionesPane.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state width="1314" height="122" key="GridCell.Tab.1.center/0.0.1360.738@0.0.1360.738" timestamp="1576461001245" />
+    <state width="1314" height="122" key="GridCell.Tab.1.left" timestamp="1576461001244">
+      <screen x="0" y="0" width="1360" height="738" />
+    </state>
+    <state width="1314" height="122" key="GridCell.Tab.1.left/0.0.1360.738@0.0.1360.738" timestamp="1576461001244" />
+    <state width="1314" height="122" key="GridCell.Tab.1.right" timestamp="1576461001246">
+      <screen x="0" y="0" width="1360" height="738" />
+    </state>
+    <state width="1314" height="122" key="GridCell.Tab.1.right/0.0.1360.738@0.0.1360.738" timestamp="1576461001246" />
+    <state x="164" y="0" key="SettingsEditor" timestamp="1576461556426">
+      <screen x="0" y="0" width="1360" height="738" />
+    </state>
+    <state x="164" y="0" key="SettingsEditor/0.0.1360.738@0.0.1360.738" timestamp="1576461556426" />
   </component>
 </project>
