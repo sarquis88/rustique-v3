@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import rustique.Main;
 import rustique.MessagesManager;
 import rustique.bdd.RustiqueBDD;
+import rustique.dialogs.ClienteDataDialog;
 import rustique.dialogs.NuevoClienteDialog;
 import rustique.models.Cliente;
 
@@ -48,6 +49,9 @@ public class ClientesController {
         }
     }
 
+    /**
+     * Agregado de cliente mediante input
+     */
     private void nuevoCliente() {
         Cliente nuevoCliente = inputCliente();
 
@@ -68,20 +72,72 @@ public class ClientesController {
         }
     }
 
+    /**
+     * Input de cliente
+     * @return cliente ingresado
+     */
     private Cliente inputCliente() {
-        NuevoClienteDialog nuevoClienteDialog = new NuevoClienteDialog("Nuevo Cliente");
+        NuevoClienteDialog nuevoClienteDialog = new NuevoClienteDialog("Nuevo cliente");
         nuevoClienteDialog.show();
         return nuevoClienteDialog.getResult();
     }
 
+    /**
+     * Input de Nombre o ID de cliente
+     * @return dato ingresado
+     */
+    private String inputClienteData() {
+        ClienteDataDialog clienteDataDialog = new ClienteDataDialog("Borrar cliente");
+        clienteDataDialog.show();
+        return clienteDataDialog.getResult();
+    }
+    /**
+     * Borrado de cliente
+     */
     private void borrarCliente() {
-        System.out.println("borrar cliente");
+        String input = inputClienteData();
+        Cliente cliente;
+
+        if (input != null && !input.isBlank()) {
+
+            if(input.split("-")[0].equalsIgnoreCase("n")) {
+                cliente = getClienteByNombre(input.split("-")[1]);
+                if(cliente == null) {
+                    MessagesManager.showErrorAlert("Nombre no existente");
+                    return;
+                }
+            }
+            else {
+                if(Main.isNumeroValido(input.split("-")[1])) {
+                    int id = Main.safeDecode(input.split("-")[1]);
+                    cliente = getClienteById(id);
+                    if (cliente == null) {
+                        MessagesManager.showErrorAlert("ID invalido");
+                        return;
+                    }
+                }
+                else {
+                    MessagesManager.showErrorAlert("Numero invalido");
+                    return;
+                }
+            }
+            data.remove(cliente);
+            RustiqueBDD.getInstance().deleteCliente(cliente.getId());
+        }
     }
 
+    /**
+     * Getter de clientes
+     * @return lista de clientes
+     */
     public ObservableList<Cliente> getData() {
         return data;
     }
 
+    /**
+     * Agregar cliente a la lista
+     * @param nuevoCliente nuevo cliente
+     */
     public static void addCliente(Cliente nuevoCliente) {
         data.add(nuevoCliente);
     }
@@ -104,5 +160,29 @@ public class ClientesController {
     private void refreshData() {
         data.clear();
         RustiqueBDD.getInstance().restoreClientesFromBDD();
+    }
+
+    /**
+     * Devuelve el objeto Cliente que buscamos por nombre
+     * @param nombre nombre del cliente buscado
+     * @return cliente buscado
+     */
+    private Cliente getClienteByNombre(String nombre) {
+        for(Cliente cliente : data)
+            if(cliente.getNombre().equalsIgnoreCase(nombre))
+                return cliente;
+        return null;
+    }
+
+    /**
+     * Devuelve el objeto Cliente que buscamos por id
+     * @param id id del cliente buscado
+     * @return cliente buscado
+     */
+    private Cliente getClienteById(int id) {
+        for(Cliente cliente : data)
+            if(cliente.getId() == id)
+                return cliente;
+        return null;
     }
 }

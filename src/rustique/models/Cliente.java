@@ -12,7 +12,7 @@ public class Cliente {
     public Cliente(String nombre, int saldo, int id, String comentarios) {
         this.nombre = nombre;
         this.saldo = saldo;
-        this.id = globalId;
+        this.id = id;
         this.comentarios = comentarios;
     }
 

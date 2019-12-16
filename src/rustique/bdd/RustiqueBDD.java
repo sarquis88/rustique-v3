@@ -123,7 +123,7 @@ public class RustiqueBDD {
     public boolean deleteCliente(int id) {
         boolean exito = false;
         try {
-            c = DriverManager.getConnection("jdbc:sqlite:./src/bdd/rustique.db");
+            c = DriverManager.getConnection("jdbc:sqlite:" + bddPath);
             stmt = c.createStatement();
             String sql = "DELETE from CLIENTES where ID=" + id + ";";
 
