@@ -84,7 +84,7 @@ public class ObrasPane implements RustiqueParameters, RustiquePane {
         c6.setPrefWidth( tableView.getPrefWidth() * 0.09);
         c6.setStyle(tableColumnsStyle);
 
-        tableView.setItems(ObrasController.getData());
+        tableView.setItems(ObrasController.getInstance().getData());
         tableView.getColumns().add(c0);
         tableView.getColumns().add(c1);
         tableView.getColumns().add(c2);
@@ -115,8 +115,15 @@ public class ObrasPane implements RustiqueParameters, RustiquePane {
         thisPane.getChildren().addAll(titulo, gridPane, scrollPane);
     }
 
+    public String getObraClickeada() {
+        return this.obraClickeada;
+    }
     @Override
     public Pane getPane() {
         return thisPane;
+    }
+
+    public void resetObraClickeada() {
+        this.obraClickeada = null;
     }
 }

@@ -4,9 +4,8 @@ import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 
-public class ClienteDataDialog {
+public class ObraDataDialog {
 
     private Dialog<ButtonType> dialog;
     private TextField nombre;
@@ -19,7 +18,7 @@ public class ClienteDataDialog {
      * Constructor de la clase
      * @param title titulo de la ventana
      */
-    public ClienteDataDialog(String title) {
+    public ObraDataDialog(String title) {
         dialog = new Dialog<>();
         dialog.setTitle(title);
         dialog.setHeaderText("");
@@ -65,7 +64,7 @@ public class ClienteDataDialog {
     }
 
     /**
-     * Retorna datos ingresados de cliente
+     * Retorna datos ingresados de obra
      * @return objeto String con tipo de dato + dato
      */
     public String getResult() {

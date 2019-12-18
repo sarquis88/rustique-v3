@@ -1,7 +1,9 @@
 package rustique.bdd;
 
 import rustique.controllers.ClientesController;
+import rustique.controllers.ObrasController;
 import rustique.models.Cliente;
+import rustique.models.Obra;
 
 import java.sql.*;
 
@@ -29,7 +31,7 @@ public class RustiqueBDD {
     private RustiqueBDD() {
         createTables();
         restoreClientesFromBDD();
-        //restoreObrasFromBDD();
+        restoreObrasFromBDD();
     }
 
     /**
@@ -208,7 +210,7 @@ public class RustiqueBDD {
     public void insertarObra(int id, String nombre, String autor, String tipo,
                              String tamanio, int precio, String hasImage) {
         try {
-            c = DriverManager.getConnection("jdbc:sqlite:./src/bdd/rustique.db");
+            c = DriverManager.getConnection("jdbc:sqlite:" + bddPath);
             stmt = c.createStatement();
 
             String sql = "INSERT INTO OBRAS (ID,NOMBRE,AUTOR,TIPO,TAMAÑO,PRECIO,IMAGEN) " +
@@ -231,7 +233,7 @@ public class RustiqueBDD {
     public boolean deleteObra(int id) {
         boolean exito = false;
         try {
-            c = DriverManager.getConnection("jdbc:sqlite:./src/bdd/rustique.db");
+            c = DriverManager.getConnection("jdbc:sqlite:" + bddPath);
             stmt = c.createStatement();
             String sql = "DELETE from OBRAS where ID=" + id + ";";
 
@@ -260,7 +262,7 @@ public class RustiqueBDD {
                             String tipoNuevo, String tamanioNuevo, int precioNuevo,
                             String hasImageNuevo) {
         try {
-            c = DriverManager.getConnection("jdbc:sqlite:./src/bdd/rustique.db");
+            c = DriverManager.getConnection("jdbc:sqlite:" + bddPath);
             stmt = c.createStatement();
             String sql = "UPDATE OBRAS SET AUTOR='" + autorNuevo +
                     "' WHERE ID=" + id;
@@ -298,10 +300,10 @@ public class RustiqueBDD {
      * Lectura de la base de datos y creacion de objetos java correspondiente
      * a las obras. Metodo llamado al comienzo de la ejecucion, y cada vez
      * que se agrega una obra.
-     */ /*
+     */
     public void restoreObrasFromBDD() {
         try {
-            c = DriverManager.getConnection("jdbc:sqlite:./src/bdd/rustique.db");
+            c = DriverManager.getConnection("jdbc:sqlite:" + bddPath);
             stmt = c.createStatement();
 
             ResultSet rs = stmt.executeQuery( "SELECT * FROM OBRAS;");
@@ -326,7 +328,7 @@ public class RustiqueBDD {
             e.printStackTrace();
         }
     }
-    */
+
 
     /**
      * Restablecer la base de datos
@@ -334,7 +336,7 @@ public class RustiqueBDD {
      */
     public void restablecerBDD() {
         try {
-            c = DriverManager.getConnection("jdbc:sqlite:./src/bdd/rustique.db");
+            c = DriverManager.getConnection("jdbc:sqlite:" + bddPath);
             stmt = c.createStatement();
 
             String sql = "DROP TABLE CLIENTES;";

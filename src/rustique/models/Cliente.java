@@ -57,8 +57,4 @@ public class Cliente {
     public static void setGlobalId(int globalId) {
         Cliente.globalId = globalId;
     }
-
-    public static void sumGlobalId() {
-        globalId++;
-    }
 }

@@ -6,7 +6,7 @@ import rustique.Main;
 import rustique.MessagesManager;
 import rustique.bdd.RustiqueBDD;
 import rustique.dialogs.CambiarClienteDialog;
-import rustique.dialogs.ClienteDataDialog;
+import rustique.dialogs.ObraDataDialog;
 import rustique.dialogs.NuevoClienteDialog;
 import rustique.dialogs.ShowClienteDialog;
 import rustique.models.Cliente;
@@ -44,13 +44,13 @@ public class ClientesController {
                 nuevoCliente();
                 break;
             case "borrar-cliente":
-                borrarCliente(false);
+                borrarCliente();
                 break;
             case "show-cliente-clickeado":
                 showClienteClickeado();
                 break;
             case "borrar-cliente-clickeado":
-                borrarCliente(true);
+                borrarCliente();
                 break;
             case "cambiar-cliente":
                 cambiarCliente();
@@ -64,7 +64,7 @@ public class ClientesController {
      * Agregado de cliente mediante input
      */
     private void nuevoCliente() {
-        Cliente nuevoCliente = inputCliente();
+        Cliente nuevoCliente = inputCliente("Nuevo cliente");
 
         if(nuevoCliente != null) {
             if(Main.isNombreValido(nuevoCliente.getNombre())) {
@@ -87,8 +87,8 @@ public class ClientesController {
      * Input de cliente
      * @return cliente ingresado
      */
-    private Cliente inputCliente() {
-        NuevoClienteDialog nuevoClienteDialog = new NuevoClienteDialog("Nuevo cliente");
+    private Cliente inputCliente(String titulo) {
+        NuevoClienteDialog nuevoClienteDialog = new NuevoClienteDialog(titulo);
         nuevoClienteDialog.show();
         return nuevoClienteDialog.getResult();
     }
@@ -98,18 +98,18 @@ public class ClientesController {
      * @return dato ingresado
      */
     private String inputClienteData() {
-        ClienteDataDialog clienteDataDialog = new ClienteDataDialog("Borrar cliente");
-        clienteDataDialog.show();
-        return clienteDataDialog.getResult();
+        ObraDataDialog obraDataDialog = new ObraDataDialog("Borrar cliente");
+        obraDataDialog.show();
+        return obraDataDialog.getResult();
     }
     /**
      * Borrado de cliente
-     * @param clickeado true si se quiere borrar un cliente clickeado, de lo contrario false
      */
-    private void borrarCliente(boolean clickeado) {
+    private void borrarCliente() {
         Cliente cliente = null;
+        String nombre = ClientesPane.getInstance().getClienteClickeado();
 
-        if(!clickeado) {
+        if(nombre == null) {
             String input = inputClienteData();
 
             if (input != null && !input.isBlank()) {
@@ -149,6 +149,7 @@ public class ClientesController {
         + " ?")) {
             data.remove(cliente);
             RustiqueBDD.getInstance().deleteCliente(cliente.getId());
+            ClientesPane.getInstance().resetClienteClickeado();
         }
     }
 
