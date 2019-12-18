@@ -7,9 +7,7 @@ import rustique.Main;
 import rustique.MessagesManager;
 import rustique.bdd.RustiqueBDD;
 import rustique.dialogs.*;
-import rustique.models.Cliente;
 import rustique.models.Obra;
-import rustique.panes.ClientesPane;
 import rustique.panes.ObrasPane;
 
 public class ObrasController {
@@ -37,13 +35,10 @@ public class ObrasController {
             case "borrar-obra":
                 borrarObra();
                 break;
-            case "show-obra-clickeada":
-                showObra(true);
+            case "show-obra":
+                showObra();
                 break;
-            case "borrar-obra-clickeada":
-                borrarObra();
-                break;
-            case "cambiar-obra":
+            case "modificar-obra":
                 cambiarObra();
                 break;
             default:
@@ -94,35 +89,11 @@ public class ObrasController {
      * Borrado de obra
      */
     private void borrarObra() {
-        Obra obra = null;
         String nombre = ObrasPane.getInstance().getObraClickeada();
+        Obra obra;
 
         if(nombre == null) {
-            String input = inputObraData();
-
-            if (input != null && !input.isBlank()) {
-
-                if (input.split("-")[0].equalsIgnoreCase("n")) {
-                    obra = getObraByNombre(input.split("-")[1]);
-                    if (obra == null) {
-                        MessagesManager.showErrorAlert("Nombre no existente");
-                        return;
-                    }
-                } else {
-                    if (Main.isNumeroValido(input.split("-")[1])) {
-                        int id = Main.safeDecode(input.split("-")[1]);
-                        obra = getObraById(id);
-                        if (obra == null) {
-                            MessagesManager.showErrorAlert("ID invalido");
-                            return;
-                        }
-                    } else {
-                        MessagesManager.showErrorAlert("Numero invalido");
-                        return;
-                    }
-                }
-            }
-            else
+            if ( (obra = buscarObra()) == null)
                 return;
         }
         else
@@ -133,20 +104,14 @@ public class ObrasController {
             return;
         }
 
-        if(!MessagesManager.confirmation("Seguro desea borrar la obra " + obra.getNombre() + "?"))
-            return;
-
-        if(obra.getHasImage().equalsIgnoreCase("Si"))
-            ImagesManager.removeImage(obra.getId());
-
-        if (!RustiqueBDD.getInstance().deleteObra(obra.getId())) {
-            MessagesManager.showFatalErrorAlert();
-            return;
+        if(MessagesManager.confirmation("Seguro desea borrar la obra " + obra.getNombre() + "?")) {
+            if(obra.getHasImage().equalsIgnoreCase("Si"))
+                ImagesManager.removeImage(obra.getId());
+            RustiqueBDD.getInstance().deleteObra(obra.getId());
+            data.remove(obra);
+            MessagesManager.showInformationAlert("Borrado: " + obra.getNombre().toUpperCase());
+            ObrasPane.getInstance().resetObraClickeada();
         }
-
-        data.remove(obra);
-        MessagesManager.showInformationAlert("Borrado: " + obra.getNombre().toUpperCase());
-        ObrasPane.getInstance().resetObraClickeada();
     }
 
     /**
@@ -274,43 +239,19 @@ public class ObrasController {
 
     /**
      * Muestra de datos de la obra
-     * @param clickeada true si la obra viene seleccionado por un click,
      * de lo contrario false
      */
-    private void showObra(boolean clickeada) {
+    private void showObra() {
+        String nombre = ObrasPane.getInstance().getObraClickeada();
+        Obra obra;
 
-        String nombre = null;
-        if(clickeada) {
-            nombre = ObrasPane.getInstance().getObraClickeada();
-        }
-        else {
-            String input = inputObraData();
-            if (input != null && !input.isBlank()) {
-
-                if (input.split("-")[0].equalsIgnoreCase("n")) {
-                    nombre = input.split("-")[1];
-                    if (!nombreExists(nombre)) {
-                        MessagesManager.showErrorAlert("Nombre no existente");
-                        return;
-                    }
-                } else {
-                    if (Main.isNumeroValido(input.split("-")[1])) {
-                        int id = Main.safeDecode(input.split("-")[1]);
-                        if (idExists(id)) {
-                            MessagesManager.showErrorAlert("ID invalido");
-                            return;
-                        }
-                    } else {
-                        MessagesManager.showErrorAlert("Numero invalido");
-                        return;
-                    }
-                }
-            }
-            else
+        if(nombre == null) {
+            if ( (obra = buscarObra()) == null)
                 return;
         }
+        else
+            obra = getObraByNombre(nombre);
 
-        Obra obra = getObraByNombre(nombre);
         if(obra != null) {
             ShowObraDialog showObraDialog = new ShowObraDialog(obra);
             showObraDialog.show();
@@ -323,7 +264,16 @@ public class ObrasController {
      * Permite cambiar las caracteristicas de una obra
      */
     private void cambiarObra() {
-        Obra obraVieja = getObraByNombre(ObrasPane.getInstance().getObraClickeada());
+        String nombre = ObrasPane.getInstance().getObraClickeada();
+        Obra obraVieja;
+
+        if(nombre == null) {
+            if ( (obraVieja = buscarObra()) == null)
+                return;
+        }
+        else
+            obraVieja = getObraByNombre(nombre);
+
         if(obraVieja == null) {
             MessagesManager.showFatalErrorAlert();
             return;
@@ -333,7 +283,7 @@ public class ObrasController {
         cambiarObraDialog.show();
         Obra obra = cambiarObraDialog.getResult();
 
-        if(obra == null)		// cancel
+        if(obra == null)
             return;
 
         if(nombreExists(obra.getNombre()) &&
@@ -356,5 +306,47 @@ public class ObrasController {
                 obra.getNombre(), obra.getAutor(), obra.getTipo(),
                 obra.getTamanio(), obra.getPrecio(), obra.getHasImage());
         refreshData();
+    }
+
+    /**
+     * Permite buscar una obra por nombre o por id
+     * @return objeto Obra buscada
+     */
+    private Obra buscarObra() {
+        String input = inputObraData();
+        Obra obraBuscada;
+
+        if (input != null && !input.isBlank()) {
+            if (input.split("-")[0].equalsIgnoreCase("n")) {
+                String nombre = input.split("-")[1];
+                if (!nombreExists(nombre)) {
+                    MessagesManager.showErrorAlert("Nombre no existente");
+                    return null;
+                }
+                obraBuscada = getObraByNombre(nombre);
+            } else {
+                if (Main.isNumeroValido(input.split("-")[1])) {
+                    int id = Main.safeDecode(input.split("-")[1]);
+                    if (!idExists(id)) {
+                        MessagesManager.showErrorAlert("ID invalido");
+                        return null;
+                    }
+                    obraBuscada = getObraById(id);
+                } else {
+                    MessagesManager.showErrorAlert("Numero invalido");
+                    return null;
+                }
+            }
+        }
+        else
+            return null;
+
+        if(obraBuscada == null) {
+            MessagesManager.showFatalErrorAlert();
+            return null;
+        }
+        ObrasPane.getInstance().setObraClickeada(obraBuscada.getNombre());
+
+        return obraBuscada;
     }
 }

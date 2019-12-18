@@ -100,7 +100,7 @@ public class ObrasPane implements RustiqueParameters, RustiquePane {
                 this.obraClickeada = c0.getCellData(pos.getRow()); // nombre de fila clickeada
                 if (mouseEvent.getClickCount() == 2) {
                     if (this.obraClickeada != null)
-                        ObrasController.getInstance().actionPerformed("show-obra-clickeada");
+                        ObrasController.getInstance().actionPerformed("show-obra");
                 }
             }
             catch (IndexOutOfBoundsException e) {
@@ -118,6 +118,11 @@ public class ObrasPane implements RustiqueParameters, RustiquePane {
     public String getObraClickeada() {
         return this.obraClickeada;
     }
+
+    public void setObraClickeada(String obraClickeada) {
+        this.obraClickeada = obraClickeada;
+    }
+
     @Override
     public Pane getPane() {
         return thisPane;

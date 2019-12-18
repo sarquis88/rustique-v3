@@ -110,7 +110,7 @@ public class ShowObraDialog {
         this.dialog.showAndWait();
 
         if(this.dialog.getResult() == this.modificar)
-            ObrasController.getInstance().actionPerformed("cambiar-obra");
+            ObrasController.getInstance().actionPerformed("modificar-obra");
         else if(this.dialog.getResult() == this.borrar)
             ObrasController.getInstance().actionPerformed("borrar-obra");
         else if(this.dialog.getResult() == this.foto)

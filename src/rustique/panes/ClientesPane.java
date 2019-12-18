@@ -84,7 +84,7 @@ public class ClientesPane implements RustiquePane, RustiqueParameters {
                 this.clienteClickeado = c0.getCellData(pos.getRow()); // nombre de fila clickeada
                 if (mouseEvent.getClickCount() == 2) {
                     if (this.clienteClickeado != null)
-                        thisController.actionPerformed("show-cliente-clickeado");
+                        thisController.actionPerformed("show-cliente");
                 }
             }
             catch (IndexOutOfBoundsException e) {
@@ -103,6 +103,13 @@ public class ClientesPane implements RustiquePane, RustiqueParameters {
      */
     public String getClienteClickeado() {
         return this.clienteClickeado;
+    }
+
+    /**
+     * Setter del nombre del cliente que se clickeo en la tabla por ultima vez
+     */
+    public void setClienteClickeado(String clienteClickeado) {
+        this.clienteClickeado = clienteClickeado;
     }
 
     /**

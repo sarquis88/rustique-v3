@@ -44,8 +44,20 @@ public class ClientesGrid implements RustiqueParameters {
         borrarCliente.setStyle(buttonsStyle);
         borrarCliente.setOnAction(e -> thisController.actionPerformed("borrar-cliente"));
 
+        Button modificarCliente = new Button("Modificar cliente");
+        modificarCliente.setPrefSize(buttonsWidth, buttonsHeight);
+        modificarCliente.setStyle(buttonsStyle);
+        modificarCliente.setOnAction(e -> thisController.actionPerformed("modificar-cliente"));
+
+        Button buscarCliente = new Button("Buscar cliente");
+        buscarCliente.setPrefSize(buttonsWidth, buttonsHeight);
+        buscarCliente.setStyle(buttonsStyle);
+        buscarCliente.setOnAction(e -> thisController.actionPerformed("show-cliente"));
+
         grid.add(nuevoCliente, 0, 0);
-        grid.add(borrarCliente, 0, 1);
+        grid.add(borrarCliente, 0, 5);
+        grid.add(modificarCliente, 0, 6);
+        grid.add(buscarCliente, 0, 7);
     }
 
     /**

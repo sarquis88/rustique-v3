@@ -44,8 +44,20 @@ public class ObrasGrid implements RustiqueParameters {
         borrarObra.setStyle(buttonsStyle);
         borrarObra.setOnAction(e -> thisController.actionPerformed("borrar-obra"));
 
+        Button modificarObra = new Button("Modificar obra");
+        modificarObra.setPrefSize(buttonsWidth, buttonsHeight);
+        modificarObra.setStyle(buttonsStyle);
+        modificarObra.setOnAction(e -> thisController.actionPerformed("modificar-obra"));
+
+        Button buscarObra = new Button("Buscar obra");
+        buscarObra.setPrefSize(buttonsWidth, buttonsHeight);
+        buscarObra.setStyle(buttonsStyle);
+        buscarObra.setOnAction(e -> thisController.actionPerformed("show-obra"));
+
         grid.add(nuevaObra, 0, 0);
-        grid.add(borrarObra, 0, 1);
+        grid.add(borrarObra, 0, 5);
+        grid.add(modificarObra, 0, 6);
+        grid.add(buscarObra, 0, 7);
     }
 
     /**

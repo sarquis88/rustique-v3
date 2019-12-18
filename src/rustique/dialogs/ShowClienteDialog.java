@@ -90,8 +90,8 @@ public class ShowClienteDialog {
         if(this.dialog.getResult() == this.volver)
             return;
         if(this.dialog.getResult() == this.modificar)
-            thisController.actionPerformed("cambiar-cliente");
+            thisController.actionPerformed("modificar-cliente");
         else if(this.dialog.getResult() == this.borrar)
-            thisController.actionPerformed("borrar-cliente-clickeado");
+            thisController.actionPerformed("borrar-cliente");
     }
 }

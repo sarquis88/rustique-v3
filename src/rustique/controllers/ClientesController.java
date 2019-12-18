@@ -46,13 +46,10 @@ public class ClientesController {
             case "borrar-cliente":
                 borrarCliente();
                 break;
-            case "show-cliente-clickeado":
-                showClienteClickeado();
+            case "show-cliente":
+                showCliente();
                 break;
-            case "borrar-cliente-clickeado":
-                borrarCliente();
-                break;
-            case "cambiar-cliente":
+            case "modificar-cliente":
                 cambiarCliente();
                 break;
             default:
@@ -97,8 +94,8 @@ public class ClientesController {
      * Input de Nombre o ID de cliente
      * @return dato ingresado
      */
-    private String inputClienteData() {
-        ObraDataDialog obraDataDialog = new ObraDataDialog("Borrar cliente");
+    private String inputClienteData(String titulo) {
+        ObraDataDialog obraDataDialog = new ObraDataDialog(titulo);
         obraDataDialog.show();
         return obraDataDialog.getResult();
     }
@@ -106,36 +103,12 @@ public class ClientesController {
      * Borrado de cliente
      */
     private void borrarCliente() {
-        Cliente cliente = null;
+        Cliente cliente;
         String nombre = ClientesPane.getInstance().getClienteClickeado();
 
         if(nombre == null) {
-            String input = inputClienteData();
-
-            if (input != null && !input.isBlank()) {
-
-                if (input.split("-")[0].equalsIgnoreCase("n")) {
-                    cliente = getClienteByNombre(input.split("-")[1]);
-                    if (cliente == null) {
-                        MessagesManager.showErrorAlert("Nombre no existente");
-                        return;
-                    }
-                } else {
-                    if (Main.isNumeroValido(input.split("-")[1])) {
-                        int id = Main.safeDecode(input.split("-")[1]);
-                        cliente = getClienteById(id);
-                        if (cliente == null) {
-                            MessagesManager.showErrorAlert("ID invalido");
-                            return;
-                        }
-                    } else {
-                        MessagesManager.showErrorAlert("Numero invalido");
-                        return;
-                    }
-                }
-            }
-            else
-                return;
+                if( (cliente = buscarCliente("Buscar cliente a borrar")) == null)
+                    return;
         }
         else
             cliente = getClienteByNombre(ClientesPane.getInstance().getClienteClickeado());
@@ -214,25 +187,43 @@ public class ClientesController {
     }
 
     /**
-     * Muestra de parametros de cliente que ha sido doblemente clickeado
+     * Muestra de parametros de cliente
      */
-    private void showClienteClickeado() {
-        Cliente clienteClickeado = getClienteByNombre(ClientesPane.getInstance().getClienteClickeado());
+    private void showCliente() {
 
-        if(clienteClickeado == null)
-            MessagesManager.showFatalErrorAlert();
-        else {
-            ShowClienteDialog showClienteDialog = new ShowClienteDialog(clienteClickeado);
-            showClienteDialog.show();
-            ClientesPane.getInstance().resetClienteClickeado();
+        String nombre = ClientesPane.getInstance().getClienteClickeado();
+        Cliente cliente;
+
+        if(nombre == null) {
+            if ((cliente = buscarCliente("Buscar cliente")) == null)
+                return;
         }
+        else {
+            cliente = getClienteByNombre(nombre);
+        }
+
+        if(cliente == null) {
+            MessagesManager.showFatalErrorAlert();
+            return;
+        }
+
+        ShowClienteDialog showClienteDialog = new ShowClienteDialog(cliente);
+        showClienteDialog.show();
     }
 
     /**
      * Permite realizar cambios en los parametros de un cliente
      */
     private void cambiarCliente() {
-        Cliente clienteViejo = getClienteByNombre(ClientesPane.getInstance().getClienteClickeado());
+        String nombre = ClientesPane.getInstance().getClienteClickeado();
+        Cliente clienteViejo;
+
+        if(nombre == null) {
+            if( (clienteViejo = buscarCliente("Buscar cliente a modificar")) == null)
+                return;
+        }
+        else
+            clienteViejo = getClienteByNombre(nombre);
 
         if (clienteViejo == null) {
             MessagesManager.showFatalErrorAlert();
@@ -243,7 +234,7 @@ public class ClientesController {
         cambiarClienteDialog.show();
         Cliente newCliente = cambiarClienteDialog.getResult();
 
-        if(newCliente == null)		// cancel
+        if(newCliente == null)
             return;
 
         if(nombreExists(newCliente.getNombre()) &&
@@ -259,5 +250,59 @@ public class ClientesController {
         RustiqueBDD.getInstance().cambiarCliente(clienteViejo.getNombre(),
                 newCliente.getNombre(), newCliente.getSaldo(), newCliente.getComentarios());
         refreshData();
+    }
+
+    /**
+     * Permite buscar una obra por nombre o por id
+     * @return objeto Obra buscada
+     */
+    private Cliente buscarCliente(String titulo) {
+        String input = inputClienteData(titulo);
+        Cliente clienteBuscado;
+
+        if (input != null && !input.isBlank()) {
+            if (input.split("-")[0].equalsIgnoreCase("n")) {
+                String nombre = input.split("-")[1];
+                if (!nombreExists(nombre)) {
+                    MessagesManager.showErrorAlert("Nombre no existente");
+                    return null;
+                }
+                clienteBuscado = getClienteByNombre(nombre);
+            } else {
+                if (Main.isNumeroValido(input.split("-")[1])) {
+                    int id = Main.safeDecode(input.split("-")[1]);
+                    if (!idExists(id)) {
+                        MessagesManager.showErrorAlert("ID invalido");
+                        return null;
+                    }
+                    clienteBuscado = getClienteById(id);
+                } else {
+                    MessagesManager.showErrorAlert("Numero invalido");
+                    return null;
+                }
+            }
+        }
+        else
+            return null;
+
+        if(clienteBuscado == null) {
+            MessagesManager.showFatalErrorAlert();
+            return null;
+        }
+
+        ClientesPane.getInstance().setClienteClickeado(clienteBuscado.getNombre());
+        return clienteBuscado;
+    }
+
+    /**
+     * Indica si existe algun cliente con el id ingresado
+     * @param id id a saber si existe
+     * @return true si existe el cliente, caso contrario false
+     */
+    private boolean idExists(int id) {
+        for(Cliente cliente : data)
+            if(cliente.getId() == id)
+                return true;
+        return false;
     }
 }
