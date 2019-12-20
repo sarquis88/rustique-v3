@@ -114,7 +114,7 @@ public class ShowObraDialog {
         else if(this.dialog.getResult() == this.borrar)
             ObrasController.getInstance().actionPerformed("borrar-obra");
         else if(this.dialog.getResult() == this.foto)
-            ObrasController.getInstance().actionPerformed("ver-foto-clickeada");
+            ObrasController.getInstance().actionPerformed("ver-foto");
         else if(this.dialog.getResult() == this.agregarFoto)
             ObrasController.getInstance().actionPerformed("agregar-foto");
     }

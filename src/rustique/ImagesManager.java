@@ -128,4 +128,7 @@ public class ImagesManager {
             return null;
     }
 
+    public static String getObrasPath() {
+        return obrasPath;
+    }
 }

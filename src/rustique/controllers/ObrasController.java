@@ -41,6 +41,15 @@ public class ObrasController {
             case "modificar-obra":
                 cambiarObra();
                 break;
+            case "ver-foto":
+                verFoto();
+                break;
+            case "borrar-foto":
+                borrarFoto();
+                break;
+            case "agregar-foto":
+                agregarFoto();
+                break;
             default:
                 break;
         }
@@ -316,7 +325,7 @@ public class ObrasController {
         String input = inputObraData();
         Obra obraBuscada;
 
-        if (input != null && !input.isBlank()) {
+        if (input != null && !input.isEmpty()) {
             if (input.split("-")[0].equalsIgnoreCase("n")) {
                 String nombre = input.split("-")[1];
                 if (!nombreExists(nombre)) {
@@ -348,5 +357,66 @@ public class ObrasController {
         ObrasPane.getInstance().setObraClickeada(obraBuscada.getNombre());
 
         return obraBuscada;
+    }
+
+    /**
+     * Muestra de foto
+     */
+    private void verFoto() {
+        String nombre = ObrasPane.getInstance().getObraClickeada();
+        Obra obra = getObraByNombre(nombre);
+
+        if (obra != null) {
+            ShowImagenDialog showImagenDialog = new ShowImagenDialog();
+            showImagenDialog.show(obra.getId());
+        }
+        else
+            MessagesManager.showFatalErrorAlert();
+    }
+
+    /**
+     * Borrado de foto
+     */
+    private void borrarFoto() {
+        String nombre = ObrasPane.getInstance().getObraClickeada();
+
+        if(nombre == null) {
+            MessagesManager.showFatalErrorAlert();
+            return;
+        }
+
+        Obra obra = getObraByNombre(nombre);
+
+        if(obra == null) {
+            MessagesManager.showFatalErrorAlert();
+            return;
+        }
+
+        ImagesManager.removeImage(obra.getId());
+        obra.setHasImage("No");
+
+        RustiqueBDD.getInstance().cambiarObra(obra.getId(),
+                obra.getNombre(), obra.getAutor(), obra.getTipo(),
+                obra.getTamanio(), obra.getPrecio(), obra.getHasImage());
+        refreshData();
+    }
+
+    /**
+     * Agregar foto a determinada obra
+     */
+    private void agregarFoto() {
+        Obra obra = getObraByNombre(ObrasPane.getInstance().getObraClickeada());
+
+        if(obra == null) {
+            MessagesManager.showFatalErrorAlert();
+            return;
+        }
+
+        obra.setHasImage(inputImage(obra.getId()));
+
+        RustiqueBDD.getInstance().cambiarObra(obra.getId(),
+                obra.getNombre(), obra.getAutor(), obra.getTipo(),
+                obra.getTamanio(), obra.getPrecio(), obra.getHasImage());
+        refreshData();
     }
 }

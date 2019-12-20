@@ -260,7 +260,7 @@ public class ClientesController {
         String input = inputClienteData(titulo);
         Cliente clienteBuscado;
 
-        if (input != null && !input.isBlank()) {
+        if (input != null && !input.isEmpty()) {
             if (input.split("-")[0].equalsIgnoreCase("n")) {
                 String nombre = input.split("-")[1];
                 if (!nombreExists(nombre)) {
