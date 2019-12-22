@@ -44,11 +44,17 @@ public class ObrasController {
             case "ver-foto":
                 verFoto();
                 break;
+            case "ver-fotos":
+                verFotos();
+                break;
             case "borrar-foto":
                 borrarFoto();
                 break;
             case "agregar-foto":
                 agregarFoto();
+                break;
+            case "deseleccionar-obra":
+                deseleccionarObra();
                 break;
             default:
                 break;
@@ -119,7 +125,7 @@ public class ObrasController {
             RustiqueBDD.getInstance().deleteObra(obra.getId());
             data.remove(obra);
             MessagesManager.showInformationAlert("Borrado: " + obra.getNombre().toUpperCase());
-            ObrasPane.getInstance().resetObraClickeada();
+            deseleccionarObra();
         }
     }
 
@@ -315,6 +321,8 @@ public class ObrasController {
                 obra.getNombre(), obra.getAutor(), obra.getTipo(),
                 obra.getTamanio(), obra.getPrecio(), obra.getHasImage());
         refreshData();
+
+        deseleccionarObra();
     }
 
     /**
@@ -418,5 +426,14 @@ public class ObrasController {
                 obra.getNombre(), obra.getAutor(), obra.getTipo(),
                 obra.getTamanio(), obra.getPrecio(), obra.getHasImage());
         refreshData();
+    }
+
+    private void verFotos() {
+        ShowImagenDialog showImagenDialog = new ShowImagenDialog();
+        showImagenDialog.show(-1);
+    }
+
+    private void deseleccionarObra() {
+        ObrasPane.getInstance().resetObraClickeada();
     }
 }

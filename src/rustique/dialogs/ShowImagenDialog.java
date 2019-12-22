@@ -73,9 +73,7 @@ public class ShowImagenDialog {
 
         grid.add(imgView, 0, 0);
 
-        Platform.runLater(() -> {
-            dialog.getDialogPane().getScene().getWindow().sizeToScene();
-        });
+        Platform.runLater(() -> dialog.getDialogPane().getScene().getWindow().sizeToScene());
 
         this.dialog.showAndWait();
 
