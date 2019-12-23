@@ -7,7 +7,7 @@ public interface RustiqueParameters {
 
     Rectangle2D screenBounds = Screen.getPrimary().getBounds();
 
-    double screenHeight = screenBounds.getHeight() - 65;  // (- 65) : barras superiores horizontales
+    double screenHeight = screenBounds.getHeight() - 55;  // (- 65) : barras superiores horizontales
     double screenWidth = screenBounds.getWidth();
 
     double buttonsHeight = 30.00;

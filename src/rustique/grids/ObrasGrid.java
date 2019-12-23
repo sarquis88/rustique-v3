@@ -3,6 +3,7 @@ package rustique.grids;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import rustique.MessagesManager;
 import rustique.RustiqueParameters;
 import rustique.controllers.ObrasController;
 
@@ -12,6 +13,12 @@ public class ObrasGrid implements RustiqueParameters {
     private static ObrasGrid thisObrasGrid = null;
 
     private GridPane grid;
+    private Button nuevaObra;
+    private Button borrarObra;
+    private Button buscarObra;
+    private Button modificarObra;
+    private Button verFotos;
+    private Button deseleccionarObra;
 
     /**
      * Patron Singleton
@@ -34,35 +41,36 @@ public class ObrasGrid implements RustiqueParameters {
         grid.setVgap(10);
         grid.setPadding(new Insets(vPadding, hPadding, vPadding, hPadding));
 
-        Button nuevaObra = new Button("Nueva obra");
+        nuevaObra = new Button("Nueva obra");
         nuevaObra.setPrefSize(buttonsWidth, buttonsHeight);
         nuevaObra.setStyle(buttonsStyle);
         nuevaObra.setOnAction(e -> thisController.actionPerformed("nueva-obra"));
 
-        Button borrarObra = new Button("Borrar obra");
+        borrarObra = new Button("Borrar obra");
         borrarObra.setPrefSize(buttonsWidth, buttonsHeight);
         borrarObra.setStyle(buttonsStyle);
         borrarObra.setOnAction(e -> thisController.actionPerformed("borrar-obra"));
 
-        Button modificarObra = new Button("Modificar obra");
+        modificarObra = new Button("Modificar obra");
         modificarObra.setPrefSize(buttonsWidth, buttonsHeight);
         modificarObra.setStyle(buttonsStyle);
         modificarObra.setOnAction(e -> thisController.actionPerformed("modificar-obra"));
 
-        Button buscarObra = new Button("Buscar obra");
+        buscarObra = new Button("Buscar obra");
         buscarObra.setPrefSize(buttonsWidth, buttonsHeight);
         buscarObra.setStyle(buttonsStyle);
         buscarObra.setOnAction(e -> thisController.actionPerformed("show-obra"));
 
-        Button verFotos = new Button("Ver fotos");
+        verFotos = new Button("Ver fotos");
         verFotos.setPrefSize(buttonsWidth, buttonsHeight);
         verFotos.setStyle(buttonsStyle);
         verFotos.setOnAction(e -> thisController.actionPerformed("ver-fotos"));
 
-        Button deseleccionarObra = new Button("Deseleccionar obra");
+        deseleccionarObra = new Button("Deseleccionar obra");
         deseleccionarObra.setPrefSize(buttonsWidth, buttonsHeight);
         deseleccionarObra.setStyle(buttonsStyle);
         deseleccionarObra.setOnAction(e -> thisController.actionPerformed("deseleccionar-obra"));
+        deseleccionarObra.setDisable(true);
 
         grid.add(nuevaObra, 0, 0);
         grid.add(borrarObra, 0, 5);
@@ -88,5 +96,32 @@ public class ObrasGrid implements RustiqueParameters {
     public void setLayout(double x, double y) {
         this.grid.setLayoutX(x);
         this.grid.setLayoutY(y);
+    }
+
+    public void setDisable(String button, boolean disable) {
+        Button boton = null;
+
+        switch (button) {
+            case "nuevaObra":
+                boton = this.nuevaObra;
+                break;
+            case "borrarObra":
+                boton = this.borrarObra;
+                break;
+            case "modificarObra":
+                boton = this.modificarObra;
+                break;
+            case "buscarObra":
+                boton = this.buscarObra;
+                break;
+            case "deseleccionarObra":
+                boton = this.deseleccionarObra;
+                break;
+        }
+
+        if(boton == null)
+            MessagesManager.showFatalErrorAlert();
+        else
+            boton.setDisable(disable);
     }
 }

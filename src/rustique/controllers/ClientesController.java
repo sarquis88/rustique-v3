@@ -52,6 +52,9 @@ public class ClientesController {
             case "modificar-cliente":
                 cambiarCliente();
                 break;
+            case "deseleccionar-cliente":
+                deseleccionarCliente();
+                break;
             default:
                 break;
         }
@@ -250,6 +253,7 @@ public class ClientesController {
         RustiqueBDD.getInstance().cambiarCliente(clienteViejo.getNombre(),
                 newCliente.getNombre(), newCliente.getSaldo(), newCliente.getComentarios());
         refreshData();
+        ClientesPane.getInstance().resetClienteClickeado();
     }
 
     /**
@@ -304,5 +308,9 @@ public class ClientesController {
             if(cliente.getId() == id)
                 return true;
         return false;
+    }
+
+    private void deseleccionarCliente() {
+        ClientesPane.getInstance().resetClienteClickeado();
     }
 }

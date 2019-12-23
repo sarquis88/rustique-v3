@@ -47,7 +47,7 @@ public class ObrasPane implements RustiqueParameters, RustiquePane {
         scrollPane.setLayoutX(View.getInstance().getSepLayoutX(0) + 3 * hPadding);
         scrollPane.setLayoutY(vPadding * 16);
         scrollPane.setPrefWidth(thisPane.getPrefWidth() - scrollPane.getLayoutX() - 3 * hPadding);
-        scrollPane.setPrefHeight(thisPane.getPrefHeight() - 17 * vPadding);
+        scrollPane.setPrefHeight(thisPane.getPrefHeight() - 20 * vPadding);
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
@@ -99,6 +99,7 @@ public class ObrasPane implements RustiqueParameters, RustiquePane {
                 // localizacion de fila clickeada
                 TablePosition pos = this.tableView.getSelectionModel().getSelectedCells().get(0);
                 this.obraClickeada = c0.getCellData(pos.getRow()); // nombre de fila clickeada
+                ObrasGrid.getInstance().setDisable("deseleccionarObra", false);
                 if (mouseEvent.getClickCount() == 2) {
                     if (this.obraClickeada != null)
                         ObrasController.getInstance().actionPerformed("show-obra");
@@ -132,5 +133,6 @@ public class ObrasPane implements RustiqueParameters, RustiquePane {
     public void resetObraClickeada() {
         this.tableView.getSelectionModel().clearSelection();
         this.obraClickeada = null;
+        ObrasGrid.getInstance().setDisable("deseleccionarObra", true);
     }
 }

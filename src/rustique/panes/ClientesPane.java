@@ -17,6 +17,7 @@ public class ClientesPane implements RustiquePane, RustiqueParameters {
 
     private Pane thisPane;
     private String clienteClickeado;
+    private TableView<Cliente> tableView;
 
     /**
      * Patron Singleton
@@ -49,11 +50,11 @@ public class ClientesPane implements RustiquePane, RustiqueParameters {
         scrollPane.setLayoutX(View.getInstance().getSepLayoutX(0) + 3 * hPadding);
         scrollPane.setLayoutY(vPadding * 16);
         scrollPane.setPrefWidth(thisPane.getPrefWidth() - scrollPane.getLayoutX() - 3 * hPadding);
-        scrollPane.setPrefHeight(thisPane.getPrefHeight() - 17 * vPadding);
+        scrollPane.setPrefHeight(thisPane.getPrefHeight() - 20 * vPadding);
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
-        TableView<Cliente> tableView = new TableView<>();
+        tableView = new TableView<>();
         tableView.setEditable(false);
         tableView.setPrefWidth(scrollPane.getPrefWidth());
         tableView.setPrefHeight(scrollPane.getPrefHeight());
@@ -82,6 +83,7 @@ public class ClientesPane implements RustiquePane, RustiqueParameters {
                 // localizacion de fila clickeada
                 TablePosition pos = tableView.getSelectionModel().getSelectedCells().get(0);
                 this.clienteClickeado = c0.getCellData(pos.getRow()); // nombre de fila clickeada
+                ClientesGrid.getInstance().setDisable("deseleccionarCliente", false);
                 if (mouseEvent.getClickCount() == 2) {
                     if (this.clienteClickeado != null)
                         thisController.actionPerformed("show-cliente");
@@ -112,15 +114,14 @@ public class ClientesPane implements RustiquePane, RustiqueParameters {
         this.clienteClickeado = clienteClickeado;
     }
 
-    /**
-     * Restart de clienteClickeado, vuelve a 'null'
-     */
-    public void resetClienteClickeado() {
-        this.clienteClickeado = null;
-    }
-
     @Override
     public Pane getPane() {
         return thisPane;
+    }
+
+    public void resetClienteClickeado() {
+        this.tableView.getSelectionModel().clearSelection();
+        this.clienteClickeado = null;
+        ClientesGrid.getInstance().setDisable("deseleccionarCliente", true);
     }
 }
