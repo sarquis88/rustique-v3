@@ -44,6 +44,9 @@ public class OpcionesController {
             case "restablecer-bdd":
                 restablecerBDD();
                 break;
+            case "copia-bdd":
+                copiaBDD();
+                break;
             default:
                 break;
         }
@@ -58,5 +61,9 @@ public class OpcionesController {
                 Main.getWindow().close();
             }
         }
+    }
+
+    private void copiaBDD() {
+        ImagesManager.copiarBDD();
     }
 }

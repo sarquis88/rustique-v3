@@ -15,6 +15,7 @@ public class MainGrid implements RustiqueParameters {
     private Button principal;
     private Button clientes;
     private Button obras;
+    private Button trabajos;
     private Button opciones;
     private Button salir;
     private GridPane grid;
@@ -61,6 +62,14 @@ public class MainGrid implements RustiqueParameters {
             thisMainController.actionPerformed("obras");
         });
 
+        this.trabajos = new Button("Trabajos");
+        this.trabajos.setPrefSize(buttonsWidth, buttonsHeight);
+        this.trabajos.setStyle(buttonsStyle);
+        this.trabajos.setOnAction(e -> {
+            enableAll("trabajos");
+            thisMainController.actionPerformed("trabajos");
+        });
+
         this.opciones = new Button("Opciones");
         this.opciones.setPrefSize(buttonsWidth, buttonsHeight);
         this.opciones.setStyle(buttonsStyle);
@@ -81,7 +90,8 @@ public class MainGrid implements RustiqueParameters {
         grid.add(principal, 0, 1);
         grid.add(clientes, 0, 2);
         grid.add(obras, 0, 3);
-        grid.add(opciones, 0, 8);
+        grid.add(trabajos, 0, 4);
+        grid.add(opciones, 0, 9);
         grid.add(salir, 0, 30);
 
         if(logo != null)
@@ -142,6 +152,7 @@ public class MainGrid implements RustiqueParameters {
         this.principal.setDisable(false);
         this.clientes.setDisable(false);
         this.obras.setDisable(false);
+        this.trabajos.setDisable(false);
         this.opciones.setDisable(false);
         this.salir.setDisable(false);
 
@@ -154,6 +165,9 @@ public class MainGrid implements RustiqueParameters {
                 break;
             case "obras":
                 this.obras.setDisable(true);
+                break;
+            case "trabajos":
+                this.trabajos.setDisable(true);
                 break;
             case "opciones":
                 this.opciones.setDisable(true);

@@ -39,7 +39,13 @@ public class OpcionesGrid implements RustiqueParameters {
         restablecerBDD.setStyle(buttonsStyle);
         restablecerBDD.setOnAction(e -> thisController.actionPerformed("restablecer-bdd"));
 
+        Button copiaBDD = new Button("Copia de BDD");
+        copiaBDD.setPrefSize(buttonsWidth, buttonsHeight);
+        copiaBDD.setStyle(buttonsStyle);
+        copiaBDD.setOnAction(e -> thisController.actionPerformed("copia-bdd"));
+
         grid.add(restablecerBDD, 0, 0);
+        grid.add(copiaBDD, 0, 1);
     }
 
     /**

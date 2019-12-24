@@ -3,10 +3,7 @@ package rustique.controllers;
 import javafx.stage.Stage;
 import rustique.Main;
 import rustique.View;
-import rustique.panes.ClientesPane;
-import rustique.panes.MainPane;
-import rustique.panes.ObrasPane;
-import rustique.panes.OpcionesPane;
+import rustique.panes.*;
 
 public class MainController {
 
@@ -54,6 +51,9 @@ public class MainController {
                 break;
             case "opciones":
                 View.getInstance().changePane(OpcionesPane.getInstance());
+                break;
+            case "trabajos":
+                View.getInstance().changePane(TrabajosPane.getInstance());
                 break;
             case "salir":
                 getWindow().close();

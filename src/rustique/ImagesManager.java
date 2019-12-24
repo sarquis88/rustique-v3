@@ -131,4 +131,8 @@ public class ImagesManager {
     public static String getObrasPath() {
         return obrasPath;
     }
+
+    public static void copiarBDD() {
+        MessagesManager.showErrorAlert("¡¡¡ NO IMPLEMENTADO !!!");
+    }
 }

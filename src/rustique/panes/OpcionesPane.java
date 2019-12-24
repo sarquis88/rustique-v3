@@ -5,7 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import rustique.RustiqueParameters;
-import rustique.grids.ObrasGrid;
+import rustique.View;
 import rustique.grids.OpcionesGrid;
 
 public class OpcionesPane implements RustiquePane, RustiqueParameters {
@@ -36,9 +36,9 @@ public class OpcionesPane implements RustiquePane, RustiqueParameters {
         titulo.setStyle(tituloStyle);
 
         GridPane gridPane = OpcionesGrid.getInstance().getGridPane();
-        ObrasGrid.getInstance().setLayout(0, vPadding);
+        OpcionesGrid.getInstance().setLayout(0, vPadding);
 
-        Button boton = new Button("TOCAME CAGÓN");
+        Button boton = new Button("TOCAME");
         boton.setLayoutX(thisPane.getPrefWidth() / 2);
         boton.setLayoutY(thisPane.getPrefHeight() / 2);
         boton.setOnAction(e -> botonAction());
@@ -47,8 +47,9 @@ public class OpcionesPane implements RustiquePane, RustiqueParameters {
     }
 
     private void botonAction() {
-        Label label = new Label("MACHIRULO");
-        label.setLayoutX(thisPane.getPrefWidth() * Math.random());
+        Label label = new Label("RUSTIQUE");
+        label.setLayoutX(View.getInstance().getSepLayoutX(0) +
+                (thisPane.getPrefWidth() - View.getInstance().getSepLayoutX(0)) * Math.random());
         label.setLayoutY(thisPane.getPrefHeight() * Math.random());
 
         thisPane.getChildren().add(label);
