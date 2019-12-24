@@ -96,7 +96,7 @@ public class ImagesManager {
     /**
      * Borra todas las imagenes guardadas
      */
-    static void removeAllImages() {
+    public static void removeAllImages() {
         try {
             FileUtils.cleanDirectory(new File(obrasPath));
         } catch (IOException e) {

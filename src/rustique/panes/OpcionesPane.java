@@ -2,8 +2,11 @@ package rustique.panes;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import rustique.RustiqueParameters;
+import rustique.grids.ObrasGrid;
+import rustique.grids.OpcionesGrid;
 
 public class OpcionesPane implements RustiquePane, RustiqueParameters {
 
@@ -32,12 +35,15 @@ public class OpcionesPane implements RustiquePane, RustiqueParameters {
         titulo.setLayoutY(vPadding * 2);
         titulo.setStyle(tituloStyle);
 
+        GridPane gridPane = OpcionesGrid.getInstance().getGridPane();
+        ObrasGrid.getInstance().setLayout(0, vPadding);
+
         Button boton = new Button("TOCAME CAGÓN");
         boton.setLayoutX(thisPane.getPrefWidth() / 2);
         boton.setLayoutY(thisPane.getPrefHeight() / 2);
         boton.setOnAction(e -> botonAction());
 
-        thisPane.getChildren().addAll(titulo, boton);
+        thisPane.getChildren().addAll(gridPane, titulo, boton);
     }
 
     private void botonAction() {

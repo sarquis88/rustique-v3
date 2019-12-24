@@ -81,7 +81,7 @@ public class MainGrid implements RustiqueParameters {
         grid.add(principal, 0, 1);
         grid.add(clientes, 0, 2);
         grid.add(obras, 0, 3);
-        grid.add(opciones, 0, 29);
+        grid.add(opciones, 0, 8);
         grid.add(salir, 0, 30);
 
         if(logo != null)
