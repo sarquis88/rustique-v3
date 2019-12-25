@@ -1,6 +1,8 @@
 package rustique.models;
 
-public class Cliente {
+import java.util.ArrayList;
+
+public class Cliente implements Modelo {
 
     private static int globalId = 0;
 
@@ -8,12 +10,14 @@ public class Cliente {
     private int saldo;
     private int id;
     private String comentarios;
+    public ArrayList<String> datos;
 
     public Cliente(String nombre, int saldo, int id, String comentarios) {
         this.nombre = nombre;
         this.saldo = saldo;
         this.id = id;
         this.comentarios = comentarios;
+        refreshDatos();
     }
 
     public Cliente() {}
@@ -56,5 +60,23 @@ public class Cliente {
 
     public static void setGlobalId(int globalId) {
         Cliente.globalId = globalId;
+    }
+
+    @Override
+    public void refreshDatos() {
+        this.datos = new ArrayList<>();
+        this.datos.add("Nombre");
+        this.datos.add(this.nombre);
+        this.datos.add("Saldo");
+        this.datos.add(String.valueOf(this.saldo));
+        this.datos.add("Comentarios");
+        this.datos.add(this.comentarios);
+        this.datos.add("ID");
+        this.datos.add(String.valueOf(this.id));
+    }
+
+    @Override
+    public ArrayList<String> getDatos() {
+        return this.datos;
     }
 }

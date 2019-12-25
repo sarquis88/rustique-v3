@@ -10,7 +10,7 @@ import rustique.dialogs.*;
 import rustique.models.Obra;
 import rustique.panes.ObrasPane;
 
-public class ObrasController {
+public class ObrasController implements Controller {
 
     private static ObrasController thisController = null;
     private static ObservableList<Obra> data = FXCollections.observableArrayList();
@@ -32,13 +32,13 @@ public class ObrasController {
             case "nueva-obra":
                 nuevaObra();
                 break;
-            case "borrar-obra":
+            case "borrar":
                 borrarObra();
                 break;
             case "show-obra":
                 showObra();
                 break;
-            case "modificar-obra":
+            case "modificar":
                 cambiarObra();
                 break;
             case "ver-foto":
@@ -65,7 +65,6 @@ public class ObrasController {
      * Agregado de obra mediante input
      */
     private void nuevaObra() {
-
         Obra obra = inputObra("Nueva obra");
 
         if (obra != null) {
@@ -134,9 +133,9 @@ public class ObrasController {
      * @return obra ingresada
      */
     private Obra inputObra(String titulo) {
-        NuevaObraDialog nuevaObraDialog = new NuevaObraDialog(titulo);
-        nuevaObraDialog.show();
-        return nuevaObraDialog.getResult();
+        NuevoModeloDialog nuevoModeloDialog = new NuevoModeloDialog(titulo, thisController);
+        nuevoModeloDialog.show();
+        return (Obra) nuevoModeloDialog.getResult();
     }
 
     /**
@@ -268,8 +267,8 @@ public class ObrasController {
             obra = getObraByNombre(nombre);
 
         if(obra != null) {
-            ShowObraDialog showObraDialog = new ShowObraDialog(obra);
-            showObraDialog.show();
+            ShowModeloDialog showModeloDialog = new ShowModeloDialog(obra);
+            showModeloDialog.show();
         }
         else
             MessagesManager.showFatalErrorAlert();
@@ -294,9 +293,10 @@ public class ObrasController {
             return;
         }
 
-        CambiarObraDialog cambiarObraDialog = new CambiarObraDialog(obraVieja);
-        cambiarObraDialog.show();
-        Obra obra = cambiarObraDialog.getResult();
+        CambiarModeloDialog cambiarModeloDialog = new CambiarModeloDialog(obraVieja);
+        cambiarModeloDialog.show();
+
+        Obra obra = (Obra) cambiarModeloDialog.getResult();
 
         if(obra == null)
             return;

@@ -5,14 +5,11 @@ import javafx.collections.ObservableList;
 import rustique.Main;
 import rustique.MessagesManager;
 import rustique.bdd.RustiqueBDD;
-import rustique.dialogs.CambiarClienteDialog;
-import rustique.dialogs.ObraDataDialog;
-import rustique.dialogs.NuevoClienteDialog;
-import rustique.dialogs.ShowClienteDialog;
+import rustique.dialogs.*;
 import rustique.models.Cliente;
 import rustique.panes.ClientesPane;
 
-public class ClientesController {
+public class ClientesController implements Controller {
 
     private static ClientesController thisController = null;
     private static ObservableList<Cliente> data = FXCollections.observableArrayList();
@@ -43,13 +40,13 @@ public class ClientesController {
             case "nuevo-cliente":
                 nuevoCliente();
                 break;
-            case "borrar-cliente":
+            case "borrar":
                 borrarCliente();
                 break;
             case "show-cliente":
                 showCliente();
                 break;
-            case "modificar-cliente":
+            case "modificar":
                 cambiarCliente();
                 break;
             case "deseleccionar-cliente":
@@ -88,9 +85,9 @@ public class ClientesController {
      * @return cliente ingresado
      */
     private Cliente inputCliente(String titulo) {
-        NuevoClienteDialog nuevoClienteDialog = new NuevoClienteDialog(titulo);
-        nuevoClienteDialog.show();
-        return nuevoClienteDialog.getResult();
+        NuevoModeloDialog nuevoModeloDialog = new NuevoModeloDialog(titulo, thisController);
+        nuevoModeloDialog.show();
+        return (Cliente) nuevoModeloDialog.getResult();
     }
 
     /**
@@ -210,8 +207,8 @@ public class ClientesController {
             return;
         }
 
-        ShowClienteDialog showClienteDialog = new ShowClienteDialog(cliente);
-        showClienteDialog.show();
+        ShowModeloDialog showModeloDialog = new ShowModeloDialog(cliente);
+        showModeloDialog.show();
     }
 
     /**
@@ -233,9 +230,10 @@ public class ClientesController {
             return;
         }
 
-        CambiarClienteDialog cambiarClienteDialog = new CambiarClienteDialog(clienteViejo);
-        cambiarClienteDialog.show();
-        Cliente newCliente = cambiarClienteDialog.getResult();
+        CambiarModeloDialog cambiarModeloDialog = new CambiarModeloDialog(clienteViejo);
+        cambiarModeloDialog.show();
+
+        Cliente newCliente = (Cliente) cambiarModeloDialog.getResult();
 
         if(newCliente == null)
             return;

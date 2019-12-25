@@ -1,6 +1,8 @@
 package rustique.models;
 
-public class Obra {
+import java.util.ArrayList;
+
+public class Obra implements Modelo {
 
     private static int globalId = 0;
 
@@ -11,6 +13,7 @@ public class Obra {
     private int precio;
     private int id;
     private String hasImage;
+    public ArrayList<String> datos;
 
     public Obra(String nombre, String autor, String tipo, String tamanio,
                 int precio, int id, String hasImage) {
@@ -21,6 +24,8 @@ public class Obra {
         this.tipo = tipo;
         this.id = id;
         this.hasImage = hasImage;
+
+        refreshDatos();
     }
 
     public Obra() {}
@@ -87,5 +92,29 @@ public class Obra {
 
     public void setHasImage(String hasImage) {
         this.hasImage = hasImage;
+    }
+
+    @Override
+    public void refreshDatos() {
+        this.datos = new ArrayList<>();
+        this.datos.add("Nombre");
+        this.datos.add(this.nombre);
+        this.datos.add("Autor");
+        this.datos.add(this.autor);
+        this.datos.add("Precio");
+        this.datos.add(String.valueOf(this.precio));
+        this.datos.add("Tipo");
+        this.datos.add(this.tipo);
+        this.datos.add("Tamaño");
+        this.datos.add(this.tamanio);
+        this.datos.add("ID");
+        this.datos.add(String.valueOf(this.id));
+        this.datos.add("Imágen");
+        this.datos.add(this.hasImage);
+    }
+
+    @Override
+    public ArrayList<String> getDatos() {
+        return this.datos;
     }
 }
