@@ -25,6 +25,8 @@ public class CambiarModeloDialog extends RustiqueDialog implements RustiqueParam
     private TextField tipo;
     private TextField tamanio;
 
+    private DatePicker datePicker;
+
     /**
      * Constructor de la clase
      * @param viejoModelo modelo a modificar
@@ -92,7 +94,7 @@ public class CambiarModeloDialog extends RustiqueDialog implements RustiqueParam
         }
         else if(viejoModelo instanceof Trabajo) {
             titulo = "Modificar trabajo";
-            stop = 4;
+            stop = 6;
 
             nombre = new TextField();
             nombre.setPromptText(viejoModelo.getDatos().get(0));
@@ -105,6 +107,10 @@ public class CambiarModeloDialog extends RustiqueDialog implements RustiqueParam
             comentarios.setPrefSize(120, 50);
             comentarios.setWrapText(true);
             grid.add(comentarios, 9, 2);
+
+            datePicker = new DatePicker();
+            datePicker.setEditable(false);
+            grid.add(datePicker, 9, 4);
         }
 
         thisDialog.setTitle(titulo);
@@ -179,6 +185,10 @@ public class CambiarModeloDialog extends RustiqueDialog implements RustiqueParam
                 trabajo.setNombre(this.nombre.getText());
                 trabajo.setComentarios(this.comentarios.getText());
                 trabajo.setId(((Trabajo) viejoModelo).getId());
+                if(datePicker.getValue() == null)
+                    trabajo.setFecha("Sin fecha");
+                else
+                    trabajo.setFecha(datePicker.getValue().toString());
                 return trabajo;
             }
         }

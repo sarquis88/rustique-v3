@@ -61,22 +61,27 @@ public class TrabajosPane implements RustiquePane, RustiqueParameters {
 
         TableColumn<Trabajo, String> c0 = new TableColumn<>("Nombre");
         c0.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        c0.setPrefWidth( tableView.getPrefWidth()  * 0.3);
+        c0.setPrefWidth( tableView.getPrefWidth()  * 0.2);
         c0.setStyle(tableColumnsStyle + "-fx-font-weight: bold;");
         TableColumn<Trabajo, String> c1 = new TableColumn<>("Comentarios");
         c1.setCellValueFactory(new PropertyValueFactory<>("comentarios"));
         c1.setPrefWidth( tableView.getPrefWidth() * 0.6);
         c1.setStyle(tableColumnsStyle);
-        TableColumn<Trabajo, Integer> c2 = new TableColumn<>("ID");
-        c2.setCellValueFactory(new PropertyValueFactory<>("id"));
+        TableColumn<Trabajo, String> c2 = new TableColumn<>("Fecha");
+        c2.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         c2.setPrefWidth( tableView.getPrefWidth() * 0.1);
         c2.setStyle(tableColumnsStyle);
+        TableColumn<Trabajo, Integer> c3 = new TableColumn<>("ID");
+        c3.setCellValueFactory(new PropertyValueFactory<>("id"));
+        c3.setPrefWidth( tableView.getPrefWidth() * 0.1);
+        c3.setStyle(tableColumnsStyle);
 
         tableView.setItems(thisController.getData());
 
         tableView.getColumns().add(c0);
         tableView.getColumns().add(c1);
         tableView.getColumns().add(c2);
+        tableView.getColumns().add(c3);
         tableView.setOnMouseClicked(mouseEvent -> {
             // handler de clicks en tableView
             try {

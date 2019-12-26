@@ -29,6 +29,8 @@ public class NuevoModeloDialog extends RustiqueDialog implements RustiqueParamet
     private TextField tipo;
     private TextField tamanio;
 
+    private DatePicker datePicker;
+
     /**
      * Constructor de la clase
      * @param title titulo de la ventana
@@ -94,11 +96,15 @@ public class NuevoModeloDialog extends RustiqueDialog implements RustiqueParamet
             comentarios.setPromptText("Comentarios");
             comentarios.setPrefSize(120, 50);
             comentarios.setWrapText(true);
+            datePicker = new DatePicker();
+            datePicker.setEditable(false);
 
             grid.add(new Label("Nombre:"), 0, 0);
             grid.add(nombre, 1, 0);
             grid.add(new Label("Comentarios:"), 0, 1);
             grid.add(comentarios, 1, 1);
+            grid.add(new Label("Fecha:"), 0, 2);
+            grid.add(datePicker, 1, 2);
         }
 
         thisDialog.getDialogPane().setContent(grid);
@@ -147,6 +153,11 @@ public class NuevoModeloDialog extends RustiqueDialog implements RustiqueParamet
                 Trabajo trabajo = new Trabajo();
                 trabajo.setNombre(nombre.getText());
                 trabajo.setComentarios(comentarios.getText());
+
+                if(datePicker.getValue() == null)
+                    trabajo.setFecha("Sin fecha");
+                else
+                    trabajo.setFecha(datePicker.getValue().toString());
                 return trabajo;
             }
         }

@@ -73,7 +73,8 @@ public class RustiqueBDD {
                 String sql = 	"CREATE TABLE TRABAJOS " +
                         "(ID INT PRIMARY KEY     NOT NULL," +
                         " NOMBRE         TEXT    NOT NULL, " +
-                        " COMENTARIOS    TEXT    NOT NULL) ";
+                        " COMENTARIOS    TEXT    NOT NULL, " +
+                        " FECHA          TEXT    NOT NULL) ";
                 stmt.executeUpdate(sql);
                 stmt.close();
             }
@@ -343,12 +344,12 @@ public class RustiqueBDD {
      * @param nombre nombre del trabajo
      * @param comentarios comentarios del trabajo
      */
-    public void insertarTrabajo(int id, String nombre, String comentarios) {
+    public void insertarTrabajo(int id, String nombre, String comentarios, String fecha) {
         try {
             c = DriverManager.getConnection("jdbc:sqlite:" + bddPath);
             stmt = c.createStatement();
-            String sql = "INSERT INTO TRABAJOS (ID,NOMBRE,COMENTARIOS) " +
-                    "VALUES (" + id + ", '" + nombre + "', '" + comentarios + "');";
+            String sql = "INSERT INTO TRABAJOS (ID,NOMBRE,COMENTARIOS, FECHA) " +
+                    "VALUES (" + id + ", '" + nombre + "', '" + comentarios + "', '" + fecha + "' );";
             stmt.executeUpdate(sql);
             stmt.close();
             c.close();
@@ -392,10 +393,11 @@ public class RustiqueBDD {
             while (rs.next()) {
                 String nombre = rs.getString("NOMBRE");
                 String comentarios = rs.getString("COMENTARIOS");
+                String fecha = rs.getString("FECHA");
                 int id = rs.getInt("ID");
 
                 TrabajosController.addTrabajo(
-                        new Trabajo(nombre, comentarios, id));
+                        new Trabajo(nombre, comentarios, fecha, id));
                 Trabajo.setGlobalId(id + 1);
             }
             c.close();
@@ -410,8 +412,9 @@ public class RustiqueBDD {
      * @param id id actual del trabajo a cambiar
      * @param nombreNuevo nombre nuevo a insertar
      * @param comentariosNuevo comentario nuevo a insertar
+     * @param fechaNueva fecha nueva a insertar
      */
-    public void cambiarTrabajo(int id, String nombreNuevo, String comentariosNuevo) {
+    public void cambiarTrabajo(int id, String nombreNuevo, String comentariosNuevo, String fechaNueva) {
         try {
             c = DriverManager.getConnection("jdbc:sqlite:" + bddPath);
             stmt = c.createStatement();
@@ -421,6 +424,10 @@ public class RustiqueBDD {
             stmt.executeUpdate(sql);
 
             sql = "UPDATE TRABAJOS SET NOMBRE='" + nombreNuevo +
+                    "' WHERE ID=" + id;
+            stmt.executeUpdate(sql);
+
+            sql = "UPDATE TRABAJOS SET FECHA='" + fechaNueva +
                     "' WHERE ID=" + id;
             stmt.executeUpdate(sql);
 

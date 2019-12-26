@@ -71,7 +71,7 @@ public class TrabajosController implements Controller {
                     MessagesManager.showErrorAlert("Nombre existente");
                 else {
                     RustiqueBDD.getInstance().insertarTrabajo(Trabajo.getGlobalId(),
-                            nuevoTrabajo.getNombre(), nuevoTrabajo.getComentarios());
+                            nuevoTrabajo.getNombre(), nuevoTrabajo.getComentarios(), nuevoTrabajo.getFecha());
 
                     refreshData();
                 }
@@ -103,23 +103,23 @@ public class TrabajosController implements Controller {
         CambiarModeloDialog cambiarModeloDialog = new CambiarModeloDialog(trabajoViejo);
         cambiarModeloDialog.show();
 
-        Trabajo newTrabajo = (Trabajo) cambiarModeloDialog.getResult();
+        Trabajo nuevoTrabajo = (Trabajo) cambiarModeloDialog.getResult();
 
-        if(newTrabajo == null)
+        if(nuevoTrabajo == null)
             return;
 
-        if(nombreExists(newTrabajo.getNombre()) &&
-                !newTrabajo.getNombre().equalsIgnoreCase(trabajoViejo.getNombre())) {
+        if(nombreExists(nuevoTrabajo.getNombre()) &&
+                !nuevoTrabajo.getNombre().equalsIgnoreCase(trabajoViejo.getNombre())) {
             MessagesManager.showErrorAlert("NOMBRE EXISTENTE");
             return;
         }
-        if(!Main.isNombreValido(newTrabajo.getNombre())) {
+        if(!Main.isNombreValido(nuevoTrabajo.getNombre())) {
             MessagesManager.showErrorAlert("NOMBRE INVALIDO");
             return;
         }
 
         RustiqueBDD.getInstance().cambiarTrabajo(trabajoViejo.getId(),
-                newTrabajo.getNombre(), newTrabajo.getComentarios());
+                nuevoTrabajo.getNombre(), nuevoTrabajo.getComentarios(), nuevoTrabajo.getFecha());
         refreshData();
         TrabajosPane.getInstance().resetTrabajoClickeado();
     }

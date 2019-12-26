@@ -7,16 +7,18 @@ public class Trabajo implements Modelo {
     private static int globalId = 0;
 
     private String nombre;
+    private String fecha;
     private String comentarios;
     private int id;
     public ArrayList<String> datos;
 
     public Trabajo() {}
 
-    public Trabajo(String nombre, String comentarios, int id) {
+    public Trabajo(String nombre, String comentarios, String fecha, int id) {
         this.nombre = nombre;
         this.comentarios = comentarios;
         this.id = id;
+        this.fecha = fecha;
         refreshDatos();
     }
 
@@ -51,6 +53,8 @@ public class Trabajo implements Modelo {
         this.datos.add(this.nombre);
         this.datos.add("Comentarios");
         this.datos.add(this.comentarios);
+        this.datos.add("Fecha");
+        this.datos.add(this.fecha);
         this.datos.add("ID");
         this.datos.add(String.valueOf(this.id));
     }
@@ -66,5 +70,13 @@ public class Trabajo implements Modelo {
 
     public static void setGlobalId(int globalId) {
         Trabajo.globalId = globalId;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 }
