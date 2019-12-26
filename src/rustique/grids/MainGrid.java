@@ -5,10 +5,10 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import rustique.controllers.MainController;
-import rustique.ImagesManager;
-import rustique.RustiqueParameters;
+import rustique.misc.ImagesManager;
+import rustique.misc.RustiqueParameters;
 
-public class MainGrid implements RustiqueParameters {
+public class MainGrid extends RustiqueGrid implements RustiqueParameters {
 
     private static MainController thisMainController;
 
@@ -18,7 +18,6 @@ public class MainGrid implements RustiqueParameters {
     private Button trabajos;
     private Button opciones;
     private Button salir;
-    private GridPane grid;
 
     /**
      * Constructor de clase
@@ -27,10 +26,10 @@ public class MainGrid implements RustiqueParameters {
         thisMainController = MainController.getInstance();
         String logoPath = "./src/images/logo.png";
 
-        grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(vPadding, hPadding, vPadding, hPadding));
+        thisGrid = new GridPane();
+        thisGrid.setHgap(10);
+        thisGrid.setVgap(10);
+        thisGrid.setPadding(new Insets(vPadding, hPadding, vPadding, hPadding));
 
         ImageView logo = ImagesManager.getImageView(logoPath);
         if(logo != null) {
@@ -86,24 +85,16 @@ public class MainGrid implements RustiqueParameters {
             thisMainController.actionPerformed("salir");
         });
 
-        grid.add(logo, 0, 0);
-        grid.add(principal, 0, 1);
-        grid.add(clientes, 0, 2);
-        grid.add(obras, 0, 3);
-        grid.add(trabajos, 0, 4);
-        grid.add(opciones, 0, 9);
-        grid.add(salir, 0, 30);
+        thisGrid.add(logo, 0, 0);
+        thisGrid.add(principal, 0, 1);
+        thisGrid.add(clientes, 0, 2);
+        thisGrid.add(obras, 0, 3);
+        thisGrid.add(trabajos, 0, 4);
+        thisGrid.add(opciones, 0, 9);
+        thisGrid.add(salir, 0, 30);
 
         if(logo != null)
-            grid.setPrefWidth(logo.getFitWidth() + hPadding * 2);
-    }
-
-    /**
-     * Retorna el grid para que las vistas lo utilicen
-     * @return objeto nodo GridPane
-     */
-    public GridPane getGridPane() {
-        return this.grid;
+            thisGrid.setPrefWidth(logo.getFitWidth() + hPadding * 2);
     }
 
     /**
@@ -131,16 +122,6 @@ public class MainGrid implements RustiqueParameters {
             default:
                 break;
         }
-    }
-
-    /**
-     * Seteo de posicion de la grid
-     * @param x layout x
-     * @param y layout y
-     */
-    public void setLayout(double x, double y) {
-        this.grid.setLayoutX(x);
-        this.grid.setLayoutY(y);
     }
 
     /**

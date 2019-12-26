@@ -1,12 +1,11 @@
 package rustique.dialogs;
 
-import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import rustique.Main;
-import rustique.MessagesManager;
-import rustique.RustiqueParameters;
+import rustique.misc.MessagesManager;
+import rustique.misc.RustiqueParameters;
 import rustique.controllers.ClientesController;
 import rustique.controllers.Controller;
 import rustique.controllers.ObrasController;
@@ -14,9 +13,8 @@ import rustique.models.Cliente;
 import rustique.models.Modelo;
 import rustique.models.Obra;
 
-public class NuevoModeloDialog implements RustiqueParameters {
+public class NuevoModeloDialog extends RustiqueDialog implements RustiqueParameters {
 
-    private Dialog<ButtonType> dialog;
     private Controller thisController;
 
     private TextField nombre;
@@ -34,12 +32,12 @@ public class NuevoModeloDialog implements RustiqueParameters {
      * @param title titulo de la ventana
      */
     public NuevoModeloDialog(String title, Controller controller) {
-        dialog = new Dialog<>();
-        dialog.setTitle(title);
-        dialog.setHeaderText("");
+        thisDialog = new Dialog<>();
+        thisDialog.setTitle(title);
+        thisDialog.setHeaderText("");
 
-        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK);
-        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.CANCEL);
+        thisDialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK);
+        thisDialog.getDialogPane().getButtonTypes().addAll(ButtonType.CANCEL);
 
         GridPane grid = new GridPane();
         grid.setHgap(hPadding);
@@ -88,15 +86,7 @@ public class NuevoModeloDialog implements RustiqueParameters {
             grid.add(precio, 1, 4);
         }
 
-        dialog.getDialogPane().setContent(grid);
-    }
-
-    /**
-     * Muestra de ventana
-     */
-    public void show() {
-        Platform.runLater(() -> dialog.getDialogPane().getScene().getWindow().sizeToScene());
-        dialog.showAndWait();
+        thisDialog.getDialogPane().setContent(grid);
     }
 
     /**
@@ -104,7 +94,7 @@ public class NuevoModeloDialog implements RustiqueParameters {
      * @return objeto modelo
      */
     public Modelo getResult() {
-        if(dialog.getResult() == ButtonType.OK) {
+        if(thisDialog.getResult() == ButtonType.OK) {
             if(thisController instanceof ClientesController) {
                 Cliente cliente = new Cliente();
                 cliente.setNombre(this.nombre.getText());

@@ -3,7 +3,7 @@ package rustique.panes;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import rustique.RustiqueParameters;
+import rustique.misc.RustiqueParameters;
 import rustique.grids.TrabajosGrid;
 
 public class TrabajosPane implements RustiquePane, RustiqueParameters {

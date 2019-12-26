@@ -2,8 +2,8 @@ package rustique.panes;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import rustique.ImagesManager;
-import rustique.RustiqueParameters;
+import rustique.misc.ImagesManager;
+import rustique.misc.RustiqueParameters;
 
 public class MainPane implements RustiquePane, RustiqueParameters {
 

@@ -2,9 +2,9 @@ package rustique.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import rustique.ImagesManager;
+import rustique.misc.ImagesManager;
 import rustique.Main;
-import rustique.MessagesManager;
+import rustique.misc.MessagesManager;
 import rustique.bdd.RustiqueBDD;
 import rustique.dialogs.*;
 import rustique.models.Obra;
@@ -65,7 +65,7 @@ public class ObrasController implements Controller {
      * Agregado de obra mediante input
      */
     private void nuevaObra() {
-        Obra obra = inputObra("Nueva obra");
+        Obra obra = inputObra();
 
         if (obra != null) {
             if (!Main.isNombreValido(obra.getNombre())) {
@@ -132,8 +132,8 @@ public class ObrasController implements Controller {
      * Input de obra
      * @return obra ingresada
      */
-    private Obra inputObra(String titulo) {
-        NuevoModeloDialog nuevoModeloDialog = new NuevoModeloDialog(titulo, thisController);
+    private Obra inputObra() {
+        NuevoModeloDialog nuevoModeloDialog = new NuevoModeloDialog("Nueva obra", thisController);
         nuevoModeloDialog.show();
         return (Obra) nuevoModeloDialog.getResult();
     }
@@ -246,9 +246,9 @@ public class ObrasController implements Controller {
      * @return dato ingresado
      */
     private String inputObraData() {
-        ObraDataDialog obraDataDialog = new ObraDataDialog("Borrar obra");
-        obraDataDialog.show();
-        return obraDataDialog.getResult();
+        ModeloDataInputDialog modeloDataInputDialog = new ModeloDataInputDialog("Borrar obra");
+        modeloDataInputDialog.show();
+        return modeloDataInputDialog.getResult();
     }
 
     /**
@@ -269,6 +269,7 @@ public class ObrasController implements Controller {
         if(obra != null) {
             ShowModeloDialog showModeloDialog = new ShowModeloDialog(obra);
             showModeloDialog.show();
+            ObrasPane.getInstance().resetObraClickeada();
         }
         else
             MessagesManager.showFatalErrorAlert();

@@ -1,19 +1,17 @@
 package rustique.dialogs;
 
-import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import rustique.Main;
-import rustique.MessagesManager;
-import rustique.RustiqueParameters;
+import rustique.misc.MessagesManager;
+import rustique.misc.RustiqueParameters;
 import rustique.models.Cliente;
 import rustique.models.Modelo;
 import rustique.models.Obra;
 
-public class CambiarModeloDialog implements RustiqueParameters {
+public class CambiarModeloDialog extends RustiqueDialog implements RustiqueParameters {
 
-    private Dialog<ButtonType> dialog;
     private Modelo viejoModelo;
 
     private TextField nombre;
@@ -32,7 +30,7 @@ public class CambiarModeloDialog implements RustiqueParameters {
      */
     public CambiarModeloDialog(Modelo viejoModelo) {
         this.viejoModelo = viejoModelo;
-        dialog = new Dialog<>();
+        thisDialog = new Dialog<>();
         String titulo = "";
 
         GridPane grid = new GridPane();
@@ -92,11 +90,11 @@ public class CambiarModeloDialog implements RustiqueParameters {
             grid.add(tamanio, 9, 8);
         }
 
-        dialog.setTitle(titulo);
-        dialog.setHeaderText("");
+        thisDialog.setTitle(titulo);
+        thisDialog.setHeaderText("");
 
-        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK);
-        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.CANCEL);
+        thisDialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK);
+        thisDialog.getDialogPane().getButtonTypes().addAll(ButtonType.CANCEL);
 
         for(int row = 0; row < stop; row = row + 2) {
 
@@ -112,18 +110,8 @@ public class CambiarModeloDialog implements RustiqueParameters {
             grid.add(tipoDatoNuevo, 8, row);
         }
 
-        dialog.getDialogPane().setContent(grid);
+        thisDialog.getDialogPane().setContent(grid);
     }
-
-    /**
-     * Muestra de dialogo
-     */
-    public void show() {
-        Platform.runLater(() -> dialog.getDialogPane().getScene().getWindow().sizeToScene());
-
-        this.dialog.showAndWait();
-    }
-
 
     /**
      * Retorno de modelo cambiado
@@ -131,7 +119,7 @@ public class CambiarModeloDialog implements RustiqueParameters {
      */
     public Modelo getResult() {
 
-        if(dialog.getResult() == ButtonType.OK) {
+        if(thisDialog.getResult() == ButtonType.OK) {
             if(this.viejoModelo instanceof Cliente) {
                 Cliente cliente = new Cliente();
                 cliente.setNombre(this.nombre.getText());

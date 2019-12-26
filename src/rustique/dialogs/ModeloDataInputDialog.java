@@ -1,13 +1,12 @@
 package rustique.dialogs;
 
-import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import rustique.misc.RustiqueParameters;
 
-public class ObraDataDialog {
+public class ModeloDataInputDialog extends RustiqueDialog implements RustiqueParameters {
 
-    private Dialog<ButtonType> dialog;
     private TextField nombre;
     private TextField id;
     private ButtonType cancelar;
@@ -18,23 +17,23 @@ public class ObraDataDialog {
      * Constructor de la clase
      * @param title titulo de la ventana
      */
-    public ObraDataDialog(String title) {
-        dialog = new Dialog<>();
-        dialog.setTitle(title);
-        dialog.setHeaderText("");
+    public ModeloDataInputDialog(String title) {
+        thisDialog = new Dialog<>();
+        thisDialog.setTitle(title);
+        thisDialog.setHeaderText("");
 
         nombreButton = new ButtonType("Por nombre");
         idButton = new ButtonType("Por id");
         cancelar = new ButtonType("Cancelar");
 
-        dialog.getDialogPane().getButtonTypes().addAll(nombreButton);
-        dialog.getDialogPane().getButtonTypes().addAll(idButton);
-        dialog.getDialogPane().getButtonTypes().addAll(cancelar);
+        thisDialog.getDialogPane().getButtonTypes().addAll(nombreButton);
+        thisDialog.getDialogPane().getButtonTypes().addAll(idButton);
+        thisDialog.getDialogPane().getButtonTypes().addAll(cancelar);
 
         GridPane grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(20, 150, 10, 10));
+        grid.setHgap(hPadding);
+        grid.setVgap(vPadding);
+        grid.setPadding(new Insets(vPadding, hPadding, vPadding, hPadding));
 
         nombre = new TextField();
         nombre.setPromptText("Nombre");
@@ -49,18 +48,7 @@ public class ObraDataDialog {
         grid.add(new Label("por ID:"), 0, 2);
         grid.add(id, 1, 2);
 
-        dialog.getDialogPane().setContent(grid);
-    }
-
-    /**
-     * Muestra de ventana
-     */
-    public void show() {
-        Platform.runLater(() -> {
-            dialog.getDialogPane().getScene().getWindow().sizeToScene();
-        });
-
-        dialog.showAndWait();
+        thisDialog.getDialogPane().setContent(grid);
     }
 
     /**
@@ -68,18 +56,20 @@ public class ObraDataDialog {
      * @return objeto String con tipo de dato + dato
      */
     public String getResult() {
-        if(dialog.getResult() == nombreButton) {
+        if(thisDialog.getResult() == nombreButton) {
             if(!nombre.getText().isBlank())
                 return "n-" + nombre.getText();
             else
                 return null;
         }
-        else if(dialog.getResult() == idButton) {
+        else if(thisDialog.getResult() == idButton) {
             if (!id.getText().isBlank())
                 return "i-" + id.getText();
             else
                 return null;
         }
+        else if(thisDialog.getResult() == cancelar)
+            return null;
         else
             return null;
     }

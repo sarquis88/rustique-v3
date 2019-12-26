@@ -1,4 +1,4 @@
-package rustique;
+package rustique.misc;
 
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;

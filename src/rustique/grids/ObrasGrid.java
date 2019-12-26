@@ -3,16 +3,15 @@ package rustique.grids;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
-import rustique.MessagesManager;
-import rustique.RustiqueParameters;
+import rustique.misc.MessagesManager;
+import rustique.misc.RustiqueParameters;
 import rustique.controllers.ObrasController;
 
-public class ObrasGrid implements RustiqueParameters {
+public class ObrasGrid extends RustiqueGrid implements RustiqueParameters {
 
     private static ObrasController thisController = null;
     private static ObrasGrid thisObrasGrid = null;
 
-    private GridPane grid;
     private Button nuevaObra;
     private Button borrarObra;
     private Button buscarObra;
@@ -36,10 +35,10 @@ public class ObrasGrid implements RustiqueParameters {
     private ObrasGrid() {
         thisController = ObrasController.getInstance();
 
-        grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(vPadding, hPadding, vPadding, hPadding));
+        thisGrid = new GridPane();
+        thisGrid.setHgap(10);
+        thisGrid.setVgap(10);
+        thisGrid.setPadding(new Insets(vPadding, hPadding, vPadding, hPadding));
 
         nuevaObra = new Button("Nueva obra");
         nuevaObra.setPrefSize(buttonsWidth, buttonsHeight);
@@ -72,30 +71,12 @@ public class ObrasGrid implements RustiqueParameters {
         deseleccionarObra.setOnAction(e -> thisController.actionPerformed("deseleccionar-obra"));
         deseleccionarObra.setDisable(true);
 
-        grid.add(nuevaObra, 0, 0);
-        grid.add(borrarObra, 0, 5);
-        grid.add(modificarObra, 0, 6);
-        grid.add(buscarObra, 0, 7);
-        grid.add(verFotos, 0, 12);
-        grid.add(deseleccionarObra, 0, 17);
-    }
-
-    /**
-     * Retorna el grid para que las vistas lo utilicen
-     * @return objeto nodo GridPane
-     */
-    public GridPane getGridPane() {
-        return this.grid;
-    }
-
-    /**
-     * Seteo de posicion de la grid
-     * @param x layout x
-     * @param y layout y
-     */
-    public void setLayout(double x, double y) {
-        this.grid.setLayoutX(x);
-        this.grid.setLayoutY(y);
+        thisGrid.add(nuevaObra, 0, 0);
+        thisGrid.add(borrarObra, 0, 5);
+        thisGrid.add(modificarObra, 0, 6);
+        thisGrid.add(buscarObra, 0, 7);
+        thisGrid.add(verFotos, 0, 12);
+        thisGrid.add(deseleccionarObra, 0, 17);
     }
 
     public void setDisable(String button, boolean disable) {

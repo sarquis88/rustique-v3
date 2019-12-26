@@ -3,11 +3,11 @@ package rustique.grids;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
-import rustique.MessagesManager;
+import rustique.misc.MessagesManager;
 import rustique.controllers.ClientesController;
-import rustique.RustiqueParameters;
+import rustique.misc.RustiqueParameters;
 
-public class ClientesGrid implements RustiqueParameters {
+public class ClientesGrid extends RustiqueGrid implements RustiqueParameters {
 
     private static ClientesController thisController = null;
     private static ClientesGrid thisClientesGrid = null;
@@ -17,8 +17,6 @@ public class ClientesGrid implements RustiqueParameters {
     private Button modificarCliente;
     private Button buscarCliente;
     private Button deseleccionarCliente;
-
-    private GridPane grid;
 
     /**
      * Patron Singleton
@@ -36,10 +34,10 @@ public class ClientesGrid implements RustiqueParameters {
     private ClientesGrid() {
         thisController = ClientesController.getInstance();
 
-        grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(vPadding, hPadding, vPadding, hPadding));
+        thisGrid = new GridPane();
+        thisGrid.setHgap(10);
+        thisGrid.setVgap(10);
+        thisGrid.setPadding(new Insets(vPadding, hPadding, vPadding, hPadding));
 
         nuevoCliente = new Button("Nuevo cliente");
         nuevoCliente.setPrefSize(buttonsWidth, buttonsHeight);
@@ -59,7 +57,7 @@ public class ClientesGrid implements RustiqueParameters {
         buscarCliente = new Button("Buscar cliente");
         buscarCliente.setPrefSize(buttonsWidth, buttonsHeight);
         buscarCliente.setStyle(buttonsStyle);
-        buscarCliente.setOnAction(e -> thisController.actionPerformed("buscar-cliente"));
+        buscarCliente.setOnAction(e -> thisController.actionPerformed("show-cliente"));
 
         deseleccionarCliente = new Button("Deseleccionar cliente");
         deseleccionarCliente.setPrefSize(buttonsWidth, buttonsHeight);
@@ -67,29 +65,11 @@ public class ClientesGrid implements RustiqueParameters {
         deseleccionarCliente.setOnAction(e -> thisController.actionPerformed("deseleccionar-cliente"));
         deseleccionarCliente.setDisable(true);
 
-        grid.add(nuevoCliente, 0, 0);
-        grid.add(borrarCliente, 0, 5);
-        grid.add(modificarCliente, 0, 6);
-        grid.add(buscarCliente, 0, 7);
-        grid.add(deseleccionarCliente, 0, 12);
-    }
-
-    /**
-     * Retorna el grid para que las vistas lo utilicen
-     * @return objeto nodo GridPane
-     */
-    public GridPane getGridPane() {
-        return this.grid;
-    }
-
-    /**
-     * Seteo de posicion de la grid
-     * @param x layout x
-     * @param y layout y
-     */
-    public void setLayout(double x, double y) {
-        this.grid.setLayoutX(x);
-        this.grid.setLayoutY(y);
+        thisGrid.add(nuevoCliente, 0, 0);
+        thisGrid.add(borrarCliente, 0, 5);
+        thisGrid.add(modificarCliente, 0, 6);
+        thisGrid.add(buscarCliente, 0, 7);
+        thisGrid.add(deseleccionarCliente, 0, 12);
     }
 
     public void setDisable(String button, boolean disable) {

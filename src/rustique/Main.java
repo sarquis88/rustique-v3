@@ -3,6 +3,8 @@ package rustique;
 import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import rustique.misc.MessagesManager;
+import rustique.misc.View;
 import rustique.bdd.RustiqueBDD;
 
 public class Main extends Application {

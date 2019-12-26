@@ -1,12 +1,11 @@
 package rustique.dialogs;
 
-import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import rustique.RustiqueParameters;
+import rustique.misc.RustiqueParameters;
 import rustique.controllers.ClientesController;
 import rustique.controllers.Controller;
 import rustique.controllers.ObrasController;
@@ -14,10 +13,9 @@ import rustique.models.Cliente;
 import rustique.models.Modelo;
 import rustique.models.Obra;
 
-public class ShowModeloDialog implements RustiqueParameters {
+public class ShowModeloDialog extends RustiqueDialog implements RustiqueParameters {
 
     private Controller thisController;
-    private Dialog<ButtonType> dialog;
     private ButtonType borrar;
     private ButtonType modificar;
     private ButtonType volver;
@@ -30,7 +28,7 @@ public class ShowModeloDialog implements RustiqueParameters {
      */
     public ShowModeloDialog(Modelo modelo) {
 
-        dialog = new Dialog<>();
+        thisDialog = new Dialog<>();
 
         String titulo = "";
         thisController = null;
@@ -44,23 +42,23 @@ public class ShowModeloDialog implements RustiqueParameters {
             titulo = "Ver Obra";
             if(((Obra) modelo).getHasImage().equals("Si")) {
                 verFoto = new ButtonType("Ver foto");
-                dialog.getDialogPane().getButtonTypes().addAll(verFoto);
+                thisDialog.getDialogPane().getButtonTypes().addAll(verFoto);
             }
             else {
                 agregarFoto = new ButtonType("Agregar foto");
-                dialog.getDialogPane().getButtonTypes().addAll(agregarFoto);
+                thisDialog.getDialogPane().getButtonTypes().addAll(agregarFoto);
             }
         }
 
-        dialog.setTitle(titulo);
-        dialog.setHeaderText("");
+        thisDialog.setTitle(titulo);
+        thisDialog.setHeaderText("");
 
         borrar = new ButtonType("Borrar");
         modificar = new ButtonType("Modificar");
         volver = new ButtonType("Volver");
-        dialog.getDialogPane().getButtonTypes().addAll(borrar);
-        dialog.getDialogPane().getButtonTypes().addAll(modificar);
-        dialog.getDialogPane().getButtonTypes().addAll(volver);
+        thisDialog.getDialogPane().getButtonTypes().addAll(borrar);
+        thisDialog.getDialogPane().getButtonTypes().addAll(modificar);
+        thisDialog.getDialogPane().getButtonTypes().addAll(volver);
 
         GridPane grid = new GridPane();
         grid.setHgap(hPadding);
@@ -77,7 +75,7 @@ public class ShowModeloDialog implements RustiqueParameters {
             grid.add(dato, 1, row);
         }
 
-        dialog.getDialogPane().setContent(grid);
+        thisDialog.getDialogPane().setContent(grid);
     }
 
     /**
@@ -86,19 +84,17 @@ public class ShowModeloDialog implements RustiqueParameters {
      */
     public void show() {
 
-        Platform.runLater(() -> dialog.getDialogPane().getScene().getWindow().sizeToScene());
+        super.show();
 
-        dialog.showAndWait();
-
-        if(this.dialog.getResult() == this.volver)
+        if(this.thisDialog.getResult() == this.volver)
             return;
-        if(this.dialog.getResult() == this.modificar)
+        if(this.thisDialog.getResult() == this.modificar)
             thisController.actionPerformed("modificar");
-        else if(this.dialog.getResult() == this.borrar)
+        else if(this.thisDialog.getResult() == this.borrar)
             thisController.actionPerformed("borrar");
-        else if(this.dialog.getResult() == this.verFoto)
+        else if(this.thisDialog.getResult() == this.verFoto)
             thisController.actionPerformed("ver-foto");
-        else if(this.dialog.getResult() == this.agregarFoto)
+        else if(this.thisDialog.getResult() == this.agregarFoto)
             thisController.actionPerformed("agregar-foto");
     }
 }

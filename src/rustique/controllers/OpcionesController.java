@@ -1,9 +1,9 @@
 package rustique.controllers;
 
 import javafx.stage.Stage;
-import rustique.ImagesManager;
+import rustique.misc.ImagesManager;
 import rustique.Main;
-import rustique.MessagesManager;
+import rustique.misc.MessagesManager;
 import rustique.bdd.RustiqueBDD;
 
 public class OpcionesController {

@@ -1,10 +1,11 @@
-package rustique;
+package rustique.misc;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import org.apache.commons.io.FileUtils;
+import rustique.Main;
 
 import javax.imageio.ImageIO;
 import java.io.File;

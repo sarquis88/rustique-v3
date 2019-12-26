@@ -3,7 +3,7 @@ package rustique.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import rustique.Main;
-import rustique.MessagesManager;
+import rustique.misc.MessagesManager;
 import rustique.bdd.RustiqueBDD;
 import rustique.dialogs.*;
 import rustique.models.Cliente;
@@ -50,7 +50,7 @@ public class ClientesController implements Controller {
                 cambiarCliente();
                 break;
             case "deseleccionar-cliente":
-                deseleccionarCliente();
+                ClientesPane.getInstance().resetClienteClickeado();
                 break;
             default:
                 break;
@@ -61,7 +61,7 @@ public class ClientesController implements Controller {
      * Agregado de cliente mediante input
      */
     private void nuevoCliente() {
-        Cliente nuevoCliente = inputCliente("Nuevo cliente");
+        Cliente nuevoCliente = inputCliente();
 
         if(nuevoCliente != null) {
             if(Main.isNombreValido(nuevoCliente.getNombre())) {
@@ -84,8 +84,8 @@ public class ClientesController implements Controller {
      * Input de cliente
      * @return cliente ingresado
      */
-    private Cliente inputCliente(String titulo) {
-        NuevoModeloDialog nuevoModeloDialog = new NuevoModeloDialog(titulo, thisController);
+    private Cliente inputCliente() {
+        NuevoModeloDialog nuevoModeloDialog = new NuevoModeloDialog("Nuevo cliente", thisController);
         nuevoModeloDialog.show();
         return (Cliente) nuevoModeloDialog.getResult();
     }
@@ -95,9 +95,9 @@ public class ClientesController implements Controller {
      * @return dato ingresado
      */
     private String inputClienteData(String titulo) {
-        ObraDataDialog obraDataDialog = new ObraDataDialog(titulo);
-        obraDataDialog.show();
-        return obraDataDialog.getResult();
+        ModeloDataInputDialog modeloDataInputDialog = new ModeloDataInputDialog(titulo);
+        modeloDataInputDialog.show();
+        return modeloDataInputDialog.getResult();
     }
     /**
      * Borrado de cliente
@@ -209,6 +209,8 @@ public class ClientesController implements Controller {
 
         ShowModeloDialog showModeloDialog = new ShowModeloDialog(cliente);
         showModeloDialog.show();
+
+        ClientesPane.getInstance().resetClienteClickeado();
     }
 
     /**
@@ -306,9 +308,5 @@ public class ClientesController implements Controller {
             if(cliente.getId() == id)
                 return true;
         return false;
-    }
-
-    private void deseleccionarCliente() {
-        ClientesPane.getInstance().resetClienteClickeado();
     }
 }

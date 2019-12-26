@@ -1,21 +1,20 @@
 package rustique.dialogs;
 
-import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import rustique.ImagesManager;
-import rustique.MessagesManager;
+import rustique.misc.ImagesManager;
+import rustique.misc.MessagesManager;
+import rustique.misc.RustiqueParameters;
 import rustique.controllers.ObrasController;
 
-public class ShowImagenDialog {
+public class ShowImagenDialog extends RustiqueDialog implements RustiqueParameters {
 
     private static ObrasController thisController;
 
-    private Dialog<ButtonType> dialog;
     private GridPane grid;
     private ButtonType cambiar;
     private ButtonType borrar;
@@ -26,22 +25,22 @@ public class ShowImagenDialog {
     public ShowImagenDialog() {
         thisController = ObrasController.getInstance();
 
-        dialog = new Dialog<>();
-        dialog.setTitle("Ver imagen");
-        dialog.setHeaderText("");
+        thisDialog = new Dialog<>();
+        thisDialog.setTitle("Ver imagen");
+        thisDialog.setHeaderText("");
 
         this.cambiar = new ButtonType("Cambiar");
         this.borrar = new ButtonType("Borrar");
 
-        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK,
+        thisDialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK,
                 cambiar, borrar);
 
         grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(20, 150, 10, 10));
+        grid.setHgap(hPadding);
+        grid.setVgap(vPadding);
+        grid.setPadding(new Insets(vPadding, hPadding, vPadding, hPadding));
 
-        dialog.getDialogPane().setContent(grid);
+        thisDialog.getDialogPane().setContent(grid);
     }
 
     /**
@@ -53,14 +52,14 @@ public class ShowImagenDialog {
         Image img;
 
         if(imageID == -1) {
-            this.dialog.getDialogPane().getButtonTypes().removeAll(
+            this.thisDialog.getDialogPane().getButtonTypes().removeAll(
                     this.cambiar, this.borrar);
             img = ImagesManager.chooseImage();
             if (img == null)
                 return;
         }
         else {
-            this.dialog.setTitle(thisController.getObraNameById(imageID));
+            this.thisDialog.setTitle(thisController.getObraNameById(imageID));
             img = new Image("file:" + ImagesManager.getObrasPath() + imageID + "." + "png");
             if(img.getHeight() == 0)
                 img = new Image("file:" + ImagesManager.getObrasPath() + imageID + "." + "jpg");
@@ -73,16 +72,13 @@ public class ShowImagenDialog {
 
         grid.add(imgView, 0, 0);
 
-        Platform.runLater(() -> dialog.getDialogPane().getScene().getWindow().sizeToScene());
+        super.show();
 
-        this.dialog.showAndWait();
-
-
-        if(this.dialog.getResult() == this.cambiar) {
+        if(this.thisDialog.getResult() == this.cambiar) {
             NuevaImagenDialog nuevaImagenDialog = new NuevaImagenDialog();
             nuevaImagenDialog.show(imageID, true);
         }
-        else if(this.dialog.getResult() == this.borrar) {
+        else if(this.thisDialog.getResult() == this.borrar) {
             if(MessagesManager.confirmation("Seguro desea borrar la imagen?"))
                 thisController.actionPerformed("borrar-foto");
         }

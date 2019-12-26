@@ -2,7 +2,7 @@ package rustique.controllers;
 
 import javafx.stage.Stage;
 import rustique.Main;
-import rustique.View;
+import rustique.misc.View;
 import rustique.panes.*;
 
 public class MainController {

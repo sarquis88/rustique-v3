@@ -4,8 +4,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import rustique.RustiqueParameters;
-import rustique.View;
+import rustique.misc.RustiqueParameters;
+import rustique.misc.View;
 import rustique.grids.OpcionesGrid;
 
 public class OpcionesPane implements RustiquePane, RustiqueParameters {

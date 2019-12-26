@@ -1,27 +1,24 @@
 package rustique.dialogs;
 
-import javafx.application.Platform;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import rustique.ImagesManager;
+import rustique.misc.ImagesManager;
+import rustique.misc.RustiqueParameters;
 
-public class NuevaImagenDialog {
-
-
-    private Dialog<ButtonType> dialog;
+public class NuevaImagenDialog extends RustiqueDialog implements RustiqueParameters {
 
     /**
      * Constructor de clase
      */
     public NuevaImagenDialog() {
-        dialog = new Dialog<>();
-        dialog.setTitle("Agregar imagen");
-        dialog.setHeaderText("");
+        thisDialog = new Dialog<>();
+        thisDialog.setTitle("Agregar imagen");
+        thisDialog.setHeaderText("");
 
-        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+        thisDialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
     }
 
     /**
@@ -45,16 +42,12 @@ public class NuevaImagenDialog {
 
         grid.add(imgView, 0, 0);
 
-        dialog.getDialogPane().getChildren().remove(grid);
-        dialog.getDialogPane().setContent(grid);
+        thisDialog.getDialogPane().getChildren().remove(grid);
+        thisDialog.getDialogPane().setContent(grid);
 
-        Platform.runLater(() -> {
-            dialog.getDialogPane().getScene().getWindow().sizeToScene();
-        });
+        super.show();
 
-        dialog.showAndWait();
-
-        if(this.dialog.getResult() == ButtonType.OK) {
+        if(this.thisDialog.getResult() == ButtonType.OK) {
             hasImage = "Si";
 
             // si se está haciendo un cambio de imagen, se borra la
