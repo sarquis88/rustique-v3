@@ -2,8 +2,10 @@ package rustique.bdd;
 
 import rustique.controllers.ClientesController;
 import rustique.controllers.ObrasController;
+import rustique.controllers.TrabajosController;
 import rustique.models.Cliente;
 import rustique.models.Obra;
+import rustique.models.Trabajo;
 
 import java.sql.*;
 
@@ -32,6 +34,7 @@ public class RustiqueBDD {
         createTables();
         restoreClientesFromBDD();
         restoreObrasFromBDD();
+        restoreTrabajosFromBDD();
     }
 
     /**
@@ -63,6 +66,14 @@ public class RustiqueBDD {
                         " TAMAÑO         TEXT    NOT NULL, " +
                         " PRECIO          INT    NOT NULL, " +
                         " IMAGEN         TEXT    NOT NULL) ";
+                stmt.executeUpdate(sql);
+                stmt.close();
+            }
+            if(!tableExists("TRABAJOS")) {
+                String sql = 	"CREATE TABLE TRABAJOS " +
+                        "(ID INT PRIMARY KEY     NOT NULL," +
+                        " NOMBRE         TEXT    NOT NULL, " +
+                        " COMENTARIOS    TEXT    NOT NULL) ";
                 stmt.executeUpdate(sql);
                 stmt.close();
             }
@@ -99,6 +110,7 @@ public class RustiqueBDD {
      * @param id identificador del cliente
      * @param nombre nombre del cliente
      * @param saldo saldo del cliente
+     * @param comentarios comentarios del cliente
      */
     public void insertarCliente(int id, String nombre, int saldo,
                                 String comentarios) {
@@ -228,17 +240,14 @@ public class RustiqueBDD {
     /**
      * Eliminacion de obra en base de datos
      * @param id identificador de la obra
-     * @return true si se encontro a la obra, de lo contrario false
      */
-    public boolean deleteObra(int id) {
-        boolean exito = false;
+    public void deleteObra(int id) {
         try {
             c = DriverManager.getConnection("jdbc:sqlite:" + bddPath);
             stmt = c.createStatement();
             String sql = "DELETE from OBRAS where ID=" + id + ";";
 
-            if(stmt.executeUpdate(sql) != 0)
-                exito = true;
+            stmt.executeUpdate(sql);
 
             stmt.close();
             c.close();
@@ -246,7 +255,6 @@ public class RustiqueBDD {
         catch (SQLException e) {
             e.printStackTrace();
         }
-        return exito;
     }
 
     /**
@@ -329,6 +337,100 @@ public class RustiqueBDD {
         }
     }
 
+    /**
+     * Insercion de trabajo en base de datos
+     * @param id identificador del trabajo
+     * @param nombre nombre del trabajo
+     * @param comentarios comentarios del trabajo
+     */
+    public void insertarTrabajo(int id, String nombre, String comentarios) {
+        try {
+            c = DriverManager.getConnection("jdbc:sqlite:" + bddPath);
+            stmt = c.createStatement();
+            String sql = "INSERT INTO TRABAJOS (ID,NOMBRE,COMENTARIOS) " +
+                    "VALUES (" + id + ", '" + nombre + "', '" + comentarios + "');";
+            stmt.executeUpdate(sql);
+            stmt.close();
+            c.close();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Eliminacion de trabajo en base de datos
+     * @param id identificador del trabajo
+     */
+    public void deleteTrabajo(int id) {
+        try {
+            c = DriverManager.getConnection("jdbc:sqlite:" + bddPath);
+            stmt = c.createStatement();
+            String sql = "DELETE from TRABAJOS where ID=" + id + ";";
+            stmt.executeUpdate(sql);
+
+            stmt.close();
+            c.close();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Lectura de la base de datos y creacion de objetos java correspondiente
+     * a los trabajos. Metodo llamado al comienzo de la ejecucion, y cada vez
+     * que se agrega un trabajo.
+     */
+    public void restoreTrabajosFromBDD() {
+        try {
+            c = DriverManager.getConnection("jdbc:sqlite:" + bddPath);
+            stmt = c.createStatement();
+
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM TRABAJOS;");
+
+            while (rs.next()) {
+                String nombre = rs.getString("NOMBRE");
+                String comentarios = rs.getString("COMENTARIOS");
+                int id = rs.getInt("ID");
+
+                TrabajosController.addTrabajo(
+                        new Trabajo(nombre, comentarios, id));
+                Trabajo.setGlobalId(id + 1);
+            }
+            c.close();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Cambiar datos del trabajo
+     * @param id id actual del trabajo a cambiar
+     * @param nombreNuevo nombre nuevo a insertar
+     * @param comentariosNuevo comentario nuevo a insertar
+     */
+    public void cambiarTrabajo(int id, String nombreNuevo, String comentariosNuevo) {
+        try {
+            c = DriverManager.getConnection("jdbc:sqlite:" + bddPath);
+            stmt = c.createStatement();
+
+            String sql = "UPDATE TRABAJOS SET COMENTARIOS='" + comentariosNuevo +
+                    "' WHERE ID=" + id;
+            stmt.executeUpdate(sql);
+
+            sql = "UPDATE TRABAJOS SET NOMBRE='" + nombreNuevo +
+                    "' WHERE ID=" + id;
+            stmt.executeUpdate(sql);
+
+            stmt.close();
+            c.close();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Restablecer la base de datos

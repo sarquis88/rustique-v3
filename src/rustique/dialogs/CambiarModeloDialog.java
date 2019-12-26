@@ -9,6 +9,7 @@ import rustique.misc.RustiqueParameters;
 import rustique.models.Cliente;
 import rustique.models.Modelo;
 import rustique.models.Obra;
+import rustique.models.Trabajo;
 
 public class CambiarModeloDialog extends RustiqueDialog implements RustiqueParameters {
 
@@ -89,6 +90,22 @@ public class CambiarModeloDialog extends RustiqueDialog implements RustiqueParam
             tamanio.setText(viejoModelo.getDatos().get(9));
             grid.add(tamanio, 9, 8);
         }
+        else if(viejoModelo instanceof Trabajo) {
+            titulo = "Modificar trabajo";
+            stop = 4;
+
+            nombre = new TextField();
+            nombre.setPromptText(viejoModelo.getDatos().get(0));
+            nombre.setText(viejoModelo.getDatos().get(1));
+            grid.add(nombre, 9, 0);
+
+            comentarios = new TextArea();
+            comentarios.setPromptText(viejoModelo.getDatos().get(2));
+            comentarios.setText(viejoModelo.getDatos().get(3));
+            comentarios.setPrefSize(120, 50);
+            comentarios.setWrapText(true);
+            grid.add(comentarios, 9, 2);
+        }
 
         thisDialog.setTitle(titulo);
         thisDialog.setHeaderText("");
@@ -156,6 +173,13 @@ public class CambiarModeloDialog extends RustiqueDialog implements RustiqueParam
                     obra.setPrecio(Main.safeDecode(this.precio.getText()));
 
                 return obra;
+            }
+            else if(this.viejoModelo instanceof Trabajo) {
+                Trabajo trabajo = new Trabajo();
+                trabajo.setNombre(this.nombre.getText());
+                trabajo.setComentarios(this.comentarios.getText());
+                trabajo.setId(((Trabajo) viejoModelo).getId());
+                return trabajo;
             }
         }
         return null;

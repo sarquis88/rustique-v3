@@ -2,39 +2,54 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/bdd/rustique.db" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/bdd/rustique.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/bdd/RustiqueBDD.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/bdd/RustiqueBDD.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/controllers/ClientesController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/controllers/ClientesController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/controllers/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/controllers/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/controllers/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/controllers/MainController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/controllers/ObrasController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/controllers/ObrasController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/controllers/OpcionesController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/controllers/OpcionesController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/controllers/TrabajosController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/controllers/TrabajosController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/dialogs/CambiarModeloDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/dialogs/CambiarModeloDialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/dialogs/ModeloDataInputDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/dialogs/ModeloDataInputDialog.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/dialogs/NuevaImagenDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/dialogs/NuevaImagenDialog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/dialogs/NuevaObraDialog.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/dialogs/NuevoClienteDialog.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/dialogs/NuevoModeloDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/dialogs/NuevoModeloDialog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/dialogs/ObraDataDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/dialogs/ObraDataDialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/dialogs/RustiqueDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/dialogs/RustiqueDialog.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/dialogs/ShowImagenDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/dialogs/ShowImagenDialog.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/dialogs/ShowModeloDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/dialogs/ShowModeloDialog.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/grids/ClientesGrid.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/grids/ClientesGrid.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/grids/MainGrid.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/grids/MainGrid.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/grids/ObrasGrid.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/grids/ObrasGrid.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/grids/OpcionesGrid.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/grids/OpcionesGrid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/grids/RustiqueGrid.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/grids/RustiqueGrid.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/grids/TrabajosGrid.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/grids/TrabajosGrid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/misc/ImagesManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/misc/ImagesManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/misc/MessagesManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/misc/MessagesManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/misc/RustiqueParameters.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/misc/RustiqueParameters.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/misc/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/misc/View.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/models/Cliente.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/models/Cliente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/models/Modelo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/models/Modelo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/models/Obra.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/models/Obra.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/panes/ClientesPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/panes/ClientesPane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/panes/MainPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/panes/MainPane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/panes/ObrasPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/panes/ObrasPane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/panes/OpcionesPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/panes/OpcionesPane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/panes/RustiquePane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/panes/RustiquePane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/panes/TrabajosPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/panes/TrabajosPane.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rustique-v3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rustique-v3.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rustique/bdd/RustiqueBDD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/bdd/RustiqueBDD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rustique/bdd/rustique.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/bdd/rustique.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rustique/controllers/ClientesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/controllers/ClientesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/controllers/ObrasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/controllers/ObrasController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rustique/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/controllers/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rustique/controllers/TrabajosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/controllers/TrabajosController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rustique/dialogs/CambiarModeloDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/dialogs/CambiarModeloDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/dialogs/NuevaImagenDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/dialogs/NuevaImagenDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rustique/dialogs/NuevoModeloDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/dialogs/NuevoModeloDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/dialogs/ObraDataDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/dialogs/ModeloDataInputDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/dialogs/ShowImagenDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/dialogs/ShowImagenDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rustique/dialogs/ShowModeloDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/dialogs/ShowModeloDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/grids/ClientesGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/grids/ClientesGrid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rustique/grids/MainGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/grids/MainGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/grids/ObrasGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/grids/ObrasGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/grids/OpcionesGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/grids/OpcionesGrid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rustique/grids/TrabajosGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/grids/TrabajosGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rustique/panes/TrabajosPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/panes/TrabajosPane.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,8 +140,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="/usr/share/openjfx" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../javafx-sdk-13.0.1" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
@@ -159,7 +174,7 @@
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="rustique.Main" />
       <module name="rustique-v3" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/../javafx-sdk-13.0.1/lib/  --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="rustique.panes.*" />
@@ -248,11 +263,15 @@
       <screen x="0" y="0" width="1360" height="738" />
     </state>
     <state x="276" y="31" key="#Project_Structure/0.0.1360.738@0.0.1360.738" timestamp="1576347945104" />
-    <state x="491" y="79" width="376" height="620" key="#com.intellij.ide.util.MemberChooser" timestamp="1577309265766">
+    <state x="146" y="26" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577330732547">
+      <screen x="0" y="0" width="1366" height="732" />
+    </state>
+    <state x="146" y="26" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.732@0.0.1366.732" timestamp="1577330732547" />
+    <state x="491" y="79" width="376" height="620" key="#com.intellij.ide.util.MemberChooser" timestamp="1577371367317">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state x="489" y="80" key="#com.intellij.ide.util.MemberChooser/0.0.1360.738@0.0.1360.738" timestamp="1576529298773" />
-    <state x="491" y="79" width="376" height="620" key="#com.intellij.ide.util.MemberChooser/0.0.1366.732@0.0.1366.732" timestamp="1577309265766" />
+    <state x="491" y="79" width="376" height="620" key="#com.intellij.ide.util.MemberChooser/0.0.1366.732@0.0.1366.732" timestamp="1577371367317" />
     <state x="460" y="253" width="445" height="231" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1576779520641">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
@@ -276,31 +295,31 @@
       <screen x="0" y="0" width="1360" height="738" />
     </state>
     <state x="438" y="85" key="DetectedRootsChooserDialog/0.0.1360.738@0.0.1360.738" timestamp="1576688727311" />
-    <state x="358" y="114" width="648" height="516" key="FileChooserDialogImpl" timestamp="1577325311080">
+    <state x="358" y="114" width="648" height="516" key="FileChooserDialogImpl" timestamp="1577330531918">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state x="356" y="115" width="648" height="516" key="FileChooserDialogImpl/0.0.1360.738@0.0.1360.738" timestamp="1576688721267" />
-    <state x="358" y="114" key="FileChooserDialogImpl/0.0.1366.732@0.0.1366.732" timestamp="1577325311080" />
-    <state width="1320" height="174" key="GridCell.Tab.0.bottom" timestamp="1577327563697">
+    <state x="358" y="114" key="FileChooserDialogImpl/0.0.1366.732@0.0.1366.732" timestamp="1577330531918" />
+    <state width="1320" height="174" key="GridCell.Tab.0.bottom" timestamp="1577374622517">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state width="1314" height="202" key="GridCell.Tab.0.bottom/0.0.1360.738@0.0.1360.738" timestamp="1576708756472" />
-    <state width="1320" height="174" key="GridCell.Tab.0.bottom/0.0.1366.732@0.0.1366.732" timestamp="1577327563697" />
-    <state width="1320" height="174" key="GridCell.Tab.0.center" timestamp="1577327563695">
+    <state width="1320" height="174" key="GridCell.Tab.0.bottom/0.0.1366.732@0.0.1366.732" timestamp="1577374622517" />
+    <state width="1320" height="174" key="GridCell.Tab.0.center" timestamp="1577374622516">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state width="1314" height="202" key="GridCell.Tab.0.center/0.0.1360.738@0.0.1360.738" timestamp="1576708756471" />
-    <state width="1320" height="174" key="GridCell.Tab.0.center/0.0.1366.732@0.0.1366.732" timestamp="1577327563695" />
-    <state width="1320" height="174" key="GridCell.Tab.0.left" timestamp="1577327563694">
+    <state width="1320" height="174" key="GridCell.Tab.0.center/0.0.1366.732@0.0.1366.732" timestamp="1577374622516" />
+    <state width="1320" height="174" key="GridCell.Tab.0.left" timestamp="1577374622515">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state width="1314" height="202" key="GridCell.Tab.0.left/0.0.1360.738@0.0.1360.738" timestamp="1576708756471" />
-    <state width="1320" height="174" key="GridCell.Tab.0.left/0.0.1366.732@0.0.1366.732" timestamp="1577327563694" />
-    <state width="1320" height="174" key="GridCell.Tab.0.right" timestamp="1577327563696">
+    <state width="1320" height="174" key="GridCell.Tab.0.left/0.0.1366.732@0.0.1366.732" timestamp="1577374622515" />
+    <state width="1320" height="174" key="GridCell.Tab.0.right" timestamp="1577374622516">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state width="1314" height="202" key="GridCell.Tab.0.right/0.0.1360.738@0.0.1360.738" timestamp="1576708756472" />
-    <state width="1320" height="174" key="GridCell.Tab.0.right/0.0.1366.732@0.0.1366.732" timestamp="1577327563696" />
+    <state width="1320" height="174" key="GridCell.Tab.0.right/0.0.1366.732@0.0.1366.732" timestamp="1577374622516" />
     <state width="1320" height="199" key="GridCell.Tab.1.bottom" timestamp="1577318227319">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
@@ -321,11 +340,11 @@
     </state>
     <state width="1314" height="202" key="GridCell.Tab.1.right/0.0.1360.738@0.0.1360.738" timestamp="1576708756472" />
     <state width="1320" height="199" key="GridCell.Tab.1.right/0.0.1366.732@0.0.1366.732" timestamp="1577318227319" />
-    <state x="165" y="0" width="1026" height="732" key="SettingsEditor" timestamp="1577326174179">
+    <state x="165" y="0" width="1026" height="732" key="SettingsEditor" timestamp="1577330540196">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state x="164" y="0" width="1026" height="732" key="SettingsEditor/0.0.1360.738@0.0.1360.738" timestamp="1576688731913" />
-    <state x="165" y="0" key="SettingsEditor/0.0.1366.732@0.0.1366.732" timestamp="1577326174179" />
+    <state x="165" y="0" key="SettingsEditor/0.0.1366.732@0.0.1366.732" timestamp="1577330540196" />
     <state x="348" y="0" width="664" height="732" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1576705632428">
       <screen x="0" y="0" width="1360" height="738" />
     </state>

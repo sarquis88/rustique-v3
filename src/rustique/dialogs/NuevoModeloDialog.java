@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import rustique.Main;
+import rustique.controllers.TrabajosController;
 import rustique.misc.MessagesManager;
 import rustique.misc.RustiqueParameters;
 import rustique.controllers.ClientesController;
@@ -12,6 +13,7 @@ import rustique.controllers.ObrasController;
 import rustique.models.Cliente;
 import rustique.models.Modelo;
 import rustique.models.Obra;
+import rustique.models.Trabajo;
 
 public class NuevoModeloDialog extends RustiqueDialog implements RustiqueParameters {
 
@@ -85,6 +87,19 @@ public class NuevoModeloDialog extends RustiqueDialog implements RustiqueParamet
             grid.add(new Label("Precio:"), 0, 4);
             grid.add(precio, 1, 4);
         }
+        else if(thisController instanceof TrabajosController) {
+            nombre = new TextField();
+            nombre.setPromptText("Nombre");
+            comentarios = new TextArea();
+            comentarios.setPromptText("Comentarios");
+            comentarios.setPrefSize(120, 50);
+            comentarios.setWrapText(true);
+
+            grid.add(new Label("Nombre:"), 0, 0);
+            grid.add(nombre, 1, 0);
+            grid.add(new Label("Comentarios:"), 0, 1);
+            grid.add(comentarios, 1, 1);
+        }
 
         thisDialog.getDialogPane().setContent(grid);
     }
@@ -127,6 +142,12 @@ public class NuevoModeloDialog extends RustiqueDialog implements RustiqueParamet
                 else
                     obra.setPrecio(Main.safeDecode(precio.getText()));
                 return obra;
+            }
+            else if(thisController instanceof TrabajosController) {
+                Trabajo trabajo = new Trabajo();
+                trabajo.setNombre(nombre.getText());
+                trabajo.setComentarios(comentarios.getText());
+                return trabajo;
             }
         }
         return null;

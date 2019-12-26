@@ -5,6 +5,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import rustique.controllers.TrabajosController;
 import rustique.misc.RustiqueParameters;
 import rustique.controllers.ClientesController;
 import rustique.controllers.Controller;
@@ -12,6 +13,7 @@ import rustique.controllers.ObrasController;
 import rustique.models.Cliente;
 import rustique.models.Modelo;
 import rustique.models.Obra;
+import rustique.models.Trabajo;
 
 public class ShowModeloDialog extends RustiqueDialog implements RustiqueParameters {
 
@@ -48,6 +50,10 @@ public class ShowModeloDialog extends RustiqueDialog implements RustiqueParamete
                 agregarFoto = new ButtonType("Agregar foto");
                 thisDialog.getDialogPane().getButtonTypes().addAll(agregarFoto);
             }
+        }
+        else if(modelo instanceof Trabajo) {
+            thisController = TrabajosController.getInstance();
+            titulo = "Ver Trabajo";
         }
 
         thisDialog.setTitle(titulo);

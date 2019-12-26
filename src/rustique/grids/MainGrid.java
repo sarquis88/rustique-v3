@@ -87,10 +87,10 @@ public class MainGrid extends RustiqueGrid implements RustiqueParameters {
 
         thisGrid.add(logo, 0, 0);
         thisGrid.add(principal, 0, 1);
-        thisGrid.add(clientes, 0, 2);
-        thisGrid.add(obras, 0, 3);
-        thisGrid.add(trabajos, 0, 4);
-        thisGrid.add(opciones, 0, 9);
+        thisGrid.add(clientes, 0, 6);
+        thisGrid.add(obras, 0, 7);
+        thisGrid.add(trabajos, 0, 8);
+        thisGrid.add(opciones, 0, 13);
         thisGrid.add(salir, 0, 30);
 
         if(logo != null)

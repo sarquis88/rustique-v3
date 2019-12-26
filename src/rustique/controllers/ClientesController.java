@@ -257,8 +257,8 @@ public class ClientesController implements Controller {
     }
 
     /**
-     * Permite buscar una obra por nombre o por id
-     * @return objeto Obra buscada
+     * Permite buscar un cliente por nombre o por id
+     * @return objeto Cliente buscado
      */
     private Cliente buscarCliente(String titulo) {
         String input = inputClienteData(titulo);
