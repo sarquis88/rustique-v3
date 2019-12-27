@@ -133,6 +133,7 @@ public class CambiarModeloDialog extends RustiqueDialog implements RustiqueParam
             grid.add(tipoDatoNuevo, 8, row);
         }
 
+        thisDialog.getDialogPane().setPrefWidth(800);
         thisDialog.getDialogPane().setContent(grid);
     }
 
@@ -182,8 +183,16 @@ public class CambiarModeloDialog extends RustiqueDialog implements RustiqueParam
             }
             else if(this.viejoModelo instanceof Trabajo) {
                 Trabajo trabajo = new Trabajo();
-                trabajo.setNombre(this.nombre.getText());
-                trabajo.setComentarios(this.comentarios.getText());
+                trabajo.setCliente(this.nombre.getText());
+                if(comentarios.getText() == null)
+                    trabajo.setComentarios("");
+                else if(comentarios.getText().length() > comentMaxSize) {
+                    trabajo.setComentarios("");
+                    MessagesManager.showInformationAlert("Comentario muy largo, " +
+                            "se puso en blanco");
+                }
+                else
+                    trabajo.setComentarios(this.comentarios.getText());
                 trabajo.setId(((Trabajo) viejoModelo).getId());
                 if(datePicker.getValue() == null)
                     trabajo.setFecha("Sin fecha");

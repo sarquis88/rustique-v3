@@ -6,7 +6,7 @@ public class Trabajo implements Modelo {
 
     private static int globalId = 0;
 
-    private String nombre;
+    private String cliente;
     private String fecha;
     private String comentarios;
     private int id;
@@ -14,20 +14,20 @@ public class Trabajo implements Modelo {
 
     public Trabajo() {}
 
-    public Trabajo(String nombre, String comentarios, String fecha, int id) {
-        this.nombre = nombre;
+    public Trabajo(String cliente, String comentarios, String fecha, int id) {
+        this.cliente = cliente;
         this.comentarios = comentarios;
         this.id = id;
         this.fecha = fecha;
         refreshDatos();
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getCliente() {
+        return cliente;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
     }
 
     public String getComentarios() {
@@ -49,8 +49,8 @@ public class Trabajo implements Modelo {
     @Override
     public void refreshDatos() {
         this.datos = new ArrayList<>();
-        this.datos.add("Nombre");
-        this.datos.add(this.nombre);
+        this.datos.add("Cliente");
+        this.datos.add(this.cliente);
         this.datos.add("Comentarios");
         this.datos.add(this.comentarios);
         this.datos.add("Fecha");

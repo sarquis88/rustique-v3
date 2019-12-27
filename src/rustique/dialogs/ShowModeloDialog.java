@@ -23,13 +23,13 @@ public class ShowModeloDialog extends RustiqueDialog implements RustiqueParamete
     private ButtonType volver;
     private ButtonType verFoto;
     private ButtonType agregarFoto;
+    private ButtonType comentarios;
 
     /**
      * Constructor de la clase
      * @param modelo modelo a mostrar
      */
     public ShowModeloDialog(Modelo modelo) {
-
         thisDialog = new Dialog<>();
 
         String titulo = "";
@@ -54,6 +54,9 @@ public class ShowModeloDialog extends RustiqueDialog implements RustiqueParamete
         else if(modelo instanceof Trabajo) {
             thisController = TrabajosController.getInstance();
             titulo = "Ver Trabajo";
+
+            comentarios = new ButtonType("Comentarios");
+            thisDialog.getDialogPane().getButtonTypes().add(comentarios);
         }
 
         thisDialog.setTitle(titulo);
@@ -62,9 +65,7 @@ public class ShowModeloDialog extends RustiqueDialog implements RustiqueParamete
         borrar = new ButtonType("Borrar");
         modificar = new ButtonType("Modificar");
         volver = new ButtonType("Volver");
-        thisDialog.getDialogPane().getButtonTypes().addAll(borrar);
-        thisDialog.getDialogPane().getButtonTypes().addAll(modificar);
-        thisDialog.getDialogPane().getButtonTypes().addAll(volver);
+        thisDialog.getDialogPane().getButtonTypes().addAll(borrar, modificar, volver);
 
         GridPane grid = new GridPane();
         grid.setHgap(hPadding);
@@ -102,5 +103,7 @@ public class ShowModeloDialog extends RustiqueDialog implements RustiqueParamete
             thisController.actionPerformed("ver-foto");
         else if(this.thisDialog.getResult() == this.agregarFoto)
             thisController.actionPerformed("agregar-foto");
+        else if(this.thisDialog.getResult() == this.comentarios)
+            thisController.actionPerformed("comentarios");
     }
 }

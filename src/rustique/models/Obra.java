@@ -117,4 +117,8 @@ public class Obra implements Modelo {
     public ArrayList<String> getDatos() {
         return this.datos;
     }
+
+    public String getImgNombre() {
+        return this.nombre + " - " + this.autor;
+    }
 }

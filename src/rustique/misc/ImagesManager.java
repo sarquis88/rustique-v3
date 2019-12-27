@@ -3,6 +3,7 @@ package rustique.misc;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import org.apache.commons.io.FileUtils;
 import rustique.Main;
@@ -13,9 +14,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class ImagesManager {
-
-    private static String obrasPath = "./src/images/obras/";
+public class ImagesManager implements RustiqueParameters {
 
     /**
      * Permite buscar en nuestra memoria alguna imagen
@@ -65,15 +64,15 @@ public class ImagesManager {
     /**
      * Escribe en memoria una imagen
      * @param img imagen a guardar
-     * @param id id de imagen para usar en el nombre
+     * @param imgNombre nombre de imagen
      */
-    public static void writeImage(Image img, int id) {
+    public static void writeImage(Image img, String imgNombre) {
         // extraccion de formato (ultimas 3 letras)
         String format = img.getUrl().substring(img.getUrl().length() - 3);
 
         try {
             ImageIO.write(SwingFXUtils.fromFXImage(img, null), format,
-                    new File(obrasPath + id + "." + format));
+                    new File(obrasPath + imgNombre + "." + format));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -81,15 +80,17 @@ public class ImagesManager {
 
     /**
      * Borrar imagen de memoria
-     * @param id id de imagen a borrar
+     * @param imgNombre nombre de imagen a borrar
      */
-    public static void removeImage(int id) {
+    public static void removeImage(String imgNombre) {
 
-        File file = new File(obrasPath + id + ".jpg");
-
-        if(!file.delete()) {
-            file = new File(obrasPath + id + ".png");
-            if(!file.delete())
+        String format = getFormat(imgNombre);
+        if(format == null) {
+            MessagesManager.showFatalErrorAlert();
+        }
+        else {
+            File file = new File(obrasPath + imgNombre + "." + format);
+            if (!file.delete())
                 MessagesManager.showFatalErrorAlert();
         }
     }
@@ -134,6 +135,48 @@ public class ImagesManager {
     }
 
     public static void copiarBDD() {
-        MessagesManager.showErrorAlert("¡¡¡ NO IMPLEMENTADO !!!");
+        MessagesManager.showInformationAlert("Eligir carpeta destino para backup");
+
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+
+        try {
+            File dest = new File(directoryChooser.showDialog(Main.getWindow()).toURI());
+
+            FileUtils.copyFileToDirectory(new File(bddPath), dest);
+            FileUtils.copyDirectoryToDirectory(new File(obrasPath), dest);
+        }
+        catch (NullPointerException ignored) {
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void cambiarImgNombre(String nombreViejo, String nombreNuevo) {
+
+        String format = getFormat(nombreViejo);
+        if(format == null) {
+            MessagesManager.showFatalErrorAlert();
+            return;
+        }
+        File nuevo = new File(obrasPath + nombreNuevo + "." + format);
+        File viejo = new File(obrasPath + nombreViejo + "." + format);
+        try {
+            FileUtils.moveFile(viejo, nuevo);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String getFormat(String nombre) {
+        Image img = new Image("file:" + obrasPath + nombre + ".png");
+        if(img.getHeight() != 0)
+            return "png";
+
+        img = new Image("file:" + obrasPath + nombre + ".jpg");
+        if(img.getHeight() != 0)
+            return "jpg";
+
+        return null;
     }
 }

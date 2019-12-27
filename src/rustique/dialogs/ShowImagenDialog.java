@@ -45,13 +45,13 @@ public class ShowImagenDialog extends RustiqueDialog implements RustiqueParamete
 
     /**
      * Muestra imagen en pantalla
-     * @param imageID -1 si se quiere elegir una imagen desde memoria,
+     * @param imgNombre == "" si se quiere elegir una imagen desde memoria,
      * o el id de una imagen en particular para mostrar dicha imagen
      */
-    public void show(int imageID) {
+    public void show(String imgNombre) {
         Image img;
 
-        if(imageID == -1) {
+        if(imgNombre.equals("")) {
             this.thisDialog.getDialogPane().getButtonTypes().removeAll(
                     this.cambiar, this.borrar);
             img = ImagesManager.chooseImage();
@@ -59,10 +59,13 @@ public class ShowImagenDialog extends RustiqueDialog implements RustiqueParamete
                 return;
         }
         else {
-            this.thisDialog.setTitle(thisController.getObraNameById(imageID));
-            img = new Image("file:" + ImagesManager.getObrasPath() + imageID + "." + "png");
-            if(img.getHeight() == 0)
-                img = new Image("file:" + ImagesManager.getObrasPath() + imageID + "." + "jpg");
+            this.thisDialog.setTitle(imgNombre);
+            String format = ImagesManager.getFormat(imgNombre);
+            if(format == null) {
+                MessagesManager.showFatalErrorAlert();
+                return;
+            }
+            img = new Image("file:" + obrasPath + imgNombre + "." + format);
         }
 
         ImageView imgView = ImagesManager.scale(img);
@@ -76,7 +79,7 @@ public class ShowImagenDialog extends RustiqueDialog implements RustiqueParamete
 
         if(this.thisDialog.getResult() == this.cambiar) {
             NuevaImagenDialog nuevaImagenDialog = new NuevaImagenDialog();
-            nuevaImagenDialog.show(imageID, true);
+            nuevaImagenDialog.show(true, imgNombre);
         }
         else if(this.thisDialog.getResult() == this.borrar) {
             if(MessagesManager.confirmation("Seguro desea borrar la imagen?"))

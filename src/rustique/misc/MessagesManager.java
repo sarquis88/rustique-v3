@@ -65,8 +65,6 @@ public class MessagesManager {
     }
 
     private static void fix(Alert alert) {
-        Platform.runLater(() -> {
-            alert.getDialogPane().getScene().getWindow().sizeToScene();
-        });
+        Platform.runLater(() -> alert.getDialogPane().getScene().getWindow().sizeToScene());
     }
 }

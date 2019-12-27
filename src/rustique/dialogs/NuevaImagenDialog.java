@@ -23,11 +23,11 @@ public class NuevaImagenDialog extends RustiqueDialog implements RustiqueParamet
 
     /**
      * Muestra de dialogo
-     * @param idGlobal id de imagen a agregar
+     * @param imgNombre nombre de imagen a agregar
      * @param change true si es un cambio, false si es una obra nueva
      * @return "Si" si se agrego la foto, de lo contrario "No"
      */
-    public String show(int idGlobal, boolean change) {
+    public String show(boolean change, String imgNombre) {
         String hasImage = "No";
 
         Image img = ImagesManager.chooseImage();
@@ -53,9 +53,9 @@ public class NuevaImagenDialog extends RustiqueDialog implements RustiqueParamet
             // si se está haciendo un cambio de imagen, se borra la
             // imagen vieja y luego se escribe la nueva
             if(change)
-                ImagesManager.removeImage(idGlobal);
+                ImagesManager.removeImage(imgNombre);
 
-            ImagesManager.writeImage(img, idGlobal);
+            ImagesManager.writeImage(img, imgNombre);
         }
         return hasImage;
     }

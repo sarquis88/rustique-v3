@@ -3,6 +3,8 @@ package rustique.dialogs;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import rustique.controllers.Controller;
+import rustique.controllers.TrabajosController;
 import rustique.misc.RustiqueParameters;
 
 public class ModeloDataInputDialog extends RustiqueDialog implements RustiqueParameters {
@@ -17,7 +19,7 @@ public class ModeloDataInputDialog extends RustiqueDialog implements RustiquePar
      * Constructor de la clase
      * @param title titulo de la ventana
      */
-    public ModeloDataInputDialog(String title) {
+    public ModeloDataInputDialog(String title, Controller thisController) {
         thisDialog = new Dialog<>();
         thisDialog.setTitle(title);
         thisDialog.setHeaderText("");
@@ -36,11 +38,21 @@ public class ModeloDataInputDialog extends RustiqueDialog implements RustiquePar
         grid.setPadding(new Insets(vPadding, hPadding, vPadding, hPadding));
 
         nombre = new TextField();
-        nombre.setPromptText("Nombre");
+        Label label;
+
+        if(thisController instanceof TrabajosController) {
+            nombre.setPromptText("Cliente");
+            label = new Label("Por cliente:");
+        }
+        else {
+            nombre.setPromptText("Nombre");
+            label = new Label("Por nombre:");
+        }
+
         id = new TextField();
         id.setPromptText("ID");
 
-        grid.add(new Label("Por nombre:"), 0, 0);
+        grid.add(label, 0, 0);
         grid.add(nombre, 1, 0);
 
         grid.add(new Label("ó"), 1, 1);

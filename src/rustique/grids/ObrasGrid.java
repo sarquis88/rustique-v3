@@ -16,7 +16,6 @@ public class ObrasGrid extends RustiqueGrid implements RustiqueParameters {
     private Button borrarObra;
     private Button buscarObra;
     private Button modificarObra;
-    private Button verFotos;
     private Button deseleccionarObra;
 
     /**
@@ -60,7 +59,7 @@ public class ObrasGrid extends RustiqueGrid implements RustiqueParameters {
         buscarObra.setStyle(buttonsStyle);
         buscarObra.setOnAction(e -> thisController.actionPerformed("show-obra"));
 
-        verFotos = new Button("Ver fotos");
+        Button verFotos = new Button("Ver fotos");
         verFotos.setPrefSize(buttonsWidth, buttonsHeight);
         verFotos.setStyle(buttonsStyle);
         verFotos.setOnAction(e -> thisController.actionPerformed("ver-fotos"));

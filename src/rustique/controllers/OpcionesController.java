@@ -1,6 +1,5 @@
 package rustique.controllers;
 
-import javafx.stage.Stage;
 import rustique.misc.ImagesManager;
 import rustique.Main;
 import rustique.misc.MessagesManager;
@@ -25,14 +24,6 @@ public class OpcionesController {
      */
     private OpcionesController() {
         thisOpcionesController = this;
-    }
-
-    /**
-     * Retorna ventana principal
-     * @return objeto Stage
-     */
-    public Stage getWindow() {
-        return Main.getWindow();
     }
 
     /**

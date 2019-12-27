@@ -86,7 +86,7 @@ public class ObrasController implements Controller {
 
 
             if (MessagesManager.confirmation("Desea agregar una foto?"))
-                obra.setHasImage(inputImage(Obra.getGlobalId()));
+                obra.setHasImage(inputImage(obra.getImgNombre()));
             else
                 obra.setHasImage("No");
 
@@ -120,7 +120,7 @@ public class ObrasController implements Controller {
 
         if(MessagesManager.confirmation("Seguro desea borrar la obra " + obra.getNombre() + "?")) {
             if(obra.getHasImage().equalsIgnoreCase("Si"))
-                ImagesManager.removeImage(obra.getId());
+                ImagesManager.removeImage(obra.getImgNombre());
             RustiqueBDD.getInstance().deleteObra(obra.getId());
             data.remove(obra);
             MessagesManager.showInformationAlert("Borrado: " + obra.getNombre().toUpperCase());
@@ -238,7 +238,24 @@ public class ObrasController implements Controller {
      */
     public String inputImage(int idObra) {
         NuevaImagenDialog nuevaImagenDialog = new NuevaImagenDialog();
-        return nuevaImagenDialog.show(idObra, false);
+
+        Obra obra = getObraById(idObra);
+        if(obra != null)
+            return nuevaImagenDialog.show(false, obra.getImgNombre());
+        else {
+            MessagesManager.showFatalErrorAlert();
+            return "No";
+        }
+    }
+
+    /**
+     * Muestra de dialogo para insertar imagen
+     * @param imgNombre nombre de obra correspondiente a la imagen
+     * @return "Si" si se insertó la imagen, de lo contrario "No"
+     */
+    public String inputImage(String imgNombre) {
+        NuevaImagenDialog nuevaImagenDialog = new NuevaImagenDialog();
+        return nuevaImagenDialog.show(false, imgNombre);
     }
 
     /**
@@ -246,7 +263,7 @@ public class ObrasController implements Controller {
      * @return dato ingresado
      */
     private String inputObraData() {
-        ModeloDataInputDialog modeloDataInputDialog = new ModeloDataInputDialog("Borrar obra");
+        ModeloDataInputDialog modeloDataInputDialog = new ModeloDataInputDialog("Borrar obra", thisController);
         modeloDataInputDialog.show();
         return modeloDataInputDialog.getResult();
     }
@@ -318,6 +335,9 @@ public class ObrasController implements Controller {
 
         obra.setHasImage(obraVieja.getHasImage());
 
+        if(obraVieja.getHasImage().equals("Si"))
+            ImagesManager.cambiarImgNombre(obraVieja.getImgNombre(), obra.getImgNombre());
+
         RustiqueBDD.getInstance().cambiarObra(idViejo,
                 obra.getNombre(), obra.getAutor(), obra.getTipo(),
                 obra.getTamanio(), obra.getPrecio(), obra.getHasImage());
@@ -377,7 +397,7 @@ public class ObrasController implements Controller {
 
         if (obra != null) {
             ShowImagenDialog showImagenDialog = new ShowImagenDialog();
-            showImagenDialog.show(obra.getId());
+            showImagenDialog.show(obra.getImgNombre());
         }
         else
             MessagesManager.showFatalErrorAlert();
@@ -401,7 +421,7 @@ public class ObrasController implements Controller {
             return;
         }
 
-        ImagesManager.removeImage(obra.getId());
+        ImagesManager.removeImage(obra.getImgNombre());
         obra.setHasImage("No");
 
         RustiqueBDD.getInstance().cambiarObra(obra.getId(),
@@ -431,7 +451,7 @@ public class ObrasController implements Controller {
 
     private void verFotos() {
         ShowImagenDialog showImagenDialog = new ShowImagenDialog();
-        showImagenDialog.show(-1);
+        showImagenDialog.show("");
     }
 
     private void deseleccionarObra() {

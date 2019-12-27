@@ -3,19 +3,18 @@ package rustique.bdd;
 import rustique.controllers.ClientesController;
 import rustique.controllers.ObrasController;
 import rustique.controllers.TrabajosController;
+import rustique.misc.RustiqueParameters;
 import rustique.models.Cliente;
 import rustique.models.Obra;
 import rustique.models.Trabajo;
 
 import java.sql.*;
 
-public class RustiqueBDD {
+public class RustiqueBDD implements RustiqueParameters {
 
     private static RustiqueBDD thisBDD = null;
     private static Statement stmt = null;
     private static Connection c = null;
-
-    private String bddPath = "./src/rustique/bdd/rustique.db";
 
     /**
      * Patron Singleton
@@ -72,7 +71,7 @@ public class RustiqueBDD {
             if(!tableExists("TRABAJOS")) {
                 String sql = 	"CREATE TABLE TRABAJOS " +
                         "(ID INT PRIMARY KEY     NOT NULL," +
-                        " NOMBRE         TEXT    NOT NULL, " +
+                        " CLIENTE        TEXT    NOT NULL, " +
                         " COMENTARIOS    TEXT    NOT NULL, " +
                         " FECHA          TEXT    NOT NULL) ";
                 stmt.executeUpdate(sql);
@@ -341,15 +340,15 @@ public class RustiqueBDD {
     /**
      * Insercion de trabajo en base de datos
      * @param id identificador del trabajo
-     * @param nombre nombre del trabajo
+     * @param cliente nombre del trabajo
      * @param comentarios comentarios del trabajo
      */
-    public void insertarTrabajo(int id, String nombre, String comentarios, String fecha) {
+    public void insertarTrabajo(int id, String cliente, String comentarios, String fecha) {
         try {
             c = DriverManager.getConnection("jdbc:sqlite:" + bddPath);
             stmt = c.createStatement();
-            String sql = "INSERT INTO TRABAJOS (ID,NOMBRE,COMENTARIOS, FECHA) " +
-                    "VALUES (" + id + ", '" + nombre + "', '" + comentarios + "', '" + fecha + "' );";
+            String sql = "INSERT INTO TRABAJOS (ID,CLIENTE,COMENTARIOS, FECHA) " +
+                    "VALUES (" + id + ", '" + cliente + "', '" + comentarios + "', '" + fecha + "' );";
             stmt.executeUpdate(sql);
             stmt.close();
             c.close();
@@ -391,13 +390,13 @@ public class RustiqueBDD {
             ResultSet rs = stmt.executeQuery( "SELECT * FROM TRABAJOS;");
 
             while (rs.next()) {
-                String nombre = rs.getString("NOMBRE");
+                String cliente = rs.getString("CLIENTE");
                 String comentarios = rs.getString("COMENTARIOS");
                 String fecha = rs.getString("FECHA");
                 int id = rs.getInt("ID");
 
                 TrabajosController.addTrabajo(
-                        new Trabajo(nombre, comentarios, fecha, id));
+                        new Trabajo(cliente, comentarios, fecha, id));
                 Trabajo.setGlobalId(id + 1);
             }
             c.close();
@@ -410,11 +409,11 @@ public class RustiqueBDD {
     /**
      * Cambiar datos del trabajo
      * @param id id actual del trabajo a cambiar
-     * @param nombreNuevo nombre nuevo a insertar
+     * @param clienteNuevo cliente nombre nuevo a insertar
      * @param comentariosNuevo comentario nuevo a insertar
      * @param fechaNueva fecha nueva a insertar
      */
-    public void cambiarTrabajo(int id, String nombreNuevo, String comentariosNuevo, String fechaNueva) {
+    public void cambiarTrabajo(int id, String clienteNuevo, String comentariosNuevo, String fechaNueva) {
         try {
             c = DriverManager.getConnection("jdbc:sqlite:" + bddPath);
             stmt = c.createStatement();
@@ -423,7 +422,7 @@ public class RustiqueBDD {
                     "' WHERE ID=" + id;
             stmt.executeUpdate(sql);
 
-            sql = "UPDATE TRABAJOS SET NOMBRE='" + nombreNuevo +
+            sql = "UPDATE TRABAJOS SET CLIENTE='" + clienteNuevo +
                     "' WHERE ID=" + id;
             stmt.executeUpdate(sql);
 

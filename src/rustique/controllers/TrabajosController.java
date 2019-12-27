@@ -53,6 +53,9 @@ public class TrabajosController implements Controller {
             case "deseleccionar-trabajo":
                 TrabajosPane.getInstance().resetTrabajoClickeado();
                 break;
+            case "comentarios":
+                verComentarios();
+                break;
             default:
                 break;
         }
@@ -65,13 +68,13 @@ public class TrabajosController implements Controller {
         Trabajo nuevoTrabajo = inputTrabajo();
 
         if(nuevoTrabajo != null) {
-            if(Main.isNombreValido(nuevoTrabajo.getNombre())) {
+            if(Main.isNombreValido(nuevoTrabajo.getCliente())) {
 
-                if(nombreExists(nuevoTrabajo.getNombre()))
+                if(nombreExists(nuevoTrabajo.getCliente()))
                     MessagesManager.showErrorAlert("Nombre existente");
                 else {
                     RustiqueBDD.getInstance().insertarTrabajo(Trabajo.getGlobalId(),
-                            nuevoTrabajo.getNombre(), nuevoTrabajo.getComentarios(), nuevoTrabajo.getFecha());
+                            nuevoTrabajo.getCliente(), nuevoTrabajo.getComentarios(), nuevoTrabajo.getFecha());
 
                     refreshData();
                 }
@@ -108,18 +111,18 @@ public class TrabajosController implements Controller {
         if(nuevoTrabajo == null)
             return;
 
-        if(nombreExists(nuevoTrabajo.getNombre()) &&
-                !nuevoTrabajo.getNombre().equalsIgnoreCase(trabajoViejo.getNombre())) {
+        if(nombreExists(nuevoTrabajo.getCliente()) &&
+                !nuevoTrabajo.getCliente().equalsIgnoreCase(trabajoViejo.getCliente())) {
             MessagesManager.showErrorAlert("NOMBRE EXISTENTE");
             return;
         }
-        if(!Main.isNombreValido(nuevoTrabajo.getNombre())) {
+        if(!Main.isNombreValido(nuevoTrabajo.getCliente())) {
             MessagesManager.showErrorAlert("NOMBRE INVALIDO");
             return;
         }
 
         RustiqueBDD.getInstance().cambiarTrabajo(trabajoViejo.getId(),
-                nuevoTrabajo.getNombre(), nuevoTrabajo.getComentarios(), nuevoTrabajo.getFecha());
+                nuevoTrabajo.getCliente(), nuevoTrabajo.getComentarios(), nuevoTrabajo.getFecha());
         refreshData();
         TrabajosPane.getInstance().resetTrabajoClickeado();
     }
@@ -157,7 +160,7 @@ public class TrabajosController implements Controller {
      */
     private boolean nombreExists(String nombre) {
         for(Trabajo trabajo : data)
-            if(trabajo.getNombre().equalsIgnoreCase(nombre))
+            if(trabajo.getCliente().equalsIgnoreCase(nombre))
                 return true;
         return false;
     }
@@ -175,7 +178,7 @@ public class TrabajosController implements Controller {
      * @return dato ingresado
      */
     private String inputTrabajoData(String titulo) {
-        ModeloDataInputDialog modeloDataInputDialog = new ModeloDataInputDialog(titulo);
+        ModeloDataInputDialog modeloDataInputDialog = new ModeloDataInputDialog(titulo, thisController);
         modeloDataInputDialog.show();
         return modeloDataInputDialog.getResult();
     }
@@ -198,7 +201,7 @@ public class TrabajosController implements Controller {
             return;
         }
 
-        if(MessagesManager.confirmation("Borrar trabajo " + trabajo.getNombre().toUpperCase()
+        if(MessagesManager.confirmation("Borrar trabajo " + trabajo.getCliente().toUpperCase()
                 + " ?")) {
             data.remove(trabajo);
             RustiqueBDD.getInstance().deleteTrabajo(trabajo.getId());
@@ -271,7 +274,7 @@ public class TrabajosController implements Controller {
             return null;
         }
 
-        TrabajosPane.getInstance().setTrabajoClickeado(trabajoBuscado.getNombre());
+        TrabajosPane.getInstance().setTrabajoClickeado(trabajoBuscado.getCliente());
         return trabajoBuscado;
     }
 
@@ -294,7 +297,7 @@ public class TrabajosController implements Controller {
      */
     private Trabajo getTrabajoByNombre(String nombre) {
         for(Trabajo trabajo : data)
-            if(trabajo.getNombre().equalsIgnoreCase(nombre))
+            if(trabajo.getCliente().equalsIgnoreCase(nombre))
                 return trabajo;
         return null;
     }
@@ -309,5 +312,13 @@ public class TrabajosController implements Controller {
             if(trabajo.getId() == id)
                 return trabajo;
         return null;
+    }
+
+    private void verComentarios() {
+        Trabajo trabajo = getTrabajoByNombre(TrabajosPane.getInstance().getTrabajoClickeado());
+        if(trabajo == null)
+            MessagesManager.showFatalErrorAlert();
+        else
+            MessagesManager.showInformationAlert(trabajo.getComentarios());
     }
 }

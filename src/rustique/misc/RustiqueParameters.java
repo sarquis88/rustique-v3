@@ -25,4 +25,7 @@ public interface RustiqueParameters {
     String tableColumnsStyle = "-fx-alignment: CENTER;";
 
     int comentMaxSize = 40;
+
+    String obrasPath = "./src/images/obras/";
+    String bddPath = "./src/rustique/bdd/rustique.db";
 }

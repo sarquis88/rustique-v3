@@ -59,8 +59,8 @@ public class TrabajosPane implements RustiquePane, RustiqueParameters {
         tableView.setPrefWidth(scrollPane.getPrefWidth());
         tableView.setPrefHeight(scrollPane.getPrefHeight());
 
-        TableColumn<Trabajo, String> c0 = new TableColumn<>("Nombre");
-        c0.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        TableColumn<Trabajo, String> c0 = new TableColumn<>("Cliente");
+        c0.setCellValueFactory(new PropertyValueFactory<>("cliente"));
         c0.setPrefWidth( tableView.getPrefWidth()  * 0.2);
         c0.setStyle(tableColumnsStyle + "-fx-font-weight: bold;");
         TableColumn<Trabajo, String> c1 = new TableColumn<>("Comentarios");

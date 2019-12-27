@@ -76,7 +76,7 @@ public class ClientesController implements Controller {
                 }
             }
             else
-                MessagesManager.showErrorAlert("Nombre invalido");
+                MessagesManager.showErrorAlert("Nombre inválido");
         }
     }
 
@@ -95,7 +95,7 @@ public class ClientesController implements Controller {
      * @return dato ingresado
      */
     private String inputClienteData(String titulo) {
-        ModeloDataInputDialog modeloDataInputDialog = new ModeloDataInputDialog(titulo);
+        ModeloDataInputDialog modeloDataInputDialog = new ModeloDataInputDialog(titulo, thisController);
         modeloDataInputDialog.show();
         return modeloDataInputDialog.getResult();
     }
