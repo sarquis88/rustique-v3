@@ -42,7 +42,13 @@ public class OpcionesGrid extends RustiqueGrid implements RustiqueParameters {
         copiaBDD.setStyle(buttonsStyle);
         copiaBDD.setOnAction(e -> thisController.actionPerformed("copia-bdd"));
 
+        Button cambiarColor = new Button("Cambiar color");
+        cambiarColor.setPrefSize(buttonsWidth, buttonsHeight);
+        cambiarColor.setStyle(buttonsStyle);
+        cambiarColor.setOnAction(e -> thisController.actionPerformed("cambiar-color"));
+
         thisGrid.add(restablecerBDD, 0, 0);
         thisGrid.add(copiaBDD, 0, 1);
+        thisGrid.add(cambiarColor, 0, 2);
     }
 }

@@ -4,6 +4,7 @@ import rustique.misc.ImagesManager;
 import rustique.Main;
 import rustique.misc.MessagesManager;
 import rustique.bdd.RustiqueBDD;
+import rustique.misc.View;
 
 public class OpcionesController {
 
@@ -37,6 +38,9 @@ public class OpcionesController {
                 break;
             case "copia-bdd":
                 copiaBDD();
+                break;
+            case "cambiar-color":
+                View.getInstance().cambiarColor();
                 break;
             default:
                 break;

@@ -54,6 +54,9 @@ public class RustiqueBDD implements RustiqueParameters {
                         " SALDO			 INT	 NOT NULL, " +
                         " COMENTARIOS    TEXT    NOT NULL) ";
                 stmt.executeUpdate(sql);
+
+
+
                 stmt.close();
             }
             if(!tableExists("OBRAS")) {
@@ -75,6 +78,18 @@ public class RustiqueBDD implements RustiqueParameters {
                         " COMENTARIOS    TEXT    NOT NULL, " +
                         " FECHA          TEXT    NOT NULL) ";
                 stmt.executeUpdate(sql);
+                stmt.close();
+            }
+            if(!tableExists("UTILIDADES")) {
+                String sql = 	"CREATE TABLE UTILIDADES " +
+                        "(ID INT PRIMARY KEY     NOT NULL," +
+                        " COLOR       INT    NOT NULL)";
+                stmt.executeUpdate(sql);
+
+                sql = "INSERT INTO UTILIDADES (ID,COLOR) " +
+                        "VALUES (" + 0 + ", " + 7 + ");";
+                stmt.executeUpdate(sql);
+
                 stmt.close();
             }
             c.close();
@@ -453,11 +468,59 @@ public class RustiqueBDD implements RustiqueParameters {
             sql = "DROP TABLE OBRAS;";
             stmt.executeUpdate(sql);
 
+            sql = "DROP TABLE TRABAJOS;";
+            stmt.executeUpdate(sql);
+
             stmt.close();
             c.close();
         }
         catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Cambiar color de default de fondo
+     * @param color numero correspondiente al color
+     */
+    public void insertarColor(int color) {
+        try {
+            c = DriverManager.getConnection("jdbc:sqlite:" + bddPath);
+            stmt = c.createStatement();
+
+            String sql = "UPDATE UTILIDADES SET COLOR='" + color +
+                    "' WHERE ID=0";
+            stmt.executeUpdate(sql);
+
+            stmt.close();
+            c.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Getter de color de default de fondo
+     * @return int correspondiente al color
+     */
+    public int getColor() {
+        int color = 0;
+        try {
+            c = DriverManager.getConnection("jdbc:sqlite:" + bddPath);
+            stmt = c.createStatement();
+
+            String sql = "SELECT COLOR FROM UTILIDADES WHERE ID=0;";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                color = rs.getInt("COLOR");
+            }
+
+            stmt.close();
+            c.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return color;
     }
 }

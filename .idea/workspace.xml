@@ -10,32 +10,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/bdd/RustiqueBDD.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/bdd/RustiqueBDD.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/bdd/rustique.db" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/bdd/rustique.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/controllers/TrabajosController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/controllers/TrabajosController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/dialogs/CambiarModeloDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/dialogs/CambiarModeloDialog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/dialogs/NuevoModeloDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/dialogs/NuevoModeloDialog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/dialogs/ShowModeloDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/dialogs/ShowModeloDialog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/models/Trabajo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/models/Trabajo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/panes/TrabajosPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/panes/TrabajosPane.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/obras/0.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rustique/bdd/RustiqueBDD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/bdd/RustiqueBDD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rustique/bdd/rustique.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/bdd/rustique.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/controllers/ClientesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/controllers/ClientesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/controllers/ObrasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/controllers/ObrasController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rustique/controllers/OpcionesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/controllers/OpcionesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/controllers/TrabajosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/controllers/TrabajosController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/dialogs/CambiarModeloDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/dialogs/CambiarModeloDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/dialogs/ModeloDataInputDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/dialogs/ModeloDataInputDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/dialogs/NuevaImagenDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/dialogs/NuevaImagenDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/dialogs/NuevoModeloDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/dialogs/NuevoModeloDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/dialogs/ShowImagenDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/dialogs/ShowImagenDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/dialogs/ShowModeloDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/dialogs/ShowModeloDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/grids/ObrasGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/grids/ObrasGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/misc/ImagesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/misc/ImagesManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/misc/MessagesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/misc/MessagesManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/misc/RustiqueParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/misc/RustiqueParameters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/models/Obra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/models/Obra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/models/Trabajo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/models/Trabajo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rustique/panes/TrabajosPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/panes/TrabajosPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rustique/grids/OpcionesGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/grids/OpcionesGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rustique/misc/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/misc/View.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,11 +232,11 @@
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state x="146" y="26" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.732@0.0.1366.732" timestamp="1577330732547" />
-    <state x="491" y="79" width="376" height="620" key="#com.intellij.ide.util.MemberChooser" timestamp="1577381081755">
+    <state x="491" y="79" width="376" height="620" key="#com.intellij.ide.util.MemberChooser" timestamp="1577481270274">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state x="489" y="80" key="#com.intellij.ide.util.MemberChooser/0.0.1360.738@0.0.1360.738" timestamp="1576529298773" />
-    <state x="491" y="79" width="376" height="620" key="#com.intellij.ide.util.MemberChooser/0.0.1366.732@0.0.1366.732" timestamp="1577381081755" />
+    <state x="491" y="79" width="376" height="620" key="#com.intellij.ide.util.MemberChooser/0.0.1366.732@0.0.1366.732" timestamp="1577481270274" />
     <state x="460" y="253" width="445" height="231" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1576779520641">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
@@ -286,46 +265,46 @@
     </state>
     <state x="356" y="115" width="648" height="516" key="FileChooserDialogImpl/0.0.1360.738@0.0.1360.738" timestamp="1576688721267" />
     <state x="358" y="114" key="FileChooserDialogImpl/0.0.1366.732@0.0.1366.732" timestamp="1577330531918" />
-    <state width="1320" height="174" key="GridCell.Tab.0.bottom" timestamp="1577474462923">
+    <state width="1320" height="199" key="GridCell.Tab.0.bottom" timestamp="1577483621091">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state width="1314" height="202" key="GridCell.Tab.0.bottom/0.0.1360.738@0.0.1360.738" timestamp="1576708756472" />
-    <state width="1320" height="174" key="GridCell.Tab.0.bottom/0.0.1366.732@0.0.1366.732" timestamp="1577474462923" />
-    <state width="1320" height="174" key="GridCell.Tab.0.center" timestamp="1577474462922">
+    <state width="1320" height="199" key="GridCell.Tab.0.bottom/0.0.1366.732@0.0.1366.732" timestamp="1577483621091" />
+    <state width="1320" height="199" key="GridCell.Tab.0.center" timestamp="1577483621090">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state width="1314" height="202" key="GridCell.Tab.0.center/0.0.1360.738@0.0.1360.738" timestamp="1576708756471" />
-    <state width="1320" height="174" key="GridCell.Tab.0.center/0.0.1366.732@0.0.1366.732" timestamp="1577474462922" />
-    <state width="1320" height="174" key="GridCell.Tab.0.left" timestamp="1577474462922">
+    <state width="1320" height="199" key="GridCell.Tab.0.center/0.0.1366.732@0.0.1366.732" timestamp="1577483621090" />
+    <state width="1320" height="199" key="GridCell.Tab.0.left" timestamp="1577483621090">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state width="1314" height="202" key="GridCell.Tab.0.left/0.0.1360.738@0.0.1360.738" timestamp="1576708756471" />
-    <state width="1320" height="174" key="GridCell.Tab.0.left/0.0.1366.732@0.0.1366.732" timestamp="1577474462922" />
-    <state width="1320" height="174" key="GridCell.Tab.0.right" timestamp="1577474462922">
+    <state width="1320" height="199" key="GridCell.Tab.0.left/0.0.1366.732@0.0.1366.732" timestamp="1577483621090" />
+    <state width="1320" height="199" key="GridCell.Tab.0.right" timestamp="1577483621091">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state width="1314" height="202" key="GridCell.Tab.0.right/0.0.1360.738@0.0.1360.738" timestamp="1576708756472" />
-    <state width="1320" height="174" key="GridCell.Tab.0.right/0.0.1366.732@0.0.1366.732" timestamp="1577474462922" />
-    <state width="1320" height="199" key="GridCell.Tab.1.bottom" timestamp="1577318227319">
+    <state width="1320" height="199" key="GridCell.Tab.0.right/0.0.1366.732@0.0.1366.732" timestamp="1577483621091" />
+    <state width="1320" height="199" key="GridCell.Tab.1.bottom" timestamp="1577483621091">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state width="1314" height="202" key="GridCell.Tab.1.bottom/0.0.1360.738@0.0.1360.738" timestamp="1576708756473" />
-    <state width="1320" height="199" key="GridCell.Tab.1.bottom/0.0.1366.732@0.0.1366.732" timestamp="1577318227319" />
-    <state width="1320" height="199" key="GridCell.Tab.1.center" timestamp="1577318227318">
+    <state width="1320" height="199" key="GridCell.Tab.1.bottom/0.0.1366.732@0.0.1366.732" timestamp="1577483621091" />
+    <state width="1320" height="199" key="GridCell.Tab.1.center" timestamp="1577483621091">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state width="1314" height="202" key="GridCell.Tab.1.center/0.0.1360.738@0.0.1360.738" timestamp="1576708756472" />
-    <state width="1320" height="199" key="GridCell.Tab.1.center/0.0.1366.732@0.0.1366.732" timestamp="1577318227318" />
-    <state width="1320" height="199" key="GridCell.Tab.1.left" timestamp="1577318227318">
+    <state width="1320" height="199" key="GridCell.Tab.1.center/0.0.1366.732@0.0.1366.732" timestamp="1577483621091" />
+    <state width="1320" height="199" key="GridCell.Tab.1.left" timestamp="1577483621091">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state width="1314" height="202" key="GridCell.Tab.1.left/0.0.1360.738@0.0.1360.738" timestamp="1576708756472" />
-    <state width="1320" height="199" key="GridCell.Tab.1.left/0.0.1366.732@0.0.1366.732" timestamp="1577318227318" />
-    <state width="1320" height="199" key="GridCell.Tab.1.right" timestamp="1577318227319">
+    <state width="1320" height="199" key="GridCell.Tab.1.left/0.0.1366.732@0.0.1366.732" timestamp="1577483621091" />
+    <state width="1320" height="199" key="GridCell.Tab.1.right" timestamp="1577483621091">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state width="1314" height="202" key="GridCell.Tab.1.right/0.0.1360.738@0.0.1360.738" timestamp="1576708756472" />
-    <state width="1320" height="199" key="GridCell.Tab.1.right/0.0.1366.732@0.0.1366.732" timestamp="1577318227319" />
+    <state width="1320" height="199" key="GridCell.Tab.1.right/0.0.1366.732@0.0.1366.732" timestamp="1577483621091" />
     <state x="165" y="0" width="1026" height="732" key="SettingsEditor" timestamp="1577330540196">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
@@ -340,5 +319,16 @@
     </state>
     <state x="343" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1360.738@0.0.1360.738" timestamp="1576528198048" />
     <state x="345" y="59" width="675" height="673" key="search.everywhere.popup/0.0.1366.732@0.0.1366.732" timestamp="1577473618311" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/rustique/bdd/RustiqueBDD.java</url>
+          <line>511</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
