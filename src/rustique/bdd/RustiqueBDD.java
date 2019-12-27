@@ -471,6 +471,9 @@ public class RustiqueBDD implements RustiqueParameters {
             sql = "DROP TABLE TRABAJOS;";
             stmt.executeUpdate(sql);
 
+            sql = "DROP TABLE UTILIDADES;";
+            stmt.executeUpdate(sql);
+
             stmt.close();
             c.close();
         }
