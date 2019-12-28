@@ -64,12 +64,11 @@ public class InputPathDialog extends RustiqueDialog implements RustiqueParameter
         DirectoryChooser directoryChooser = new DirectoryChooser();
         String path;
         try {
-            path = directoryChooser.showDialog(Main.getWindow()).toURI().toString();
+            path = directoryChooser.showDialog(Main.getWindow()).toURI().getPath();
         }
         catch (NullPointerException e) {
             return;
         }
-        path = path.split(":")[1];
         if(path == null)
             path = "";
         textField.setText(path);
