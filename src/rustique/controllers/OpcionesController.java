@@ -1,5 +1,6 @@
 package rustique.controllers;
 
+import rustique.dialogs.InputPathDialog;
 import rustique.misc.ImagesManager;
 import rustique.Main;
 import rustique.misc.MessagesManager;
@@ -37,10 +38,13 @@ public class OpcionesController {
                 restablecerBDD();
                 break;
             case "copia-bdd":
-                copiaBDD();
+                ImagesManager.copiarBDD();
                 break;
             case "cambiar-color":
                 View.getInstance().cambiarColor();
+                break;
+            case "cambiar-directorio":
+                cambiarDirectorio();
                 break;
             default:
                 break;
@@ -58,7 +62,12 @@ public class OpcionesController {
         }
     }
 
-    private void copiaBDD() {
-        ImagesManager.copiarBDD();
+    private void cambiarDirectorio() {
+        InputPathDialog inputPathDialog = new InputPathDialog();
+        inputPathDialog.show();
+
+        String path = inputPathDialog.getResult();
+        if(path != null)
+            RustiqueBDD.getInstance().insertarDirInicial(path);
     }
 }

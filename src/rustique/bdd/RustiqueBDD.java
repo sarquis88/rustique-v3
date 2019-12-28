@@ -83,11 +83,12 @@ public class RustiqueBDD implements RustiqueParameters {
             if(!tableExists("UTILIDADES")) {
                 String sql = 	"CREATE TABLE UTILIDADES " +
                         "(ID INT PRIMARY KEY     NOT NULL," +
-                        " COLOR       INT    NOT NULL)";
+                        " COLOR       INT        NOT NULL," +
+                        " INITIALDIR  TEXT       NOT NULL)";
                 stmt.executeUpdate(sql);
 
-                sql = "INSERT INTO UTILIDADES (ID,COLOR) " +
-                        "VALUES (" + 0 + ", " + 7 + ");";
+                sql = "INSERT INTO UTILIDADES (ID,COLOR,INITIALDIR) " +
+                        "VALUES (" + 0 + ", " + 7 + ", " + "'./'" + " );";
                 stmt.executeUpdate(sql);
 
                 stmt.close();
@@ -525,5 +526,50 @@ public class RustiqueBDD implements RustiqueParameters {
             e.printStackTrace();
         }
         return color;
+    }
+
+    /**
+     * Cambiar directorio inicial de default
+     * @param dir string correspondiente al directorio inicial
+     */
+    public void insertarDirInicial(String dir) {
+        try {
+            c = DriverManager.getConnection("jdbc:sqlite:" + bddPath);
+            stmt = c.createStatement();
+
+            String sql = "UPDATE UTILIDADES SET INITIALDIR='" + dir +
+                    "' WHERE ID=0";
+            stmt.executeUpdate(sql);
+
+            stmt.close();
+            c.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Getter de path inicial de default
+     * @return String correspondiente al path
+     */
+    public String getInitialDir() {
+        String dir = null;
+        try {
+            c = DriverManager.getConnection("jdbc:sqlite:" + bddPath);
+            stmt = c.createStatement();
+
+            String sql = "SELECT INITIALDIR FROM UTILIDADES WHERE ID=0;";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                dir = rs.getString("INITIALDIR");
+            }
+
+            stmt.close();
+            c.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return dir;
     }
 }

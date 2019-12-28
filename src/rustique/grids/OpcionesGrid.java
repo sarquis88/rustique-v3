@@ -47,8 +47,14 @@ public class OpcionesGrid extends RustiqueGrid implements RustiqueParameters {
         cambiarColor.setStyle(buttonsStyle);
         cambiarColor.setOnAction(e -> thisController.actionPerformed("cambiar-color"));
 
+        Button cambiarDirectorio = new Button("Cambiar directorio");
+        cambiarDirectorio.setPrefSize(buttonsWidth, buttonsHeight);
+        cambiarDirectorio.setStyle(buttonsStyle);
+        cambiarDirectorio.setOnAction(e -> thisController.actionPerformed("cambiar-directorio"));
+
         thisGrid.add(restablecerBDD, 0, 0);
         thisGrid.add(copiaBDD, 0, 1);
         thisGrid.add(cambiarColor, 0, 2);
+        thisGrid.add(cambiarDirectorio, 0, 2);
     }
 }

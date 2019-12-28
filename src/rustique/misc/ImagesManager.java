@@ -7,6 +7,7 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import org.apache.commons.io.FileUtils;
 import rustique.Main;
+import rustique.bdd.RustiqueBDD;
 
 import javax.imageio.ImageIO;
 import java.io.File;
@@ -27,13 +28,18 @@ public class ImagesManager implements RustiqueParameters {
                 new FileChooser.ExtensionFilter("Image files", "*.jpg", "*.png");
         fileChooser.getExtensionFilters().add(extFilter);
 
-        fileChooser.setInitialDirectory(new File(obrasPath));
-
-        try {
-            return new Image(fileChooser.showOpenDialog(Main.getWindow()).toURI().toString());
-        }
-        catch (NullPointerException e) {
+        String path = RustiqueBDD.getInstance().getInitialDir();
+        if(path == null) {
+            MessagesManager.showFatalErrorAlert();
             return null;
+        }
+        else {
+            fileChooser.setInitialDirectory(new File(path));
+            try {
+                return new Image(fileChooser.showOpenDialog(Main.getWindow()).toURI().toString());
+            } catch (NullPointerException e) {
+                return null;
+            }
         }
     }
 

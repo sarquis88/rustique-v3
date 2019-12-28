@@ -10,9 +10,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/bdd/RustiqueBDD.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/bdd/RustiqueBDD.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/rustique-v3/rustique/bdd/rustique.db" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/rustique-v3/rustique/bdd/rustique.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/obras/JesuCristo - San Pedro.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rustique/bdd/RustiqueBDD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/bdd/RustiqueBDD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rustique/bdd/rustique.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/bdd/rustique.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rustique/controllers/OpcionesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/controllers/OpcionesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rustique/grids/OpcionesGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/grids/OpcionesGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rustique/misc/ImagesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rustique/misc/ImagesManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -258,31 +260,31 @@
       <screen x="0" y="0" width="1360" height="738" />
     </state>
     <state x="438" y="85" key="DetectedRootsChooserDialog/0.0.1360.738@0.0.1360.738" timestamp="1576688727311" />
-    <state x="358" y="114" width="648" height="516" key="FileChooserDialogImpl" timestamp="1577330531918">
+    <state x="358" y="114" width="648" height="516" key="FileChooserDialogImpl" timestamp="1577556367292">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state x="356" y="115" width="648" height="516" key="FileChooserDialogImpl/0.0.1360.738@0.0.1360.738" timestamp="1576688721267" />
-    <state x="358" y="114" key="FileChooserDialogImpl/0.0.1366.732@0.0.1366.732" timestamp="1577330531918" />
-    <state width="1320" height="174" key="GridCell.Tab.0.bottom" timestamp="1577483756183">
+    <state x="358" y="114" key="FileChooserDialogImpl/0.0.1366.732@0.0.1366.732" timestamp="1577556367292" />
+    <state width="1320" height="174" key="GridCell.Tab.0.bottom" timestamp="1577557363331">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state width="1314" height="202" key="GridCell.Tab.0.bottom/0.0.1360.738@0.0.1360.738" timestamp="1576708756472" />
-    <state width="1320" height="174" key="GridCell.Tab.0.bottom/0.0.1366.732@0.0.1366.732" timestamp="1577483756183" />
-    <state width="1320" height="174" key="GridCell.Tab.0.center" timestamp="1577483756183">
+    <state width="1320" height="174" key="GridCell.Tab.0.bottom/0.0.1366.732@0.0.1366.732" timestamp="1577557363331" />
+    <state width="1320" height="174" key="GridCell.Tab.0.center" timestamp="1577557363329">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state width="1314" height="202" key="GridCell.Tab.0.center/0.0.1360.738@0.0.1360.738" timestamp="1576708756471" />
-    <state width="1320" height="174" key="GridCell.Tab.0.center/0.0.1366.732@0.0.1366.732" timestamp="1577483756183" />
-    <state width="1320" height="174" key="GridCell.Tab.0.left" timestamp="1577483756183">
+    <state width="1320" height="174" key="GridCell.Tab.0.center/0.0.1366.732@0.0.1366.732" timestamp="1577557363329" />
+    <state width="1320" height="174" key="GridCell.Tab.0.left" timestamp="1577557363327">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state width="1314" height="202" key="GridCell.Tab.0.left/0.0.1360.738@0.0.1360.738" timestamp="1576708756471" />
-    <state width="1320" height="174" key="GridCell.Tab.0.left/0.0.1366.732@0.0.1366.732" timestamp="1577483756183" />
-    <state width="1320" height="174" key="GridCell.Tab.0.right" timestamp="1577483756183">
+    <state width="1320" height="174" key="GridCell.Tab.0.left/0.0.1366.732@0.0.1366.732" timestamp="1577557363327" />
+    <state width="1320" height="174" key="GridCell.Tab.0.right" timestamp="1577557363330">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state width="1314" height="202" key="GridCell.Tab.0.right/0.0.1360.738@0.0.1360.738" timestamp="1576708756472" />
-    <state width="1320" height="174" key="GridCell.Tab.0.right/0.0.1366.732@0.0.1366.732" timestamp="1577483756183" />
+    <state width="1320" height="174" key="GridCell.Tab.0.right/0.0.1366.732@0.0.1366.732" timestamp="1577557363330" />
     <state width="1320" height="199" key="GridCell.Tab.1.bottom" timestamp="1577483621091">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
@@ -303,11 +305,11 @@
     </state>
     <state width="1314" height="202" key="GridCell.Tab.1.right/0.0.1360.738@0.0.1360.738" timestamp="1576708756472" />
     <state width="1320" height="199" key="GridCell.Tab.1.right/0.0.1366.732@0.0.1366.732" timestamp="1577483621091" />
-    <state x="165" y="0" width="1026" height="732" key="SettingsEditor" timestamp="1577330540196">
+    <state x="165" y="0" width="1026" height="732" key="SettingsEditor" timestamp="1577556367698">
       <screen x="0" y="0" width="1366" height="732" />
     </state>
     <state x="164" y="0" width="1026" height="732" key="SettingsEditor/0.0.1360.738@0.0.1360.738" timestamp="1576688731913" />
-    <state x="165" y="0" key="SettingsEditor/0.0.1366.732@0.0.1366.732" timestamp="1577330540196" />
+    <state x="165" y="0" key="SettingsEditor/0.0.1366.732@0.0.1366.732" timestamp="1577556367698" />
     <state x="348" y="0" width="664" height="732" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1576705632428">
       <screen x="0" y="0" width="1360" height="738" />
     </state>
@@ -323,7 +325,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/rustique/bdd/RustiqueBDD.java</url>
-          <line>514</line>
+          <line>515</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
