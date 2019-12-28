@@ -54,7 +54,7 @@ public class OpcionesGrid extends RustiqueGrid implements RustiqueParameters {
 
         thisGrid.add(restablecerBDD, 0, 0);
         thisGrid.add(copiaBDD, 0, 1);
-        thisGrid.add(cambiarColor, 0, 2);
-        thisGrid.add(cambiarDirectorio, 0, 2);
+        thisGrid.add(cambiarColor, 0, 6);
+        thisGrid.add(cambiarDirectorio, 0, 7);
     }
 }
