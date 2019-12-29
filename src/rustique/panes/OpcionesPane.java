@@ -8,10 +8,9 @@ import rustique.misc.RustiqueParameters;
 import rustique.misc.View;
 import rustique.grids.OpcionesGrid;
 
-public class OpcionesPane implements RustiquePane, RustiqueParameters {
+public class OpcionesPane extends RustiquePane implements RustiqueParameters {
 
     private static OpcionesPane thisOpcionesPane = null;
-    private Pane thisPane;
 
     /**
      * Patron Singleton
@@ -49,10 +48,5 @@ public class OpcionesPane implements RustiquePane, RustiqueParameters {
                 estadisticas.getLayoutY() + vPadding * 10);
 
         thisPane.getChildren().addAll(gridPane, titulo, estadisticas, opcionesSubGrid);
-    }
-
-    @Override
-    public Pane getPane() {
-        return thisPane;
     }
 }

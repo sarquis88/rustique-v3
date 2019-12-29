@@ -1,11 +1,10 @@
 package rustique.controllers;
 
-import javafx.stage.Stage;
 import rustique.Main;
 import rustique.misc.View;
 import rustique.panes.*;
 
-public class MainController {
+public class MainController implements Controller {
 
     private static MainController thisMainController = null;
 
@@ -27,17 +26,10 @@ public class MainController {
     }
 
     /**
-     * Retorna ventana principal
-     * @return objeto Stage
-     */
-    public Stage getWindow() {
-        return Main.getWindow();
-    }
-
-    /**
      * Respuesta a eventos
      * @param event tipo de evento
      */
+    @Override
     public void actionPerformed(String event) {
         switch (event) {
             case "principal":
@@ -55,8 +47,11 @@ public class MainController {
             case "trabajos":
                 View.getInstance().changePane(TrabajosPane.getInstance());
                 break;
+            case "display":
+                View.getInstance().changePane(DisplayPane.getInstance());
+                break;
             case "salir":
-                getWindow().close();
+                Main.getWindow().close();
                 break;
             default:
                 break;

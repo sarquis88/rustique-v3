@@ -10,12 +10,11 @@ import rustique.controllers.ClientesController;
 import rustique.grids.ClientesGrid;
 import rustique.models.Cliente;
 
-public class ClientesPane implements RustiquePane, RustiqueParameters {
+public class ClientesPane extends RustiquePane implements RustiqueParameters {
 
     private static ClientesPane thisClientesPane = null;
     private static ClientesController thisController = null;
 
-    private Pane thisPane;
     private String clienteClickeado;
     private TableView<Cliente> tableView;
 
@@ -112,11 +111,6 @@ public class ClientesPane implements RustiquePane, RustiqueParameters {
      */
     public void setClienteClickeado(String clienteClickeado) {
         this.clienteClickeado = clienteClickeado;
-    }
-
-    @Override
-    public Pane getPane() {
-        return thisPane;
     }
 
     public void resetClienteClickeado() {

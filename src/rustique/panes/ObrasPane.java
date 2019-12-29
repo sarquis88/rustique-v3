@@ -10,10 +10,9 @@ import rustique.controllers.ObrasController;
 import rustique.grids.ObrasGrid;
 import rustique.models.Obra;
 
-public class ObrasPane implements RustiqueParameters, RustiquePane {
+public class ObrasPane extends RustiquePane implements RustiqueParameters {
 
     private static ObrasPane thisObrasPane = null;
-    private Pane thisPane;
 
     private String obraClickeada;
     private TableView<Obra> tableView;
@@ -123,11 +122,6 @@ public class ObrasPane implements RustiqueParameters, RustiquePane {
 
     public void setObraClickeada(String obraClickeada) {
         this.obraClickeada = obraClickeada;
-    }
-
-    @Override
-    public Pane getPane() {
-        return thisPane;
     }
 
     public void resetObraClickeada() {

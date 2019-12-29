@@ -10,12 +10,11 @@ import rustique.grids.TrabajosGrid;
 import rustique.misc.View;
 import rustique.models.Trabajo;
 
-public class TrabajosPane implements RustiquePane, RustiqueParameters {
+public class TrabajosPane extends RustiquePane implements RustiqueParameters {
 
     private static TrabajosPane thisTrabajosPane = null;
     private static TrabajosController thisController = null;
 
-    private Pane thisPane;
     private TableView<Trabajo> tableView;
     private String trabajoClickeado = null;
 
@@ -102,11 +101,6 @@ public class TrabajosPane implements RustiquePane, RustiqueParameters {
         scrollPane.setContent(tableView);
 
         thisPane.getChildren().addAll(gridPane, titulo, scrollPane);
-    }
-
-    @Override
-    public Pane getPane() {
-        return thisPane;
     }
 
     public String getTrabajoClickeado() {

@@ -341,7 +341,7 @@ public class RustiqueBDD implements RustiqueParameters {
                 String hasImage = rs.getString("IMAGEN");
                 int id = rs.getInt("ID");
 
-                ObrasController.addObra(
+                ObrasController.getInstance().addObra(
                         new Obra(nombre, autor, tipo, tamanio,
                                 precio, id, hasImage));
                 Obra.setGlobalId(id + 1);

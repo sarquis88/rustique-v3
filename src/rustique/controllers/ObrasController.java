@@ -10,6 +10,8 @@ import rustique.dialogs.*;
 import rustique.models.Obra;
 import rustique.panes.ObrasPane;
 
+import java.util.ArrayList;
+
 public class ObrasController implements Controller {
 
     private static ObrasController thisController = null;
@@ -210,7 +212,7 @@ public class ObrasController implements Controller {
      * Agregar obra a la lista
      * @param nuevaObra nueva obra
      */
-    public static void addObra(Obra nuevaObra) {
+    public void addObra(Obra nuevaObra) {
         data.add(nuevaObra);
     }
 
@@ -467,5 +469,19 @@ public class ObrasController implements Controller {
         for(Obra obra : data)
             patrimonio = patrimonio + obra.getPrecio();
         return patrimonio;
+    }
+
+    /**
+     * Getter de todas las obras con foto
+     * @return ArrayList con los nombres de las imagenes sin formato
+     */
+    public ArrayList<String> getObrasConFoto() {
+        ArrayList<String> obrasConFoto = new ArrayList<>();
+
+        for(Obra obra : data) {
+            if(obra.getHasImage().equals("Si"))
+                obrasConFoto.add(obra.getImgNombre());
+        }
+        return obrasConFoto;
     }
 }

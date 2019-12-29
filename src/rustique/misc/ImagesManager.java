@@ -116,9 +116,10 @@ public class ImagesManager implements RustiqueParameters {
     /**
      * Retorna imagen localizada en path
      * @param path ubicacion de la imagen
+     * @param scale true para retornar imagen en escala "amigable"
      * @return objeto ImageView de dicha imagen
      */
-    public static ImageView getImageView(String path) {
+    public static ImageView getImageView(String path, boolean scale) {
         Image image = null;
         try {
             image = new Image(new FileInputStream(path));
@@ -127,17 +128,17 @@ public class ImagesManager implements RustiqueParameters {
         }
 
         if(image != null) {
-            ImageView imageView = new ImageView(image);
-            imageView.setFitWidth(image.getWidth());        // 695
-            imageView.setFitHeight(image.getHeight());    // 400
-            return imageView;
+            if(!scale) {
+                ImageView imageView = new ImageView(image);
+                imageView.setFitWidth(image.getWidth());
+                imageView.setFitHeight(image.getHeight());
+                return imageView;
+            }
+            else
+                return scale(image);
         }
         else
             return null;
-    }
-
-    public static String getObrasPath() {
-        return obrasPath;
     }
 
     public static void copiarBDD() {

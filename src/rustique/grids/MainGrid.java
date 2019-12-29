@@ -16,6 +16,7 @@ public class MainGrid extends RustiqueGrid implements RustiqueParameters {
     private Button clientes;
     private Button obras;
     private Button trabajos;
+    private Button display;
     private Button opciones;
     private Button salir;
 
@@ -31,7 +32,7 @@ public class MainGrid extends RustiqueGrid implements RustiqueParameters {
         thisGrid.setVgap(10);
         thisGrid.setPadding(new Insets(vPadding, hPadding, vPadding, hPadding));
 
-        ImageView logo = ImagesManager.getImageView(logoPath);
+        ImageView logo = ImagesManager.getImageView(logoPath, false);
         if(logo != null) {
             logo.setLayoutX(0);
             logo.setLayoutY(0);
@@ -69,6 +70,14 @@ public class MainGrid extends RustiqueGrid implements RustiqueParameters {
             thisMainController.actionPerformed("trabajos");
         });
 
+        this.display = new Button("Display");
+        this.display.setPrefSize(buttonsWidth, buttonsHeight);
+        this.display.setStyle(buttonsStyle);
+        this.display.setOnAction(e -> {
+            enableAll("display");
+            thisMainController.actionPerformed("display");
+        });
+
         this.opciones = new Button("Opciones");
         this.opciones.setPrefSize(buttonsWidth, buttonsHeight);
         this.opciones.setStyle(buttonsStyle);
@@ -90,8 +99,9 @@ public class MainGrid extends RustiqueGrid implements RustiqueParameters {
         thisGrid.add(clientes, 0, 6);
         thisGrid.add(obras, 0, 7);
         thisGrid.add(trabajos, 0, 8);
-        thisGrid.add(opciones, 0, 13);
-        thisGrid.add(salir, 0, 30);
+        thisGrid.add(display, 0, 13);
+        thisGrid.add(opciones, 0, 18);
+        thisGrid.add(salir, 0, 29);
 
         if(logo != null)
             thisGrid.setPrefWidth(logo.getFitWidth() + hPadding * 2);
@@ -119,6 +129,9 @@ public class MainGrid extends RustiqueGrid implements RustiqueParameters {
             case "opciones":
                 this.opciones.setDisable(bool);
                 break;
+            case "display":
+                this.display.setDisable(bool);
+                break;
             default:
                 break;
         }
@@ -136,6 +149,7 @@ public class MainGrid extends RustiqueGrid implements RustiqueParameters {
         this.trabajos.setDisable(false);
         this.opciones.setDisable(false);
         this.salir.setDisable(false);
+        this.display.setDisable(false);
 
         switch (exception) {
             case "principal":
@@ -155,6 +169,9 @@ public class MainGrid extends RustiqueGrid implements RustiqueParameters {
                 break;
             case "salir":
                 this.salir.setDisable(true);
+                break;
+            case "display":
+                this.display.setDisable(true);
                 break;
         }
     }

@@ -35,6 +35,7 @@ public class ClientesController implements Controller {
      * Respuesta a eventos
      * @param event tipo de evento
      */
+    @Override
     public void actionPerformed(String event) {
         switch (event) {
             case "nuevo-cliente":
