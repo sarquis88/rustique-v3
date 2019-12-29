@@ -1,9 +1,9 @@
 package rustique.panes;
 
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import rustique.grids.OpcionesSubGrid;
 import rustique.misc.RustiqueParameters;
 import rustique.misc.View;
 import rustique.grids.OpcionesGrid;
@@ -20,6 +20,7 @@ public class OpcionesPane implements RustiquePane, RustiqueParameters {
     public static OpcionesPane getInstance() {
         if (thisOpcionesPane == null)
             thisOpcionesPane = new OpcionesPane();
+        OpcionesSubGrid.refresh();
         return thisOpcionesPane;
     }
 
@@ -38,21 +39,16 @@ public class OpcionesPane implements RustiquePane, RustiqueParameters {
         GridPane gridPane = OpcionesGrid.getInstance().getGridPane();
         OpcionesGrid.getInstance().setLayout(0, vPadding);
 
-        Button boton = new Button("TOCAME");
-        boton.setLayoutX(thisPane.getPrefWidth() / 2);
-        boton.setLayoutY(thisPane.getPrefHeight() / 2);
-        boton.setOnAction(e -> botonAction());
+        Label estadisticas = new Label("Estadísticas");
+        estadisticas.setLayoutX((thisPane.getPrefWidth() - View.getInstance().getSepLayoutX(0)) / 3);
+        estadisticas.setLayoutY(titulo.getLayoutY() + vPadding * 20);
+        estadisticas.setStyle(subTituloStyle);
 
-        thisPane.getChildren().addAll(gridPane, titulo, boton);
-    }
+        GridPane opcionesSubGrid = OpcionesSubGrid.getInstance().getGridPane();
+        OpcionesSubGrid.getInstance().setLayout(estadisticas.getLayoutX() - hPadding * 5,
+                estadisticas.getLayoutY() + vPadding * 10);
 
-    private void botonAction() {
-        Label label = new Label("RUSTIQUE");
-        label.setLayoutX(View.getInstance().getSepLayoutX(0) +
-                (thisPane.getPrefWidth() - View.getInstance().getSepLayoutX(0)) * Math.random());
-        label.setLayoutY(thisPane.getPrefHeight() * Math.random());
-
-        thisPane.getChildren().add(label);
+        thisPane.getChildren().addAll(gridPane, titulo, estadisticas, opcionesSubGrid);
     }
 
     @Override

@@ -20,6 +20,8 @@ public interface RustiqueParameters {
     double sepWidth = 5.0;
 
     String tituloStyle = "-fx-font-weight: bold; -fx-text-fill: black; -fx-font-size: 35px;";
+    String subTituloStyle = "-fx-font-weight: bold; -fx-text-fill: black; -fx-font-size: 25px;";
+    String subSubTituloStyle = "-fx-font-weight: bold; -fx-text-fill: black; -fx-font-size: 15px;";
     String buttonsStyle = "-fx-font-size: 15;";
     String separatorStyle = "-fx-background-color: red;";
     String tableColumnsStyle = "-fx-alignment: CENTER;";

@@ -457,4 +457,15 @@ public class ObrasController implements Controller {
     private void deseleccionarObra() {
         ObrasPane.getInstance().resetObraClickeada();
     }
+
+    /**
+     * Getter de patrimonio
+     * @return int correspondiente a la suma de todos los precios
+     */
+    public int getPatrimonio() {
+        int patrimonio = 0;
+        for(Obra obra : data)
+            patrimonio = patrimonio + obra.getPrecio();
+        return patrimonio;
+    }
 }

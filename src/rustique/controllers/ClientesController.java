@@ -138,7 +138,7 @@ public class ClientesController implements Controller {
      * Agregar cliente a la lista
      * @param nuevoCliente nuevo cliente
      */
-    public static void addCliente(Cliente nuevoCliente) {
+    public void addCliente(Cliente nuevoCliente) {
         data.add(nuevoCliente);
     }
 
@@ -308,5 +308,16 @@ public class ClientesController implements Controller {
             if(cliente.getId() == id)
                 return true;
         return false;
+    }
+
+    /**
+     * Retorna saldo total
+     * @return int igual a la suma de todos los saldos
+     */
+    public int getSaldoTotal() {
+        int saldoTotal = 0;
+        for(Cliente cliente : data)
+            saldoTotal = saldoTotal + cliente.getSaldo();
+        return saldoTotal;
     }
 }

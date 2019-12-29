@@ -214,7 +214,7 @@ public class RustiqueBDD implements RustiqueParameters {
                 int saldo = rs.getInt("SALDO");
                 int id = rs.getInt("ID");
 
-                ClientesController.addCliente(
+                ClientesController.getInstance().addCliente(
                         new Cliente(nombre, saldo, id, comentarios));
                 Cliente.setGlobalId(id + 1);
             }
