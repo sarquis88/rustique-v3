@@ -83,12 +83,12 @@ public class RustiqueBDD implements RustiqueParameters {
             if(!tableExists("UTILIDADES")) {
                 String sql = 	"CREATE TABLE UTILIDADES " +
                         "(ID INT PRIMARY KEY     NOT NULL," +
-                        " COLOR       INT        NOT NULL," +
+                        " COLOR       TEXT       NOT NULL," +
                         " INITIALDIR  TEXT       NOT NULL)";
                 stmt.executeUpdate(sql);
 
                 sql = "INSERT INTO UTILIDADES (ID,COLOR,INITIALDIR) " +
-                        "VALUES (" + 0 + ", " + 7 + ", " + "'./'" + " );";
+                        "VALUES (0, '0x808080ff', './' );";
                 stmt.executeUpdate(sql);
 
                 stmt.close();
@@ -485,9 +485,9 @@ public class RustiqueBDD implements RustiqueParameters {
 
     /**
      * Cambiar color de default de fondo
-     * @param color numero correspondiente al color
+     * @param color colorweb correspondiente al color
      */
-    public void insertarColor(int color) {
+    public void insertarColor(String color) {
         try {
             c = DriverManager.getConnection("jdbc:sqlite:" + bddPath);
             stmt = c.createStatement();
@@ -507,8 +507,8 @@ public class RustiqueBDD implements RustiqueParameters {
      * Getter de color de default de fondo
      * @return int correspondiente al color
      */
-    public int getColor() {
-        int color = 0;
+    public String getColor() {
+        String color = "";
         try {
             c = DriverManager.getConnection("jdbc:sqlite:" + bddPath);
             stmt = c.createStatement();
@@ -517,7 +517,7 @@ public class RustiqueBDD implements RustiqueParameters {
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
-                color = rs.getInt("COLOR");
+                color = rs.getString("COLOR");
             }
 
             stmt.close();

@@ -53,7 +53,7 @@ public class ImagesManager implements RustiqueParameters {
         // valores usados para scaling
         double proporcion = image.getWidth() / image.getHeight();
         double prefWidth = 500;
-        double maxHeight = 600;
+        double maxHeight = 575;
 
         ImageView imageView = new ImageView(image);
         // comienzo scaling

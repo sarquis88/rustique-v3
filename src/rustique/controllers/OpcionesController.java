@@ -1,5 +1,7 @@
 package rustique.controllers;
 
+import javafx.scene.paint.Color;
+import rustique.dialogs.InputColorDialog;
 import rustique.dialogs.InputPathDialog;
 import rustique.misc.ImagesManager;
 import rustique.Main;
@@ -41,7 +43,7 @@ public class OpcionesController {
                 ImagesManager.copiarBDD();
                 break;
             case "cambiar-color":
-                View.getInstance().cambiarColor();
+                cambiarColor();
                 break;
             case "cambiar-directorio":
                 cambiarDirectorio();
@@ -69,5 +71,14 @@ public class OpcionesController {
         String path = inputPathDialog.getResult();
         if(path != null)
             RustiqueBDD.getInstance().insertarDirInicial(path);
+    }
+
+    private void cambiarColor() {
+        InputColorDialog inputColorDialog = new InputColorDialog();
+        inputColorDialog.show();
+        Color color = inputColorDialog.getResult();
+
+        if(color != null)
+            View.getInstance().cambiarColor(color);
     }
 }

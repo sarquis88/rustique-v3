@@ -119,6 +119,10 @@ public class Obra implements Modelo {
     }
 
     public String getImgNombre() {
-        return this.nombre + " - " + this.autor;
+        return (    this.nombre + " - " +
+                    this.autor + " - " +
+                    this.tipo + " - " +
+                    this.tamanio + " - " +
+                    "$" + this.precio   );
     }
 }

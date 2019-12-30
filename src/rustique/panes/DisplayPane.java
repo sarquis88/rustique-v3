@@ -4,8 +4,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import rustique.controllers.ObrasController;
+import rustique.grids.DisplayGrid;
 import rustique.misc.ImagesManager;
 import rustique.misc.RustiqueParameters;
 import rustique.misc.View;
@@ -16,9 +18,10 @@ public class DisplayPane extends RustiquePane implements RustiqueParameters {
 
     private static DisplayPane thisDisplayPane = null;
     private static ArrayList<String> fotos;
+    private static int iterator = 0;
 
     private ImageView imageView;
-    private int iterator = 0;
+    private Label tituloImageView;
 
     /**
      * Patron Singleton
@@ -44,6 +47,9 @@ public class DisplayPane extends RustiquePane implements RustiqueParameters {
         titulo.setLayoutY(vPadding * 2);
         titulo.setStyle(tituloStyle);
 
+        GridPane gridPane = DisplayGrid.getInstance().getGridPane();
+        DisplayGrid.getInstance().setLayout(0, vPadding);
+
         Button siguiente = new Button("->");
         siguiente.setPrefSize(buttonsWidth / 5, buttonsHeight);
         siguiente.setStyle(buttonsStyle);
@@ -62,7 +68,7 @@ public class DisplayPane extends RustiquePane implements RustiqueParameters {
 
         refreshFotos();
         refreshImageView();
-        thisPane.getChildren().addAll(titulo, anterior, siguiente);
+        thisPane.getChildren().addAll(titulo, gridPane, anterior, siguiente);
     }
 
     /**
@@ -72,7 +78,7 @@ public class DisplayPane extends RustiquePane implements RustiqueParameters {
         iterator++;
         if(iterator >= fotos.size())
             iterator = 0;
-        thisPane.getChildren().remove(imageView);
+        thisPane.getChildren().removeAll(imageView, tituloImageView);
         refreshImageView();
     }
 
@@ -83,7 +89,7 @@ public class DisplayPane extends RustiquePane implements RustiqueParameters {
         iterator--;
         if(iterator < 0)
             iterator = fotos.size() - 1;
-        thisPane.getChildren().remove(imageView);
+        thisPane.getChildren().removeAll(imageView, tituloImageView);
         refreshImageView();
     }
 
@@ -99,7 +105,13 @@ public class DisplayPane extends RustiquePane implements RustiqueParameters {
             imageView.setLayoutX(midX - imageView.getFitWidth() / 2);
             imageView.setLayoutY(midY - imageView.getFitHeight() / 2);
             Tooltip.install(imageView, new Tooltip(fotos.get(iterator)));
-            thisPane.getChildren().addAll(imageView);
+
+            tituloImageView = new Label(fotos.get(iterator));
+            tituloImageView.setLayoutX(imageView.getLayoutX());
+            tituloImageView.setLayoutY(imageView.getLayoutY() - vPadding * 4);
+            tituloImageView.setStyle(subSubTituloStyle);
+
+            thisPane.getChildren().addAll(imageView, tituloImageView);
         }
     }
 
@@ -108,5 +120,29 @@ public class DisplayPane extends RustiquePane implements RustiqueParameters {
      */
     private static void refreshFotos() {
         fotos = ObrasController.getInstance().getObrasConFoto();
+    }
+
+    /**
+     * Rearma las fotos del display, para mostrarlas por atributo
+     * @param a 0 para filtrar por nombre
+     *          1 para filtrar por autor
+     *          2 para filtrar por tipo
+     *          3 para filtrar por tamaño
+     *          4 para filtrar por precio
+     * @param busqueda valor a buscar
+     */
+    public void mostrarPorAtributo(int a, String busqueda) {
+        ArrayList<String> aux = new ArrayList<>();
+        for(String imgNombre : fotos) {
+            if(imgNombre.split(" - ")[a].equalsIgnoreCase(busqueda))
+                aux.add(imgNombre);
+        }
+
+        if(aux.size() > 0) {
+            fotos = aux;
+            iterator = 0;
+            thisPane.getChildren().removeAll(imageView, tituloImageView);
+            refreshImageView();
+        }
     }
 }

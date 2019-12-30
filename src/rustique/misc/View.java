@@ -3,7 +3,10 @@ package rustique.misc;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Separator;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import rustique.bdd.RustiqueBDD;
 import rustique.grids.MainGrid;
 import rustique.panes.MainPane;
@@ -19,8 +22,6 @@ public class View implements RustiqueParameters {
 
     private Separator sep0;
     private Separator sep1;
-
-    private int c;
 
     /**
      * Patron singleton
@@ -58,11 +59,11 @@ public class View implements RustiqueParameters {
         mainGrid.setDisable("principal", true);
 
         layout = new Pane();
-        layout.setStyle("-fx-background-color: gray;");
         layout.getChildren().addAll(mainGrid.getGridPane(), sep0, sep1);
 
-        this.c = RustiqueBDD.getInstance().getColor();
-        cambiarColor();
+        String colorWeb = RustiqueBDD.getInstance().getColor();
+        Color color = Color.web(colorWeb);
+        cambiarColor(color);
 
         changePane(MainPane.getInstance());
 
@@ -100,39 +101,9 @@ public class View implements RustiqueParameters {
         return 0;
     }
 
-    public void cambiarColor() {
-        switch (this.c) {
-            case 0:
-                layout.setStyle("-fx-background-color: red;");
-                break;
-            case 1:
-                layout.setStyle("-fx-background-color: blue;");
-                break;
-            case 2:
-                layout.setStyle("-fx-background-color: green;");
-                break;
-            case 3:
-                layout.setStyle("-fx-background-color: yellow;");
-                break;
-            case 4:
-                layout.setStyle("-fx-background-color: orange;");
-                break;
-            case 5:
-                layout.setStyle("-fx-background-color: cyan;");
-                break;
-            case 6:
-                layout.setStyle("-fx-background-color: brown;");
-                break;
-            case 7:
-                layout.setStyle("-fx-background-color: gray;");
-                break;
-            default:
-                MessagesManager.showFatalErrorAlert();
-                break;
-        }
-        RustiqueBDD.getInstance().insertarColor(c);
-        c++;
-        if(c == 8)
-            c = 0;
+    public void cambiarColor(Color color) {
+        Background background = new Background(new BackgroundFill(color, null, null));
+        layout.setBackground(background);
+        RustiqueBDD.getInstance().insertarColor(color.toString());
     }
 }
