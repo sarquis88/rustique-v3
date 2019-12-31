@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="javafx">
+  <library name="openfx">
     <CLASSES>
       <root url="file:///usr/share/openjfx/lib" />
     </CLASSES>

@@ -11,6 +11,10 @@ public class DisplayGrid extends RustiqueGrid implements RustiqueParameters {
     private static DisplayController thisDisplayController = null;
     private static DisplayGrid thisDisplayGrid = null;
 
+    private Button porNombre;
+    private Button porAutor;
+    private Button porTipo;
+
     /**
      * Patron Singleton
      * @return instancia unica de clase
@@ -32,17 +36,17 @@ public class DisplayGrid extends RustiqueGrid implements RustiqueParameters {
         thisGrid.setVgap(10);
         thisGrid.setPadding(new Insets(vPadding, hPadding, vPadding, hPadding));
 
-        Button porNombre = new Button("Por nombre");
+        porNombre = new Button("Por nombre");
         porNombre.setPrefSize(buttonsWidth, buttonsHeight);
         porNombre.setStyle(buttonsStyle);
         porNombre.setOnAction(e -> thisDisplayController.actionPerformed("ordenar-nombre"));
 
-        Button porAutor = new Button("Por autor");
+        porAutor = new Button("Por autor");
         porAutor.setPrefSize(buttonsWidth, buttonsHeight);
         porAutor.setStyle(buttonsStyle);
         porAutor.setOnAction(e -> thisDisplayController.actionPerformed("ordenar-autor"));
 
-        Button porTipo = new Button("Por tipo");
+        porTipo = new Button("Por tipo");
         porTipo.setPrefSize(buttonsWidth, buttonsHeight);
         porTipo.setStyle(buttonsStyle);
         porTipo.setOnAction(e -> thisDisplayController.actionPerformed("ordenar-tipo"));
@@ -50,5 +54,15 @@ public class DisplayGrid extends RustiqueGrid implements RustiqueParameters {
         thisGrid.add(porNombre, 0, 0);
         thisGrid.add(porAutor, 0, 1);
         thisGrid.add(porTipo, 0, 2);
+    }
+
+    /**
+     * Desactiva o activa todos los botones del grid por igual
+     * @param disable true para desactivar
+     */
+    public void setDisableAll(boolean disable) {
+        this.porNombre.setDisable(disable);
+        this.porAutor.setDisable(disable);
+        this.porTipo.setDisable(disable);
     }
 }

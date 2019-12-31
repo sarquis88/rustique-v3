@@ -9,7 +9,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="sqlite-jdbc-3.27.2.1" level="project" />
     <orderEntry type="library" name="commons-io-2" level="project" />
-    <orderEntry type="library" name="javafx" level="project" />
+    <orderEntry type="library" name="openfx" level="project" />
     <orderEntry type="library" name="openjfx" level="application" />
     <orderEntry type="library" name="javafx-sdk-13.0" level="project" />
   </component>

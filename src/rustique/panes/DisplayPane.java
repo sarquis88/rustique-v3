@@ -67,7 +67,6 @@ public class DisplayPane extends RustiquePane implements RustiqueParameters {
         anterior.setTooltip(new Tooltip("Anterior imagen"));
 
         refreshFotos();
-        refreshImageView();
         thisPane.getChildren().addAll(titulo, gridPane, anterior, siguiente);
     }
 
@@ -97,6 +96,9 @@ public class DisplayPane extends RustiquePane implements RustiqueParameters {
      * Actualizacion de imageView
      */
     private void refreshImageView() {
+        if(fotos.size() == 0)
+            return;
+
         imageView = ImagesManager.getImageView(obrasPath + fotos.get(iterator) +
                 "." + ImagesManager.getFormat(fotos.get(iterator)), true);
         if(imageView != null) {
@@ -120,6 +122,11 @@ public class DisplayPane extends RustiquePane implements RustiqueParameters {
      */
     private static void refreshFotos() {
         fotos = ObrasController.getInstance().getObrasConFoto();
+
+        if(fotos.size() == 0)
+            DisplayGrid.getInstance().setDisableAll(true);
+        else
+            DisplayGrid.getInstance().setDisableAll(false);
     }
 
     /**
