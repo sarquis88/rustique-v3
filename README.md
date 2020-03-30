@@ -11,3 +11,8 @@ Requisitos:
 * javaFX
 * sqlite
 * commons.io
+## Imágenes
+![Inicio](https://github.com/sarquis88/rustique-v3/blob/master/rustique0.png)
+![Clientes](https://github.com/sarquis88/rustique-v3/blob/master/rustique1.png)
+![Imagen](https://github.com/sarquis88/rustique-v3/blob/master/rustique2.png)
+![Display](https://github.com/sarquis88/rustique-v3/blob/master/rustique3.png)
