@@ -7,8 +7,6 @@ Aplicacion desarrollada en Java para galeria de arte y taller de enmarcado. En l
 ## Requisitos:
 * Java 13 
 * JavaFX SDK 11.0.2 ó 13.0.2
-* SQLite
-* commons.io
 ## Instrucciones
 ### Linux
 * ```git clone https://github.com/sarquis88/rustique-v3```
