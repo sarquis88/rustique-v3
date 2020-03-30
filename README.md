@@ -13,7 +13,7 @@ Aplicacion desarrollada en Java para galeria de arte y taller de enmarcado. En l
 ### Linux
 * ```git clone https://github.com/sarquis88/rustique-v3```
 * ```cd rustique-v3```  
-* ```chown -R user src/rustique/bdd/```
+* ```chown -R user src/```
 * ```java --module-path /path/to/javafx-sdk-VERSION/lib --add-modules=javafx.controls -jar out/artifacts/rustique_v3_jar/rustique-v3.jar```
 ## Imágenes
 ![Inicio](https://github.com/sarquis88/rustique-v3/blob/master/rustique0.png)
